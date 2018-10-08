@@ -10,28 +10,38 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = {}
+    this.state = {
+      totalFavorites: 0,
+    }
   }
 
+
   render() {
+    const mockPeople = {results: 
+      [ 
+        {
+          name: 'bob',
+          homeworld: {name: 'earth', population: '7.5billion'},
+          species: {name: 'human', language: 'english'}
+        }
+      ]
+    }
+
     return (
       <div className="App">
         <Crawl />
         <main>
-          <Header />
-          <div className='content'>
-            <section className='button-section'>
-              <Button />
-              <Button />
-              <Button />
-            </section>
-            <section className='main-content'>
-              <h1 className='category'></h1>
-              <CardContainer />
-            </section>
-          </div>
+          <Header totalFavorites={this.state.totalFavorites} />
+          <section className='button-section'>
+            <Button buttonName='people' />
+            <Button buttonName='planets' />
+            <Button buttonName='vehicles' />
+          </section>
+          <section className='main-content'>
+            <h1 className='category'></h1>
+            <CardContainer data={mockPeople}/>
+          </section>
         </main>
-
       </div>
     );
   }
