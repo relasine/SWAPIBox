@@ -4,7 +4,7 @@ import './Crawl.css';
 const Crawl = () => {
   return (
     <aside>
-      
+      <h1>TITLE CRAWL</h1>
     </aside>
   );
 }

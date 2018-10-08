@@ -1,0 +1,12 @@
+.nav-button {
+  margin: 1rem;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #000;
+}
+
+.nav-button h3 {
+  margin: 0;
+  text-align: center;
+  line-height: 50px;
+}

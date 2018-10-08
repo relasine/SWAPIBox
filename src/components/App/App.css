@@ -1,1 +1,18 @@
+.App {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  height: 100vh;
+}
 
+aside {
+  background-color: #000;
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
+}
+
+.category {
+  text-align: center;
+}

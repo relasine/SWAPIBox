@@ -1,0 +1,33 @@
+header h1 {
+  text-align: center;
+  position: relative;
+  margin: 1rem 0;
+}
+
+.favorites {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.favorites h3 {
+  padding-right: 8px;
+}
+
+.favorites h3,
+.favorites p {
+  margin: 0;
+  line-height: 30px;
+}
+
+.favorites p {
+  text-align: center;
+}
+
+.favorites-box {
+  height: 30px;
+  width: 30px;
+  background: #000;
+  color: #fff;
+}
