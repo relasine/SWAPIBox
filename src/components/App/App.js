@@ -11,11 +11,22 @@ class App extends Component {
     super()
 
     this.state = {
-      totalFavorites: 0
+      totalFavorites: 0,
     }
   }
 
+
   render() {
+    const mockPeople = {results: 
+      [ 
+        {
+          name: 'bob',
+          homeworld: {name: 'earth', population: '7.5billion'},
+          species: {name: 'human', language: 'english'}
+        }
+      ]
+    }
+
     return (
       <div className="App">
         <Crawl />
@@ -28,7 +39,7 @@ class App extends Component {
           </section>
           <section className='main-content'>
             <h1 className='category'></h1>
-            <CardContainer />
+            <CardContainer data={mockPeople}/>
           </section>
         </main>
       </div>
