@@ -10,7 +10,9 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = {}
+    this.state = {
+      totalFavorites: 0
+    }
   }
 
   render() {
@@ -18,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Crawl />
         <main>
-          <Header />
+          <Header totalFavorites={this.state.totalFavorites} />
           <div className='content'>
             <section className='button-section'>
               <Button />
