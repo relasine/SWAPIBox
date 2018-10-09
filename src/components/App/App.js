@@ -33,14 +33,16 @@ class App extends Component {
         <Crawl />
         <main>
           <Header totalFavorites={this.state.totalFavorites} />
-          <section className='button-section'>
-            <Button buttonName='people' />
-            <Button buttonName='planets' />
-            <Button buttonName='vehicles' />
-          </section>
-          <section className='main-content'>
-            <h1 className='category'>{this.state.currentSelection}</h1>
-            <CardContainer data={mockPeople}/>
+          <section className="content-wrapper">
+            <section className='button-section'>
+              <Button buttonName='people' />
+              <Button buttonName='planets' />
+              <Button buttonName='vehicles' />
+            </section>
+            <section className='main-content'>
+              <h1 className='category'>{this.state.currentSelection}</h1>
+              <CardContainer data={mockPeople}/>
+            </section>
           </section>
         </main>
       </div>

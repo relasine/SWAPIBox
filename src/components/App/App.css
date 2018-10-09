@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 400px 1fr;
   height: 100vh;
+  color: #fff;
 }
 
 aside {
@@ -15,4 +16,21 @@ aside {
 
 .category {
   text-align: center;
+  color: #000;
+  margin-bottom: 0;
+  font-size: 1.7rem;
+}
+
+main {
+  background: url('./images/13_Luke_Skywalker.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.content-wrapper {
+  background: rgba(0, 0, 0, .5);
+  width: 90%;
+  margin: 2rem auto;
+  border-radius: 10px;
 }
