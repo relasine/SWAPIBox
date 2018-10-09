@@ -12,6 +12,7 @@ class App extends Component {
 
     this.state = {
       totalFavorites: 0,
+      currentSelection: 'people'
     }
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
             <Button buttonName='vehicles' />
           </section>
           <section className='main-content'>
-            <h1 className='category'></h1>
+            <h1 className='category'>{this.state.currentSelection}</h1>
             <CardContainer data={mockPeople}/>
           </section>
         </main>

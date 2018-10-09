@@ -11,6 +11,11 @@ const CardContainer = (props) => {
   return (
     <div className="card-container">
       {cards}
+      {cards}
+      {cards}
+      {cards}
+      {cards}
+      {cards}
     </div>
   );
 }
