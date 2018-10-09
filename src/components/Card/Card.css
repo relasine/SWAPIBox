@@ -15,12 +15,21 @@
 
 .favorite-toggle {
   /*background: #000;*/
-  background: url(./images/rebel-red.svg);
+  background: url(./images/rebel-white.png);
+  background-size: 40px;
   width: 40px;
   height: 40px;
   display: inline-block;
   margin: auto;
 }
+
+.favorite-toggle:hover {
+  background: url(./images/rebel-hover.png);
+  background-size: 40px;
+  cursor: pointer;
+}
+
+
 
 article p,
 .card-header h2 {
