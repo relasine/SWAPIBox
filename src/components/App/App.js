@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       totalFavorites: 0,
       currentSelection: 'people',
-      openingCrawl: ''
+      openingCrawl: {}
     };
   }
 
@@ -43,7 +43,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Crawl />
+        <Crawl film={this.state.openingCrawl}/>
         <main>
           <Header totalFavorites={this.state.totalFavorites} />
           <section className="content-wrapper">
