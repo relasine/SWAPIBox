@@ -12,8 +12,21 @@ class App extends Component {
 
     this.state = {
       totalFavorites: 0,
-      currentSelection: 'people'
-    }
+      currentSelection: 'people',
+      openingCrawl: ''
+    };
+  }
+
+  componentDidMount() {
+    this.crawlCall();
+  }
+
+  crawlCall = async () => {
+    const url = 'https://swapi.co/api/films/';
+    const response = await fetch(url);
+    const data = await response.json();
+    const randomNum = Math.floor(Math.random() * (data.count))
+    this.setState({openingCrawl: data.results[randomNum]})
   }
 
 
