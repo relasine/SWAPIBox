@@ -29,6 +29,13 @@ class App extends Component {
     this.setState({openingCrawl: data.results[randomNum]})
   }
 
+  handleSelection = (currentSelection) => {
+    console.log(currentSelection)
+    this.setState({
+      currentSelection
+    });
+  }
+
 
   render() {
     const mockPeople = {results: 
@@ -48,9 +55,20 @@ class App extends Component {
           <Header totalFavorites={this.state.totalFavorites} />
           <section className="content-wrapper">
             <section className='button-section'>
-              <Button buttonName='people' />
-              <Button buttonName='planets' />
-              <Button buttonName='vehicles' />
+              <Button 
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection} 
+                buttonName='people' 
+              />
+              <Button 
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection} 
+                buttonName='planets' 
+              />              <Button 
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection} 
+                buttonName='vehicles' 
+              />
             </section>
             <section className='main-content'>
               <h1 className='category'>{this.state.currentSelection}</h1>
