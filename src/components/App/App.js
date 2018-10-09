@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       totalFavorites: 0,
       currentSelection: 'people',
-      openingCrawl: {}
+      openingCrawl: {},
+      people: []
     };
   }
 
@@ -30,10 +31,68 @@ class App extends Component {
   }
 
   handleSelection = (currentSelection) => {
-    console.log(currentSelection)
-    this.setState({
-      currentSelection
+    if (currentSelection === 'people') {
+      this.fetchPeople()
+    } else if (currentSelection === 'vehicles') {
+      this.fetchVehicles();
+    } else if (currentSelection === 'planets') {
+      this.fetchPlanets()
+    }
+  }
+
+  fetchPeople = async () => {
+    const data = await this.fetchCall('people')
+    const withHomeWorld = await this.fetchHomeWorld(data.results);
+    const withSpecies = await this.fetchSpecies(withHomeWorld);
+    const cleanedPeople = withSpecies.map((person) => {
+      let personObject = {
+        name: person.name,
+        homeworld: person.homeworld,
+        language: person.language,
+        species: person.species,
+        population: person.population
+      } 
+      return personObject;
     });
+
+    this.setState({
+      people: cleanedPeople
+    })
+  }
+
+  fetchHomeWorld = async (people) => {
+    const withHomeWorld = people.map(async (person) => {
+      const url = person.homeworld;
+      const response = await fetch(url);
+      const data = await response.json();
+      person.homeworld = data.name;
+      person.population = data.population;
+      return person;
+    });
+
+    return Promise.all(withHomeWorld);
+  }
+
+  fetchSpecies = async (people) => {
+    const withSpecies = people.map(async (person) =>  {
+      const url = person.species;
+      const response = await fetch(url);
+      const data = await response.json();
+      person.species = data.name;
+      person.language = data.language;
+      return person;
+    });
+
+    return Promise.all(withSpecies)
+  }
+
+
+
+  fetchCall = async (selection) => {
+    const url = `https://swapi.co/api/${selection}/`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
   }
 
 
