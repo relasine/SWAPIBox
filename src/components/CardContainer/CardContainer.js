@@ -12,7 +12,9 @@ const CardContainer = (props) => {
       return <Card data={person} key={person.name} />
     });
   } else if (props.selection === 'vehicles') {
-    cards = []
+    cards = props.vehicles.map( vehicle => {
+      return <Card data={vehicle} key={vehicle.name} />
+    })
 
   } else if (props.selection === 'planets') {
     cards = props.planets.map( planet => {
