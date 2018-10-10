@@ -8,6 +8,11 @@
 
 aside {
   background-color: #000;
+  width: 400px;
+}
+
+.crawl-box {
+  width: 400px;
 }
 
 .button-section {
@@ -19,8 +24,7 @@ aside {
   text-align: center;
   color: #000;
   margin-bottom: 0;
-  font-size: 1.7rem;
-}
+  font-size: 1.7reme}
 
 main {
   background: url('./images/13_Luke_Skywalker.jpg');

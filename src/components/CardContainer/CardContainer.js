@@ -6,8 +6,10 @@ const CardContainer = (props) => {
 
   let cards;
 
-  if (props.currenSelection === 'people') {
-    cards = props.people.results.map( person => {
+
+  if (props.selection === 'people') {
+    cards = props.people.map( person => {
+      console.log(person)
       return <Card data={person} key={person.name} />
     })
   } else if (props.currenSelection === 'vehicles') {

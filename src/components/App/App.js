@@ -14,7 +14,9 @@ class App extends Component {
       totalFavorites: 0,
       currentSelection: 'people',
       openingCrawl: {},
-      people: []
+      people: [],
+      vehicles: [],
+      planets: []
     };
   }
 
@@ -131,7 +133,13 @@ class App extends Component {
             </section>
             <section className='main-content'>
               <h1 className='category'>{this.state.currentSelection}</h1>
-              <CardContainer data={mockPeople}/>
+              <CardContainer 
+                data={mockPeople}
+                people={this.state.people}
+                planets={this.state.planets}
+                vehicles={this.state.vehicles}
+                selection={this.state.currentSelection}
+              />
             </section>
           </section>
         </main>

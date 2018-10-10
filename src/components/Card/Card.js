@@ -8,10 +8,10 @@ const Card = (props) => {
         <h2>{props.data.name}</h2>
         <div className='favorite-toggle'></div>
       </div>
-      <p>{Object.keys(props.data)[1]}: <span>{props.data.homeworld.name}</span></p>
-      <p>{Object.keys(props.data)[2]}: <span>{props.data.species.name}</span></p>
-      <p>language: <span>{props.data.species.language}</span></p>
-      <p>population: <span>{props.data.homeworld.population}</span></p>
+      <p>{Object.keys(props.data)[1]}: <span>{props.data[Object.keys(props.data)[1]]}</span></p>
+      <p>{Object.keys(props.data)[2]}: <span>{props.data[Object.keys(props.data)[2]]}</span></p>
+      <p>{Object.keys(props.data)[3]}: <span>{props.data[Object.keys(props.data)[3]]}</span></p>
+      <p>{Object.keys(props.data)[4]}: <span>{props.data[Object.keys(props.data)[4]]}</span></p>
     </article>
   );
 }
