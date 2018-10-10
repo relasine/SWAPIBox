@@ -2,17 +2,33 @@ import React from 'react';
 import './Button.css';
 import PropTypes from 'prop-types';
 
+const Button = ({handleSelection, buttonName, currentSelection}) => {
 
-const Button = (props) => {
+  let buttonState;
+
+  if (currentSelection === buttonName) {
+    buttonState = 'button-selected'
+  } else {
+    buttonState = ''
+  }
+
+
   return(
-    <div className='nav-button'>
-      <h3>{props.buttonName}</h3>
+    <div 
+      className={`nav-button ${buttonState}`}
+      onClick={() => {
+        handleSelection(buttonName)
+      }}
+    >
+      <h3>{buttonName}</h3>
     </div>
   );
 }
 
 Button.propTypes = {
-  buttonName: PropTypes.string.isRequired
+  buttonName: PropTypes.string.isRequired,
+  handleSelection: PropTypes.func.isRequired,
+  currentSelection: PropTypes.string.isRequired
 };
 
 export default Button;

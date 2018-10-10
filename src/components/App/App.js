@@ -13,7 +13,10 @@ class App extends Component {
     this.state = {
       totalFavorites: 0,
       currentSelection: 'people',
-      openingCrawl: {}
+      openingCrawl: {},
+      people: [],
+      vehicles: [],
+      planets: []
     };
   }
 
@@ -27,6 +30,71 @@ class App extends Component {
     const data = await response.json();
     const randomNum = Math.floor(Math.random() * (data.count))
     this.setState({openingCrawl: data.results[randomNum]})
+  }
+
+  handleSelection = (currentSelection) => {
+    if (currentSelection === 'people') {
+      this.fetchPeople()
+    } else if (currentSelection === 'vehicles') {
+      this.fetchVehicles();
+    } else if (currentSelection === 'planets') {
+      this.fetchPlanets()
+    }
+  }
+
+  fetchPeople = async () => {
+    const data = await this.fetchCall('people')
+    const withHomeWorld = await this.fetchHomeWorld(data.results);
+    const withSpecies = await this.fetchSpecies(withHomeWorld);
+    const cleanedPeople = withSpecies.map((person) => {
+      let personObject = {
+        name: person.name,
+        homeworld: person.homeworld,
+        language: person.language,
+        species: person.species,
+        population: person.population
+      } 
+      return personObject;
+    });
+
+    this.setState({
+      people: cleanedPeople
+    })
+  }
+
+  fetchHomeWorld = async (people) => {
+    const withHomeWorld = people.map(async (person) => {
+      const url = person.homeworld;
+      const response = await fetch(url);
+      const data = await response.json();
+      person.homeworld = data.name;
+      person.population = data.population;
+      return person;
+    });
+
+    return Promise.all(withHomeWorld);
+  }
+
+  fetchSpecies = async (people) => {
+    const withSpecies = people.map(async (person) =>  {
+      const url = person.species;
+      const response = await fetch(url);
+      const data = await response.json();
+      person.species = data.name;
+      person.language = data.language;
+      return person;
+    });
+
+    return Promise.all(withSpecies)
+  }
+
+
+
+  fetchCall = async (selection) => {
+    const url = `https://swapi.co/api/${selection}/`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
   }
 
 
@@ -48,13 +116,30 @@ class App extends Component {
           <Header totalFavorites={this.state.totalFavorites} />
           <section className="content-wrapper">
             <section className='button-section'>
-              <Button buttonName='people' />
-              <Button buttonName='planets' />
-              <Button buttonName='vehicles' />
+              <Button 
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection} 
+                buttonName='people' 
+              />
+              <Button 
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection} 
+                buttonName='planets' 
+              />              <Button 
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection} 
+                buttonName='vehicles' 
+              />
             </section>
             <section className='main-content'>
               <h1 className='category'>{this.state.currentSelection}</h1>
-              <CardContainer data={mockPeople}/>
+              <CardContainer 
+                data={mockPeople}
+                people={this.state.people}
+                planets={this.state.planets}
+                vehicles={this.state.vehicles}
+                selection={this.state.currentSelection}
+              />
             </section>
           </section>
         </main>

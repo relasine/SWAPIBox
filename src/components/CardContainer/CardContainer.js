@@ -4,32 +4,25 @@ import './CardContainer.css'
 
 const CardContainer = (props) => {
 
-  const cards = props.data.results.map( point => {
-    return <Card data={point} key={point.name} />
-  })
+  let cards;
+
+
+  if (props.selection === 'people') {
+    cards = props.people.map( person => {
+      console.log(person)
+      return <Card data={person} key={person.name} />
+    })
+  } else if (props.currenSelection === 'vehicles') {
+    cards = []
+  } else if (props.currenSelection === 'planets') {
+    cards = []
+  }
+
+  
   
   return (
     <div className="card-container">
       {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}      
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      
-
     </div>
   );
 }
