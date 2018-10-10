@@ -116,13 +116,15 @@ class App extends Component {
     const withResidents = await this.fetchResidents(data.results);
 
     const cleanedPlanets = withResidents.map((planet) => {
+      // planet.residents = planet.residents.join()
+// debugger
       let planetObject = {
         name: planet.name,
         info: [
           {terrain: planet.terrain},
           {population: planet.population},
           {climate: planet.climate},
-          {residents: planet.residents}
+          {residents: (...(planet.residents))}
         ]
       }
       return planetObject
@@ -134,16 +136,18 @@ class App extends Component {
     })
   }
 
-  fetchResidents = (planets) => {
-    const withResidents = planets.map( (planet) => {
+  fetchResidents = async (planets) => {
+    const withResidents = planets.map(async (planet) => {
+      let residents = [];
       const planetResidents = planet.residents.map( async (resident) => {
         const url = resident
         const response = await fetch(url);
         const data = await response.json();
-        return data
+        residents.push(data.name)
+        return residents
       })
-      planet.residents = planetResidents.join()
-      return Promise.all(planet)
+      planet.residents = residents
+      return planet
     })
     return Promise.all(withResidents)
   }
