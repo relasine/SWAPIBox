@@ -62,6 +62,25 @@ class App extends Component {
     })
   }
 
+  fetchPlanets = async () => {
+    const data = await this.fetchCall('planets');
+    const withResidents = await this.fetchresidents(data.results);
+    const cleanedPlanets = withResidents.map((planet) => {
+      let planetObject = {
+        name: planet.name,
+        terrain: planet.terrain,
+        population: planet.population,
+        climate: planet.climate
+        // residents:
+      }
+      return planetObject
+    });
+
+    this.setState({
+      planets: cleanedPlanets
+    })
+  }
+
   fetchHomeWorld = async (people) => {
     const withHomeWorld = people.map(async (person) => {
       const url = person.homeworld;
