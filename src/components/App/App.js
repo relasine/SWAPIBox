@@ -124,7 +124,7 @@ class App extends Component {
           {terrain: planet.terrain},
           {population: planet.population},
           {climate: planet.climate},
-          {residents: (...(planet.residents))}
+          {residents: planet.residents.join(', ')}
         ]
       }
       return planetObject
@@ -138,15 +138,14 @@ class App extends Component {
 
   fetchResidents = async (planets) => {
     const withResidents = planets.map(async (planet) => {
-      let residents = [];
       const planetResidents = planet.residents.map( async (resident) => {
         const url = resident
         const response = await fetch(url);
         const data = await response.json();
-        residents.push(data.name)
-        return residents
+        return data.name
       })
-      planet.residents = residents
+      const names = await Promise.all(planetResidents);
+      planet.residents = names
       return planet
     })
     return Promise.all(withResidents)
