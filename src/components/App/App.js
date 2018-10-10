@@ -65,22 +65,22 @@ class App extends Component {
   fetchPlanets = async () => {
     const data = await this.fetchCall('planets');
     const withResidents = await this.fetchResidents(data.results);
-    console.log(withResidents)
-    // console.log(data)
-    // const cleanedPlanets = withResidents.map((planet) => {
-    //   let planetObject = {
-    //     name: planet.name,
-    //     terrain: planet.terrain,
-    //     population: planet.population,
-    //     climate: planet.climate
-    //     // residents:
-    //   }
-    //   return planetObject
-    // });
 
-    // this.setState({
-    //   planets: cleanedPlanets
-    // })
+    const cleanedPlanets = withResidents.map((planet) => {
+      let planetObject = {
+        name: planet.name,
+        terrain: planet.terrain,
+        population: planet.population,
+        climate: planet.climate,
+        residents: planet.residents
+      }
+      console.log(planetObject)
+      return planetObject
+    });
+
+    this.setState({
+      planets: cleanedPlanets
+    })
   }
 
   fetchResidents = async (planets) => {
@@ -96,7 +96,6 @@ class App extends Component {
         return residents
       })
       planet.residents = residents
-      console.log(planet)
       return planet
     })
     return Promise.all(withResidents)
