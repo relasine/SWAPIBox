@@ -1,17 +1,19 @@
 import React from 'react';
 import './Card.css';
 
-const Card = (props) => {
+const Card = ( {data} ) => {
+
+  const stats = data.info.map((point) => {
+    return <p>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
+  })
+
   return (
     <article>
       <div className='card-header'>
-        <h2>{props.data.name}</h2>
+        <h2>{data.name}</h2>
         <div className='favorite-toggle'></div>
       </div>
-      <p>{Object.keys(props.data)[1]}: <span>{props.data[Object.keys(props.data)[1]]}</span></p>
-      <p>{Object.keys(props.data)[2]}: <span>{props.data[Object.keys(props.data)[2]]}</span></p>
-      <p>{Object.keys(props.data)[3]}: <span>{props.data[Object.keys(props.data)[3]]}</span></p>
-      <p>{Object.keys(props.data)[4]}: <span>{props.data[Object.keys(props.data)[4]]}</span></p>
+      {stats}
     </article>
   );
 }

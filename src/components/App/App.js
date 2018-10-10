@@ -12,7 +12,7 @@ class App extends Component {
 
     this.state = {
       totalFavorites: 0,
-      currentSelection: 'people',
+      currentSelection: '',
       openingCrawl: {},
       people: [],
       vehicles: [],
@@ -33,6 +33,7 @@ class App extends Component {
   }
 
   handleSelection = (currentSelection) => {
+
     if (currentSelection === 'people') {
       this.fetchPeople()
     } else if (currentSelection === 'vehicles') {
@@ -42,6 +43,25 @@ class App extends Component {
     }
   }
 
+  fetchVehicles = async () => {
+    const data = await this.fetchCall('vehicles')
+    const cleanData = data.results.map((vehicle) => {
+      let vehicleObject = {
+        name: vehicle.name,
+        info: [
+          {model: vehicle.model},
+          {class: vehicle.vehicle_class},
+          {passengers: vehicle.passengers}
+        ]
+      }
+      return vehicleObject;
+    })
+    this.setState({
+      vehicles: cleanData,
+      currentSelection: 'vehicles'
+    })
+  }
+
   fetchPeople = async () => {
     const data = await this.fetchCall('people')
     const withHomeWorld = await this.fetchHomeWorld(data.results);
@@ -49,16 +69,19 @@ class App extends Component {
     const cleanedPeople = withSpecies.map((person) => {
       let personObject = {
         name: person.name,
-        homeworld: person.homeworld,
-        language: person.language,
-        species: person.species,
-        population: person.population
+        info: [
+          {homeworld: person.homeworld},
+          {language: person.language},
+          {species: person.species},
+          {population: person.population}
+        ]
       } 
       return personObject;
     });
 
     this.setState({
-      people: cleanedPeople
+      people: cleanedPeople,
+      currentSelection: 'people'
     })
   }
 
@@ -88,7 +111,42 @@ class App extends Component {
     return Promise.all(withSpecies)
   }
 
+  fetchPlanets = async () => {
+    const data = await this.fetchCall('planets');
+    const withResidents = await this.fetchResidents(data.results);
 
+    const cleanedPlanets = withResidents.map((planet) => {
+      let planetObject = {
+        name: planet.name,
+        info: [
+          {terrain: planet.terrain},
+          {population: planet.population},
+          {climate: planet.climate},
+          {residents: planet.residents}
+        ]
+      }
+      return planetObject
+    });
+
+    this.setState({
+      planets: cleanedPlanets,
+      currentSelection: 'planets'
+    })
+  }
+
+  fetchResidents = (planets) => {
+    const withResidents = planets.map( (planet) => {
+      const planetResidents = planet.residents.map( async (resident) => {
+        const url = resident
+        const response = await fetch(url);
+        const data = await response.json();
+        return data
+      })
+      planet.residents = planetResidents.join()
+      return Promise.all(planet)
+    })
+    return Promise.all(withResidents)
+  }
 
   fetchCall = async (selection) => {
     const url = `https://swapi.co/api/${selection}/`;
@@ -96,7 +154,6 @@ class App extends Component {
     const data = await response.json();
     return data;
   }
-
 
   render() {
     const mockPeople = {results: 
