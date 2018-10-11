@@ -15,7 +15,6 @@ const CardContainer = (props) => {
     cards = props.vehicles.map( vehicle => {
       return <Card data={vehicle} key={vehicle.name} />
     })
-
   } else if (props.selection === 'planets') {
     cards = props.planets.map( planet => {
       return <Card data={planet} key={planet.name} />

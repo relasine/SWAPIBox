@@ -4,9 +4,20 @@ import Card from './Card';
 
 describe('Card', () => {
   let wrapper;
+  let mockData;
 
   beforeEach(() => {
-    wrapper = shallow(<Card />)
+    mockData = {
+        name: 'Luke',
+        info: [
+          {homeworld: 'Earch'},
+          {language: 'English'},
+          {species: 'Human'},
+          {population: 'billions'}
+        ]
+      };
+
+    wrapper = shallow(<Card data={mockData} />);
   })
 
   it('should exist', () => {
@@ -17,7 +28,7 @@ describe('Card', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it('should render all the stats on the card', () => {
-    
+  it('should render all the stats on the card as p tags', () => {
+    expect(wrapper.find('p').length).toEqual(4);
   })
 })
