@@ -6,7 +6,7 @@ const fetchCall = async (url) => {
   }
 
   catch(error) {
-    return error.message
+    return 'failed fetch'
   }
 
 }
