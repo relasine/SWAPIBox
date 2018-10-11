@@ -1,3 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card should match snapshot 1`] = `undefined`;
+exports[`Card should match snapshot 1`] = `
+<article>
+  <div
+    className="card-header"
+  >
+    <h2>
+      Luke
+    </h2>
+    <div
+      className="favorite-toggle"
+    />
+  </div>
+  <p>
+    homeworld
+    : 
+    <span>
+      Earch
+    </span>
+  </p>
+  <p>
+    language
+    : 
+    <span>
+      English
+    </span>
+  </p>
+  <p>
+    species
+    : 
+    <span>
+      Human
+    </span>
+  </p>
+  <p>
+    population
+    : 
+    <span>
+      billions
+    </span>
+  </p>
+</article>
+`;

@@ -4,8 +4,10 @@ import Crawl from '../Crawl/Crawl';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
-import fetchCall from '../../fetchCalls'
-
+import fetchCall from '../../helpers/fetchCalls'
+import fetchVehicles from '../../helpers/fetchVehicles'
+import fetchPlanets from '../../helpers/fetchPlanets'
+import fetchPeople from '../../helpers/fetchPeople'
 
 class App extends Component {
   constructor() {
@@ -36,123 +38,37 @@ class App extends Component {
   handleSelection = (currentSelection) => {
 
     if (currentSelection === 'people') {
-      this.fetchPeople()
+      this.callFetchPeople()
     } else if (currentSelection === 'vehicles') {
-      this.fetchVehicles();
+      this.callFetchVehicles();
     } else if (currentSelection === 'planets') {
-      this.fetchPlanets()
+      this.callFetchPlanets()
     }
   }
 
-  fetchVehicles = async () => {
-    const url = 'https://swapi.co/api/vehicles/'
-    const data = await fetchCall(url)
-    const cleanData = data.results.map((vehicle) => {
-      let vehicleObject = {
-        name: vehicle.name,
-        info: [
-          {model: vehicle.model},
-          {class: vehicle.vehicle_class},
-          {passengers: vehicle.passengers}
-        ]
-      }
-      return vehicleObject;
-    })
+  callFetchVehicles = async () => {
+    const cleanData = await fetchVehicles()
     this.setState({
       vehicles: cleanData,
       currentSelection: 'vehicles'
     })
   }
 
-  fetchPeople = async () => {
-    const url = 'https://swapi.co/api/people/'
-    const data = await fetchCall(url)
-    const withHomeWorld = await this.fetchHomeWorld(data.results);
-    const withSpecies = await this.fetchSpecies(withHomeWorld);
-    const cleanedPeople = withSpecies.map((person) => {
-      let personObject = {
-        name: person.name,
-        info: [
-          {homeworld: person.homeworld},
-          {language: person.language},
-          {species: person.species},
-          {population: person.population}
-        ]
-      } 
-      return personObject;
-    });
-
+  callFetchPeople = async () => {
+    const cleanedPeople = await fetchPeople()
     this.setState({
       people: cleanedPeople,
       currentSelection: 'people'
     })
   }
 
-  fetchHomeWorld = async (people) => {
-    const withHomeWorld = people.map(async (person) => {
-      const world = await fetchCall(person.homeworld);
-      person.homeworld = world.name;
-      person.population = world.population;
-      return person;
-    });
-
-    return Promise.all(withHomeWorld);
-  }
-
-  fetchSpecies = async (people) => {
-    const withSpecies = people.map(async (person) =>  {
-      const species = await fetchCall(person.species);
-      person.species = species.name;
-      person.language = species.language;
-      return person;
-    });
-
-    return Promise.all(withSpecies)
-  }
-
-  fetchPlanets = async () => {
-    const url = 'https://swapi.co/api/planets/'
-    const data = await fetchCall(url);
-    const withResidents = await this.fetchResidents(data.results);
-    const cleanedPlanets = withResidents.map((planet) => {
-      let planetObject = {
-        name: planet.name,
-        info: [
-          {terrain: planet.terrain},
-          {population: planet.population},
-          {climate: planet.climate},
-          {residents: planet.residents.join(', ')}
-        ]
-      }
-      return planetObject
-    });
-
+  callFetchPlanets = async () => {
+    const cleanedPlanets = await fetchPlanets()
     this.setState({
       planets: cleanedPlanets,
       currentSelection: 'planets'
     })
   }
-
-  fetchResidents = async (planets) => {
-    const withResidents = planets.map(async (planet) => {
-      const planetResidents = planet.residents.map( async (resident) => {
-        const residentData = await fetchCall(resident);
-        return residentData.name
-      })
-      const names = await Promise.all(planetResidents);
-
-      if (names.length >= 1) {
-        planet.residents = names
-      } else {
-        planet.residents = ['none']
-      }
-
-      return planet
-    })
-    return Promise.all(withResidents)
-  }
-
-  
 
   render() {
     const mockPeople = {results: 
