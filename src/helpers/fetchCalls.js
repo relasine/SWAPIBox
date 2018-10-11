@@ -1,8 +1,14 @@
 const fetchCall = async (url) => {
-    // const url = `https://swapi.co/api/${selection}/`;
+  try {
     const response = await fetch(url);
     const data = await response.json();
     return data;
+  }
+
+  catch(error) {
+    return error.message
+  }
+
 }
 
 export default fetchCall;
