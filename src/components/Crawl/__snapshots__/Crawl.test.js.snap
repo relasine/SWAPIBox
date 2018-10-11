@@ -2,8 +2,27 @@
 
 exports[`Crawl should match snapshot 1`] = `
 <aside>
-  <h1>
-    TITLE CRAWL
-  </h1>
+  <section
+    className="crawl-container"
+  >
+    <div
+      className="crawl-header"
+    >
+      <h1
+        className="crawl-episode"
+      >
+        EPISODE 
+      </h1>
+      <h1
+        className="crawl-title"
+      />
+    </div>
+    <p
+      className="crawl-text"
+    />
+    <p
+      className="crawl-date"
+    />
+  </section>
 </aside>
 `;

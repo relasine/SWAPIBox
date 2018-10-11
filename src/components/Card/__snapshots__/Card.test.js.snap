@@ -1,44 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card should match snapshot 1`] = `
-<article>
-  <div
-    className="card-header"
+<article
+  className="card"
+>
+  <section
+    className="front"
   >
-    <h2>
-      Luke
-    </h2>
-    <div
-      className="favorite-toggle"
+    <img
+      alt="Luke"
+      className="portrait"
     />
-  </div>
-  <p>
-    homeworld
-    : 
-    <span>
-      Earch
-    </span>
-  </p>
-  <p>
-    language
-    : 
-    <span>
-      English
-    </span>
-  </p>
-  <p>
-    species
-    : 
-    <span>
-      Human
-    </span>
-  </p>
-  <p>
-    population
-    : 
-    <span>
-      billions
-    </span>
-  </p>
+  </section>
+  <section
+    className="back"
+  >
+    <div
+      className="card-header"
+    >
+      <h2>
+        Luke
+      </h2>
+      <div
+        className="favorite-toggle"
+      />
+    </div>
+    <div
+      className="card-stats"
+    >
+      <p
+        key="homeworld"
+      >
+        homeworld
+        : 
+        <span>
+          Earch
+        </span>
+      </p>
+      <p
+        key="language"
+      >
+        language
+        : 
+        <span>
+          English
+        </span>
+      </p>
+      <p
+        key="species"
+      >
+        species
+        : 
+        <span>
+          Human
+        </span>
+      </p>
+      <p
+        key="population"
+      >
+        population
+        : 
+        <span>
+          billions
+        </span>
+      </p>
+    </div>
+  </section>
 </article>
 `;

@@ -5,7 +5,7 @@ import Images from '../../images.js'
 const Card = ( {data} ) => {
 
   const stats = data.info.map((point) => {
-    return <p>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
+    return <p key={Object.keys(point)[0]}>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
   })
 
   return (

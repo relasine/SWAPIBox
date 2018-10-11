@@ -6,7 +6,7 @@ describe('Crawl', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Crawl />)
+    wrapper = shallow(<Crawl film={{}}/>)
   })
 
   it('should exist', () => {

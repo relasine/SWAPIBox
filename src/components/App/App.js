@@ -5,9 +5,9 @@ import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls'
-import fetchVehicles from '../../helpers/fetchVehicles'
-import fetchPlanets from '../../helpers/fetchPlanets'
-import fetchPeople from '../../helpers/fetchPeople'
+import FetchVehicles from '../../helpers/fetchVehicles'
+import FetchPlanets from '../../helpers/fetchPlanets'
+import FetchPeople from '../../helpers/fetchPeople'
 
 class App extends Component {
   constructor() {
@@ -19,9 +19,13 @@ class App extends Component {
       openingCrawl: {},
       people: [],
       vehicles: [],
-      planets: []
+      planets: [],
     };
   }
+
+  fetchPeople = new FetchPeople()
+  fetchVehicles = new FetchVehicles()
+  fetchPlanets = new FetchPlanets()
 
   componentDidMount() {
     this.crawlCall();
@@ -38,7 +42,7 @@ class App extends Component {
   handleSelection = (currentSelection) => {
 
     if (currentSelection === 'people') {
-      this.callFetchPeople()
+      this.callFetchPeople();
     } else if (currentSelection === 'vehicles') {
       this.callFetchVehicles();
     } else if (currentSelection === 'planets') {
@@ -47,7 +51,7 @@ class App extends Component {
   }
 
   callFetchVehicles = async () => {
-    const cleanData = await fetchVehicles()
+    const cleanData = await this.fetchVehicles.fetchVehicles()
     this.setState({
       vehicles: cleanData,
       currentSelection: 'vehicles'
@@ -55,7 +59,7 @@ class App extends Component {
   }
 
   callFetchPeople = async () => {
-    const cleanedPeople = await fetchPeople()
+    const cleanedPeople = await this.fetchPeople.fetchPeople();
     this.setState({
       people: cleanedPeople,
       currentSelection: 'people'
@@ -63,7 +67,7 @@ class App extends Component {
   }
 
   callFetchPlanets = async () => {
-    const cleanedPlanets = await fetchPlanets()
+    const cleanedPlanets = await this.fetchPlanets.fetchPlanets()
     this.setState({
       planets: cleanedPlanets,
       currentSelection: 'planets'
