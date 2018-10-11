@@ -4,7 +4,12 @@ const fetchPlanets = async () => {
   const url = 'https://swapi.co/api/planets/'
   const data = await fetchCall(url);
   const withResidents = await fetchResidents(data.results);
-  const cleanedPlanets = withResidents.map((planet) => {
+  const cleanedPlanets = cleanPlanets(withResidents)
+  return cleanedPlanets
+}
+
+const cleanPlanets = (planets) => {
+  return planets.map((planet) => {
     let planetObject = {
       name: planet.name,
       info: [
@@ -16,11 +21,10 @@ const fetchPlanets = async () => {
     }
     return planetObject
   });
-  return cleanedPlanets
 }
 
-const fetchResidents = async (planets) => {
-  const withResidents = planets.map(async (planet) => {
+const fetchResidents = (planets) => {
+  const withResidents = planets.map( async (planet) => {
     const planetResidents = planet.residents.map( async (resident) => {
       const residentData = await fetchCall(resident);
       return residentData.name
