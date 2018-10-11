@@ -1,5 +1,3 @@
-// import fetchHomeWorld from './fetchHomeworld'
-// import fetchSpecies from './fetchSpecies'
 import fetchCall from './fetchCalls'
 
 const fetchPeople = async () => {
@@ -7,7 +5,11 @@ const fetchPeople = async () => {
   const data = await fetchCall(url)
   const withHomeWorld = await fetchHomeWorld(data.results);
   const withSpecies = await fetchSpecies(withHomeWorld);
-  const cleanedPeople = withSpecies.map((person) => {
+  return cleanPeople(withSpecies) 
+}
+
+const cleanPeople = (people) => {
+  return people.map((person) => {
     let personObject = {
       name: person.name,
       info: [
@@ -19,7 +21,6 @@ const fetchPeople = async () => {
     } 
     return personObject;
   });
-  return cleanedPeople
 }
 
 const fetchHomeWorld = async (people) => {
