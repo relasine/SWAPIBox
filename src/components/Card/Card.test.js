@@ -16,4 +16,8 @@ describe('Card', () => {
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   })
+
+  it('should render all the stats on the card', () => {
+    
+  })
 })
