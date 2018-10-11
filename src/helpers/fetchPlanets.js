@@ -2,12 +2,12 @@ import fetchCall from './fetchCalls'
 
 class FetchPlanets {
   constructor() {
-    
+    this.fetchCall = fetchCall
   }
 
     fetchPlanets = async () => {
     const url = 'https://swapi.co/api/planets/'
-    const data = await fetchCall(url);
+    const data = await this.fetchCall(url);
     const withResidents = await this.fetchResidents(data.results);
     const cleanedPlanets = this.cleanPlanets(withResidents)
     return cleanedPlanets
@@ -31,7 +31,7 @@ class FetchPlanets {
   fetchResidents = (planets) => {
     const withResidents = planets.map( async (planet) => {
       const planetResidents = planet.residents.map( async (resident) => {
-        const residentData = await fetchCall(resident);
+        const residentData = await this.fetchCall(resident);
         return residentData.name
       })
       const names = await Promise.all(planetResidents);

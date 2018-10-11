@@ -2,12 +2,12 @@ import fetchCall from './fetchCalls'
 
 class FetchVehicles {
   constructor() {
-
+    this.fetchCall = fetchCall
   }
 
   fetchVehicles = async () => {
     const url = 'https://swapi.co/api/vehicles/'
-    const data = await fetchCall(url)
+    const data = await this.fetchCall(url)
     const cleanData = this.cleanVehicles(data)
     return cleanData
   }
