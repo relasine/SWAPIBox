@@ -6,7 +6,7 @@ describe('Header', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Header />)
+    wrapper = shallow(<Header totalFavorites={3}/>)
   })
 
   it('should exist', () => {

@@ -6,7 +6,11 @@ describe('Button', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Button />)
+    wrapper = shallow(<Button 
+      buttonName="people"
+      handleSelection={() => {}}
+      currentSelection="people"
+    />)
   })
 
   it('should exist', () => {

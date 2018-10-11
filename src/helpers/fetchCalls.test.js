@@ -1,6 +1,5 @@
 import React from 'react';
 import fetchCall from './fetchCalls';
-import { shallow } from 'enzyme';
 
 describe('fetchCall', () => {
   let mockUrl;
