@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import Images from '../../images.js'
 
 const Card = ( {data} ) => {
 
@@ -8,12 +9,19 @@ const Card = ( {data} ) => {
   })
 
   return (
-    <article>
-      <div className='card-header'>
-        <h2>{data.name}</h2>
-        <div className='favorite-toggle'></div>
-      </div>
-      {stats}
+    <article className="card">
+      <section className="front">
+        <img className='portrait' src={Images[data.name]} alt={data.name} />
+      </section>
+      <section className="back">
+        <div className='card-header'>
+          <h2>{data.name}</h2>
+          <div className='favorite-toggle'></div>
+        </div>
+        <div className="card-stats">
+          {stats}
+        </div>
+      </section>
     </article>
   );
 }
