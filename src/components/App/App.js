@@ -6,7 +6,8 @@ import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls'
 import fetchVehicles from '../../helpers/fetchVehicles'
-
+import fetchPlanets from '../../helpers/fetchPlanets'
+import fetchPeople from '../../helpers/fetchPeople'
 
 class App extends Component {
   constructor() {
@@ -54,13 +55,12 @@ class App extends Component {
   }
 
   callFetchPeople = async () => {
-
+    const cleanedPeople = await fetchPeople()
     this.setState({
       people: cleanedPeople,
       currentSelection: 'people'
     })
   }
-
 
   callFetchPlanets = async () => {
     const cleanedPlanets = await fetchPlanets()
@@ -69,27 +69,6 @@ class App extends Component {
       currentSelection: 'planets'
     })
   }
-
-  fetchResidents = async (planets) => {
-    const withResidents = planets.map(async (planet) => {
-      const planetResidents = planet.residents.map( async (resident) => {
-        const residentData = await fetchCall(resident);
-        return residentData.name
-      })
-      const names = await Promise.all(planetResidents);
-
-      if (names.length >= 1) {
-        planet.residents = names
-      } else {
-        planet.residents = ['none']
-      }
-
-      return planet
-    })
-    return Promise.all(withResidents)
-  }
-
-  
 
   render() {
     const mockPeople = {results: 

@@ -1,10 +1,9 @@
-import fetchResidents from './fetchResidents'
 import fetchCall from './fetchCalls'
 
 const fetchPlanets = async () => {
   const url = 'https://swapi.co/api/planets/'
   const data = await fetchCall(url);
-  const withResidents = await this.fetchResidents(data.results);
+  const withResidents = await fetchResidents(data.results);
   const cleanedPlanets = withResidents.map((planet) => {
     let planetObject = {
       name: planet.name,
@@ -17,4 +16,26 @@ const fetchPlanets = async () => {
     }
     return planetObject
   });
+  return cleanedPlanets
 }
+
+const fetchResidents = async (planets) => {
+  const withResidents = planets.map(async (planet) => {
+    const planetResidents = planet.residents.map( async (resident) => {
+      const residentData = await fetchCall(resident);
+      return residentData.name
+    })
+    const names = await Promise.all(planetResidents);
+
+    if (names.length >= 1) {
+      planet.residents = names
+    } else {
+      planet.residents = ['none']
+    }
+
+    return planet
+  })
+  return Promise.all(withResidents)
+}
+
+export default fetchPlanets;
