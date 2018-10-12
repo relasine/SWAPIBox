@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<div
+  className="App"
+>
+  <Crawl
+    film={Object {}}
+  />
+  <main>
+    <Header
+      totalFavorites={0}
+    />
+    <section
+      className="content-wrapper"
+    >
+      <section
+        className="button-section"
+      >
+        <Button
+          buttonName="people"
+          currentSelection=""
+          handleSelection={[Function]}
+        />
+        <Button
+          buttonName="planets"
+          currentSelection=""
+          handleSelection={[Function]}
+        />
+                      
+        <Button
+          buttonName="vehicles"
+          currentSelection=""
+          handleSelection={[Function]}
+        />
+      </section>
+      <section
+        className="main-content"
+      >
+        <h1
+          className="category"
+        />
+        <CardContainer
+          data={
+            Object {
+              "results": Array [
+                Object {
+                  "homeworld": Object {
+                    "name": "earth",
+                    "population": "7.5billion",
+                  },
+                  "name": "bob",
+                  "species": Object {
+                    "language": "english",
+                    "name": "human",
+                  },
+                },
+              ],
+            }
+          }
+          people={Array []}
+          planets={Array []}
+          selection=""
+          vehicles={Array []}
+        />
+      </section>
+    </section>
+  </main>
+</div>
+`;
