@@ -1,7 +1,7 @@
 import React from 'react';
-import FetchPeople from './fetchPeople';
+import People from './People';
  
-describe('fetchPeople', async () => {
+describe('People', async () => {
 
   let fetchPeople;
 
@@ -67,7 +67,7 @@ describe('fetchPeople', async () => {
   });
 
   beforeEach(() => {
-    fetchPeople = new FetchPeople
+    fetchPeople = new People
     fetchPeople.fetchCall = mockFetchCall
   })
 
@@ -160,7 +160,7 @@ describe('cleanPeople', () => {
   });
 
   beforeEach(() => {
-    fetchPeople = new FetchPeople
+    fetchPeople = new People
     fetchPeople.fetchCall = mockFetchCall
   });
 
@@ -199,7 +199,7 @@ describe('fetchHomeWorld', async () => {
   });
 
   beforeEach(() => {
-    fetchPeople = new FetchPeople
+    fetchPeople = new People
     fetchPeople.fetchCall = mockFetchCall
   });
 
@@ -238,7 +238,7 @@ describe('fetchSpecies', async () => {
   });
 
   beforeEach(() => {
-    fetchPeople = new FetchPeople
+    fetchPeople = new People
     fetchPeople.fetchCall = mockFetchCall
   });
 

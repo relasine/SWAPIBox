@@ -5,9 +5,9 @@ import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls'
-import FetchVehicles from '../../helpers/fetchVehicles'
-import FetchPlanets from '../../helpers/fetchPlanets'
-import FetchPeople from '../../helpers/fetchPeople'
+import Vehicles from '../../helpers/Vehicles'
+import Planets from '../../helpers/Planets'
+import People from '../../helpers/People'
 
 class App extends Component {
   constructor() {
@@ -22,12 +22,12 @@ class App extends Component {
       planets: [],
       error: false,
       loading: true,
+      fetchCall: fetchCall,
+      fetchVehicles: new Vehicles(),
+      fetchPeople: new People(),
+      fetchPlanets: new Planets()
     };
   }
-
-  fetchPeople = new FetchPeople()
-  fetchVehicles = new FetchVehicles()
-  fetchPlanets = new FetchPlanets()
 
   componentDidMount() {
     this.crawlCall();
@@ -36,9 +36,10 @@ class App extends Component {
   crawlCall = async () => {
     const url = 'https://swapi.co/api/films/';
     try {
-      const films = await fetchCall(url);
+      const films = await this.state.fetchCall(url);
 
       const randomNum = Math.floor(Math.random() * (films.count))
+      console.log(randomNum, films)
       this.setState({
         openingCrawl: films.results[randomNum], 
         loading: false,
@@ -67,7 +68,7 @@ class App extends Component {
   callFetchVehicles = async () => {
     await this.setState({ loading: true })
     try {
-      const cleanData = await this.fetchVehicles.fetchVehicles()
+      const cleanData = await this.state.fetchVehicles.fetchVehicles()
       this.setState({
         vehicles: cleanData,
         currentSelection: 'vehicles',
@@ -82,7 +83,7 @@ class App extends Component {
   callFetchPeople = async () => {
     await this.setState({ loading: true })
     try{
-      const cleanedPeople = await this.fetchPeople.fetchPeople();
+      const cleanedPeople = await this.state.fetchPeople.fetchPeople();
       this.setState({
         people: cleanedPeople,
         currentSelection: 'people',
@@ -97,7 +98,7 @@ class App extends Component {
   callFetchPlanets = async () => {
     await this.setState({ loading: true })
     try{
-      const cleanedPlanets = await this.fetchPlanets.fetchPlanets()
+      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
       this.setState({
         planets: cleanedPlanets,
         currentSelection: 'planets',

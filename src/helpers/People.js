@@ -1,6 +1,6 @@
 import fetchCall from './fetchCalls'
 
-class FetchPeople {
+class People {
   constructor() {
     this.fetchCall = fetchCall
   }
@@ -53,4 +53,4 @@ class FetchPeople {
 
 
 
-export default FetchPeople;
+export default People;

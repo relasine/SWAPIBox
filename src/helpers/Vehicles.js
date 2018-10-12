@@ -1,6 +1,6 @@
 import fetchCall from './fetchCalls'
 
-class FetchVehicles {
+class Vehicles {
   constructor() {
     this.fetchCall = fetchCall
   }
@@ -28,4 +28,4 @@ class FetchVehicles {
 }
 
 
-export default FetchVehicles;
+export default Vehicles;

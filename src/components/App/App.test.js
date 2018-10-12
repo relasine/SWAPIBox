@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import App from './App';
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+import fetchCall from '../../helpers/fetchCalls'
+import Vehicles from '../../helpers/Vehicles'
+import Planets from '../../helpers/Planets'
+import People from '../../helpers/People'
 
 describe('App', () => {
 
@@ -15,7 +13,7 @@ describe('App', () => {
 
   beforeEach(() => {
     wrapper = shallow(<App />)
-
+    wrapper.instance().fetchCall = jest.fn()
   });
 
   const defaultState = {
@@ -25,6 +23,12 @@ describe('App', () => {
     people: [],
     vehicles: [],
     planets: [],
+    error: false,
+    loading: true,
+    fetchCall: fetchCall,
+    fetchVehicles: new Vehicles(),
+    fetchPeople: new People(),
+    fetchPlanets: new Planets()
   };
 
   it('should exist', () => {
@@ -36,19 +40,31 @@ describe('App', () => {
   });
 
   it('should have default state', () => {
-    expect(wrapper.state()).toEqual(defaultState);
+    expect(JSON.stringify(wrapper.state())).toEqual(JSON.stringify(defaultState));
   });
 
   it('should call crawlCall() on componentDidMount', () => {
+    wrapper.instance().crawlCall = jest.fn()
+    wrapper.instance().componentDidMount()
+    expect(wrapper.instance().crawlCall).toHaveBeenCalled()
+  });
+
+  it('should call fetch when crawlCall is called', async () => {
+    const mockFetch = jest.fn()
+    wrapper.state().fetchCall = mockFetch
+    await wrapper.instance().crawlCall()
+    expect(mockFetch).toHaveBeenCalled()
 
   });
 
-  it('should call fetch when crawlCall is called', () => {
+  it('should set state when crawlCall is called', async () => {
+    const mockFetch = jest.fn(() => { return {
+      results: [{film: 'test'}, {film: 'test'}], count: 2
+    }})
+    wrapper.state().fetchCall = mockFetch
+    await wrapper.instance().crawlCall()
 
-  });
-
-  it('should set state when crawlCallis called', () => {
-
+    expect(wrapper.state().openingCrawl).toEqual({film: 'test'})
   });
 
   it('should call callFetchPeople if people is currentSelection', () => {
