@@ -39,6 +39,7 @@ class App extends Component {
       const films = await this.state.fetchCall(url);
 
       const randomNum = Math.floor(Math.random() * (films.count))
+      console.log(randomNum, films)
       this.setState({
         openingCrawl: films.results[randomNum], 
         loading: false,

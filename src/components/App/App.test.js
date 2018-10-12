@@ -57,8 +57,14 @@ describe('App', () => {
 
   });
 
-  it('should set state when crawlCallis called', () => {
+  it('should set state when crawlCall is called', async () => {
+    const mockFetch = jest.fn(() => { return {
+      results: [{film: 'test'}, {film: 'test'}], count: 2
+    }})
+    wrapper.state().fetchCall = mockFetch
+    await wrapper.instance().crawlCall()
 
+    expect(wrapper.state().openingCrawl).toEqual({film: 'test'})
   });
 
   it('should call callFetchPeople if people is currentSelection', () => {
