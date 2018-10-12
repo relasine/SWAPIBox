@@ -6,7 +6,6 @@ describe('fetchCall', () => {
 
   beforeEach(() => {
     mockUrl = ''
-
   })
 
   it('should call fetch with the correct params', async () => {
@@ -15,13 +14,5 @@ describe('fetchCall', () => {
     )
     await fetchCall(mockUrl)
     expect(window.fetch).toHaveBeenCalledWith(mockUrl)
-  })
-
-  it('should return an error', async () => {
-    window.fetch = jest.fn().mockImplementation(() =>
-      Promise.reject(error('failed fetch')))
-    
-    const response = await fetchCall(mockUrl)
-    expect(response).toEqual('failed fetch')
   })
 })

@@ -20,6 +20,7 @@ class App extends Component {
       people: [],
       vehicles: [],
       planets: [],
+      error: false,
     };
   }
 
@@ -33,11 +34,16 @@ class App extends Component {
 
   crawlCall = async () => {
     const url = 'https://swapi.co/api/films/';
-    const films = await fetchCall(url);
+    try {
+      const films = await fetchCall(url);
 
-    const randomNum = Math.floor(Math.random() * (films.count))
-    this.setState({openingCrawl: films.results[randomNum]})
+      const randomNum = Math.floor(Math.random() * (films.count))
+      this.setState({openingCrawl: films.results[randomNum]})
+    } catch(error) {
+      this.setState({ error: true, currentSelection: '' })
+    }
   }
+
 
   handleSelection = (currentSelection) => {
 
@@ -51,27 +57,39 @@ class App extends Component {
   }
 
   callFetchVehicles = async () => {
-    const cleanData = await this.fetchVehicles.fetchVehicles()
-    this.setState({
-      vehicles: cleanData,
-      currentSelection: 'vehicles'
-    })
+    try {
+      const cleanData = await this.fetchVehicles.fetchVehicles()
+      this.setState({
+        vehicles: cleanData,
+        currentSelection: 'vehicles'
+      })
+    } catch(error) {
+      this.setState({ error: true, currentSelection: '' })
+    }
   }
 
   callFetchPeople = async () => {
-    const cleanedPeople = await this.fetchPeople.fetchPeople();
-    this.setState({
-      people: cleanedPeople,
-      currentSelection: 'people'
-    })
+    try{
+      const cleanedPeople = await this.fetchPeople.fetchPeople();
+      this.setState({
+        people: cleanedPeople,
+        currentSelection: 'people'
+      })
+    } catch(error) {
+      this.setState({ error: true, currentSelection: '' })
+    }
   }
 
   callFetchPlanets = async () => {
-    const cleanedPlanets = await this.fetchPlanets.fetchPlanets()
-    this.setState({
-      planets: cleanedPlanets,
-      currentSelection: 'planets'
-    })
+    try{
+      const cleanedPlanets = await this.fetchPlanets.fetchPlanets()
+      this.setState({
+        planets: cleanedPlanets,
+        currentSelection: 'planets'
+      })
+    } catch(error) {
+      this.setState({ error: true })
+    }
   }
 
   render() {
