@@ -9,7 +9,7 @@ describe('App', () => {
 
   beforeEach(() => {
     wrapper = shallow(<App />)
-
+    wrapper.instance().fetchCall = jest.fn()
   });
 
   const defaultState = {
@@ -36,7 +36,9 @@ describe('App', () => {
   });
 
   it('should call crawlCall() on componentDidMount', () => {
-
+    wrapper.instance().crawlCall = jest.fn()
+    wrapper.instance().componentDidMount()
+    expect(wrapper.instance().crawlCall).toHaveBeenCalled()
   });
 
   it('should call fetch when crawlCall is called', () => {
