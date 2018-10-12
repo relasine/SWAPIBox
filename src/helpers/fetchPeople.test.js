@@ -173,9 +173,79 @@ describe('cleanPeople', () => {
 });
 
 describe('fetchHomeWorld', async () => {
+  let fetchPeople; 
+
+  const mockHomeResponse = [
+    {
+      name: 'Fred',
+      homeworld: 'Earth',
+      language: 'English',
+      species: 'Human',
+      population: '7.3bill',
+      favoriteFood: 'Mac and Cheese'
+    },
+    { 
+      name: 'George',
+      homeworld: 'Earth',
+      language: 'Spanish',
+      species: 'Human',
+      population: '7.3bill',
+      favoriteFood: 'Hamburgers'
+    }
+  ]
+
+  const mockFetchCall = jest.fn(() => {
+    return mockHomeResponse;
+  });
+
+  beforeEach(() => {
+    fetchPeople = new FetchPeople
+    fetchPeople.fetchCall = mockFetchCall
+  });
+
+  it('should call fetchCall once for each array element', async () => {
+    await fetchPeople.fetchHomeWorld(mockHomeResponse);
+
+    expect(fetchPeople.fetchCall.mock.calls.length).toEqual(2)
+  });
 
 });
 
 describe('fetchSpecies', async () => {
+  let fetchPeople; 
+
+  const mockHomeResponse = [
+    {
+      name: 'Fred',
+      homeworld: 'Earth',
+      language: 'English',
+      species: 'Human',
+      population: '7.3bill',
+      favoriteFood: 'Mac and Cheese'
+    },
+    { 
+      name: 'George',
+      homeworld: 'Earth',
+      language: 'Spanish',
+      species: 'Human',
+      population: '7.3bill',
+      favoriteFood: 'Hamburgers'
+    }
+  ]
+
+  const mockFetchCall = jest.fn(() => {
+    return mockHomeResponse;
+  });
+
+  beforeEach(() => {
+    fetchPeople = new FetchPeople
+    fetchPeople.fetchCall = mockFetchCall
+  });
+
+  it('should call fetchCall once for each array element', async () => {
+    await fetchPeople.fetchSpecies(mockHomeResponse);
+
+    expect(fetchPeople.fetchCall.mock.calls.length).toEqual(2)
+  });
 
 });
