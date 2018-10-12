@@ -41,7 +41,11 @@ describe('App', () => {
     expect(wrapper.instance().crawlCall).toHaveBeenCalled()
   });
 
-  it('should call fetch when crawlCall is called', () => {
+  it('should call fetch when crawlCall is called', async () => {
+    const mockFetch = jest.fn()
+    wrapper.instance().fetchCall = mockFetch
+    await wrapper.instance().crawlCall()
+    expect(mockFetch).toHaveBeenCalled()
 
   });
 

@@ -22,12 +22,12 @@ class App extends Component {
       planets: [],
       error: false,
       loading: true,
+      fetchCall: fetchCall,
+      fetchVehicles: new Vehicles(),
+      fetchPeople: new People(),
+      fetchPlanets: new Planets()
     };
   }
-
-  fetchPeople = new People()
-  fetchVehicles = new Vehicles()
-  fetchPlanets = new Planets()
 
   componentDidMount() {
     this.crawlCall();
@@ -36,7 +36,7 @@ class App extends Component {
   crawlCall = async () => {
     const url = 'https://swapi.co/api/films/';
     try {
-      const films = await fetchCall(url);
+      const films = await this.state.fetchCall(url);
 
       const randomNum = Math.floor(Math.random() * (films.count))
       this.setState({
@@ -67,7 +67,7 @@ class App extends Component {
   callFetchVehicles = async () => {
     await this.setState({ loading: true })
     try {
-      const cleanData = await this.fetchVehicles.fetchVehicles()
+      const cleanData = await this.state.fetchVehicles.fetchVehicles()
       this.setState({
         vehicles: cleanData,
         currentSelection: 'vehicles',
@@ -82,7 +82,7 @@ class App extends Component {
   callFetchPeople = async () => {
     await this.setState({ loading: true })
     try{
-      const cleanedPeople = await this.fetchPeople.fetchPeople();
+      const cleanedPeople = await this.state.fetchPeople.fetchPeople();
       this.setState({
         people: cleanedPeople,
         currentSelection: 'people',
@@ -97,7 +97,7 @@ class App extends Component {
   callFetchPlanets = async () => {
     await this.setState({ loading: true })
     try{
-      const cleanedPlanets = await this.fetchPlanets.fetchPlanets()
+      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
       this.setState({
         planets: cleanedPlanets,
         currentSelection: 'planets',
