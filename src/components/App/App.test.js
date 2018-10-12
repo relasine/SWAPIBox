@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import App from './App';
+import fetchCall from '../../helpers/fetchCalls'
+import Vehicles from '../../helpers/Vehicles'
+import Planets from '../../helpers/Planets'
+import People from '../../helpers/People'
 
 describe('App', () => {
 
@@ -21,6 +25,10 @@ describe('App', () => {
     planets: [],
     error: false,
     loading: true,
+    fetchCall: fetchCall,
+    fetchVehicles: new Vehicles(),
+    fetchPeople: new People(),
+    fetchPlanets: new Planets()
   };
 
   it('should exist', () => {
@@ -32,7 +40,7 @@ describe('App', () => {
   });
 
   it('should have default state', () => {
-    expect(wrapper.state()).toEqual(defaultState);
+    expect(JSON.stringify(wrapper.state())).toEqual(JSON.stringify(defaultState));
   });
 
   it('should call crawlCall() on componentDidMount', () => {
@@ -43,7 +51,7 @@ describe('App', () => {
 
   it('should call fetch when crawlCall is called', async () => {
     const mockFetch = jest.fn()
-    wrapper.instance().fetchCall = mockFetch
+    wrapper.state().fetchCall = mockFetch
     await wrapper.instance().crawlCall()
     expect(mockFetch).toHaveBeenCalled()
 
