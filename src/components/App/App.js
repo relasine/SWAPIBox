@@ -5,9 +5,9 @@ import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls'
-import FetchVehicles from '../../helpers/fetchVehicles'
-import FetchPlanets from '../../helpers/fetchPlanets'
-import FetchPeople from '../../helpers/fetchPeople'
+import Vehicles from '../../helpers/Vehicles'
+import Planets from '../../helpers/Planets'
+import People from '../../helpers/People'
 
 class App extends Component {
   constructor() {
@@ -25,9 +25,9 @@ class App extends Component {
     };
   }
 
-  fetchPeople = new FetchPeople()
-  fetchVehicles = new FetchVehicles()
-  fetchPlanets = new FetchPlanets()
+  fetchPeople = new People()
+  fetchVehicles = new Vehicles()
+  fetchPlanets = new Planets()
 
   componentDidMount() {
     this.crawlCall();

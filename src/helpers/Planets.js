@@ -1,11 +1,11 @@
 import fetchCall from './fetchCalls'
 
-class FetchPlanets {
+class Planets {
   constructor() {
     this.fetchCall = fetchCall
   }
 
-    fetchPlanets = async () => {
+  fetchPlanets = async () => {
     const url = 'https://swapi.co/api/planets/'
     const data = await this.fetchCall(url);
     const withResidents = await this.fetchResidents(data.results);
@@ -49,4 +49,4 @@ class FetchPlanets {
 }
 
 
-export default FetchPlanets;
+export default Planets;

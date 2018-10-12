@@ -1,7 +1,7 @@
 import React from 'react';
-import FetchPlanets from './fetchPlanets';
+import Planets from './Planets';
 
-describe('fetchPlanets', async () => {
+describe('Planets', async () => {
   let fetchPlanets;
 
   const mockResponse = {
@@ -43,7 +43,7 @@ describe('fetchPlanets', async () => {
   });
 
   beforeEach(() => {
-    fetchPlanets = new FetchPlanets;
+    fetchPlanets = new Planets;
     fetchPlanets.fetchCall = mockFetchCall;
   });
 
@@ -118,7 +118,7 @@ const mappedResponse = [
   });
 
   beforeEach(() => {
-    fetchPlanets = new FetchPlanets;
+    fetchPlanets = new Planets;
     fetchPlanets.fetchCall = mockFetchCall;
   });
 
@@ -164,7 +164,7 @@ describe('fetchResidents', async () => {
   ]
 
   beforeEach(() => {
-    fetchPlanets = new FetchPlanets;
+    fetchPlanets = new Planets;
     fetchPlanets.fetchCall = mockFetchCall;
   });
 
@@ -193,14 +193,3 @@ describe('fetchResidents', async () => {
   })
 
 })
-
-// calls fetch with correct data
-// calls fetchResidents
-// returns cleanPlanets
-
-// cleans the object
-
-// fetchResidents
-// calls fetch the appropriate number of times
-// returns none if no reseidents
-// returns an array if there are residents

@@ -1,7 +1,7 @@
 import React from 'react';
-import FetchVehicles from './fetchVehicles.js';
+import Vehicles from './Vehicles.js';
 
-describe('fetchVehicles', async () => {
+describe('Vehicles', async () => {
 
   let fetchVehicles;
 
@@ -28,7 +28,7 @@ describe('fetchVehicles', async () => {
   });
 
   beforeEach(()=> {
-    fetchVehicles = new FetchVehicles;
+    fetchVehicles = new Vehicles;
     fetchVehicles.fetchCall = mockFetchCall;
   })
 
@@ -45,7 +45,7 @@ describe('fetchVehicles', async () => {
 })
 
 describe('cleanVehicles', () => {
-  const fetchVehicles = new FetchVehicles;
+  const fetchVehicles = new Vehicles;
   const mockVehicles = {results: [
       {
         name: 'car',
