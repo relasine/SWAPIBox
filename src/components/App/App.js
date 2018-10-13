@@ -76,7 +76,7 @@ class App extends Component {
       this.callFetchPeople();
     } else if (currentSelection === 'vehicles') {
       this.callFetchVehicles();
-    } else if (currentSelection === 'planets') {
+    } else {
       this.callFetchPlanets()
     }
   }

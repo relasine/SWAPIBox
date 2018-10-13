@@ -73,6 +73,27 @@ describe('App', () => {
     expect(wrapper.state().openingCrawl).toEqual({num: '1'})
   });
 
+  it('should set state when fetchFilms is called', async () => {
+    wrapper.state().fetchCall = jest.fn(() => {
+      return {results: [{num: '1'}, {num: '1'}], count: 2};
+    });
+
+    await wrapper.instance().fetchFilms();
+
+    expect(wrapper.state().openingCrawl).toEqual({num: '1'})
+  });
+
+  it('should set localStorage when fetchFilms is called', async () => {
+    const mockResponse = {results: [{num: '1'}, {num: '1'}], count: 2}
+    wrapper.state().fetchCall = jest.fn(() => {
+      return mockResponse;
+    });
+
+    await wrapper.instance().fetchFilms();
+
+    expect(localStorage.films).toEqual(JSON.stringify(mockResponse))
+  })
+
 
 
   it('should call callFetchPeople if people is currentSelection', () => {
