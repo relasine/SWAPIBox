@@ -12,8 +12,10 @@ class LocalStorage{
     return this.store[key]
   }
 
-  setItem = (object) => {
-    this.store[object].key = object.value
+  setItem = (key, value) => {
+    this.store[key] = value
+    console.log('firing')
+
   }
 
   removeItem = (key) => {
@@ -25,4 +27,6 @@ class LocalStorage{
   }
 
 }
+
+export default LocalStorage;
 

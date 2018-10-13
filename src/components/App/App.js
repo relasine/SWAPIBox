@@ -63,6 +63,7 @@ class App extends Component {
   }
 
   callFetchVehicles = async () => {
+
     await this.setState({ loading: true })
     try {
       const cleanData = await this.state.fetchVehicles.fetchVehicles()
@@ -72,6 +73,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      localStorage.setItem('vehicles', JSON.stringify(cleanData))
     } catch(error) {
       this.setState({ error: true, currentSelection: '' })
     }

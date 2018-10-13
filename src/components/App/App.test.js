@@ -6,6 +6,7 @@ import fetchCall from '../../helpers/fetchCalls'
 import Vehicles from '../../helpers/Vehicles'
 import Planets from '../../helpers/Planets'
 import People from '../../helpers/People'
+import LocalStorage from '../../setupTests'
 
 describe('App', () => {
 
@@ -193,4 +194,47 @@ describe('App', () => {
 
     expect(wrapper.state().error).toEqual(true);
   });
+
+  it('should put data into localStorage when callFetchVehicles is called', async () => {
+    const localStorage = new LocalStorage
+    window.localStorage = localStorage
+    const mockFetch = jest.fn(() => { 
+      return [{test: 'test'}]
+    });
+    const mockFetchVehicles = {fetchVehicles: mockFetch}
+    wrapper.state().fetchVehicles = mockFetchVehicles
+
+    await wrapper.instance().callFetchVehicles()
+    console.log(window.localStorage.vehicles)
+    expect(window.localStorage.vehicles).toEqual(JSON.stringify([{test: 'test'}]))
+  })
+
+
+
+  it('should check localStorage when callFetchPeople is called', () => {
+
+  })
+
+  it('should check localStorage when callFetchPlanets is called', () => {
+
+  })  
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
