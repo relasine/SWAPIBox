@@ -117,31 +117,39 @@ class App extends Component {
     }
   }
 
-  callFetchPlanets = async () => {
+  callFetchPlanets = () => {
     if(localStorage.planets){
-      const response = localStorage.getItem('planets')
-      const planets = JSON.parse(response)
+      this.pullPlanetData()
+    } else {
+      this.fetchPlanetData()
+    }
+  }
+
+  fetchPlanetData = async () => {
+    await this.setState({ loading: true })
+    try{
+      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
       this.setState({
-        planets: planets,
+        planets: cleanedPlanets,
         currentSelection: 'planets',
         loading: false,
         error: false
       })
-    } else {
-      await this.setState({ loading: true })
-      try{
-        const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
-        this.setState({
-          planets: cleanedPlanets,
-          currentSelection: 'planets',
-          loading: false,
-          error: false
-        })
-        localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
-      } catch(error) {
-        this.setState({ error: true })
-      }
+      localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
+    } catch(error) {
+      this.setState({ error: true })
     }
+  }
+
+  pullPlanetData = () => {
+    const response = localStorage.getItem('planets')
+    const planets = JSON.parse(response)
+    this.setState({
+      planets: planets,
+      currentSelection: 'planets',
+      loading: false,
+      error: false
+    })
   }
 
   render() {

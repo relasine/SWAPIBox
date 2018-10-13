@@ -140,23 +140,23 @@ describe('App', () => {
     expect(wrapper.state().people).toEqual([{person: 'joe'}, {person: 'sara'}])
   });
 
-  it('should call fetchPlanets if callFetchPlanets is called', async () => {
+  it('should call fetchPlanets if fetchPlanetData is called', async () => {
     const mockFetch = jest.fn();
     const mockPlanetsClass = {fetchPlanets: mockFetch}
     wrapper.state().fetchPlanets = mockPlanetsClass;
 
-    await wrapper.instance().callFetchPlanets();
+    await wrapper.instance().fetchPlanetData();
     expect(mockFetch).toHaveBeenCalled();
   });
 
-  it('should set state after callFetchPlanets is called', async () => {
+  it('should set state after fetchPlanetData is called', async () => {
     const mockFetch = jest.fn(() => {
       return [{planet: 'earth'}, {planet: 'mars'}]
     });
     const mockPlanetClass = {fetchPlanets: mockFetch}
     wrapper.state().fetchPlanets = mockPlanetClass;
     
-    await wrapper.instance().callFetchPlanets();
+    await wrapper.instance().fetchPlanetData();
 
     expect(wrapper.state().planets).toEqual([{planet: 'earth'}, {planet: 'mars'}])
   });
@@ -196,7 +196,7 @@ describe('App', () => {
       Promise.reject());
     wrapper.state().fetchPlanets = mockFetch;
 
-    await wrapper.instance().callFetchPlanets();
+    await wrapper.instance().fetchPlanetData();
 
     expect(wrapper.state().error).toEqual(true);
   });
@@ -223,14 +223,14 @@ describe('App', () => {
     expect(window.localStorage.people).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
-  it('should put data into localStorage when callFetchPlanets is called', async () => {
+  it('should put data into localStorage when fetchPlanetData is called', async () => {
     const mockFetch = jest.fn(() => { 
       return [{test: 'test'}]
     });
     const mockFetchPlanets = {fetchPlanets: mockFetch}
     wrapper.state().fetchPlanets = mockFetchPlanets
 
-    await wrapper.instance().callFetchPlanets()
+    await wrapper.instance().fetchPlanetData()
     expect(window.localStorage.planets).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
@@ -241,17 +241,17 @@ describe('App', () => {
     expect(wrapper.state().vehicles).toEqual([{test: 'test'}])
   })
 
-  it('should check localStorage when callFetchPeople is called', () => {
+  it('should check localStorage when callFetchPeople is called', async () => {
     localStorage.setItem('people', JSON.stringify([{test: 'test'}]))
     
     await wrapper.instance().callFetchVehicles()
     expect(wrapper.state().people).toEqual([{test: 'test'}])
   })
 
-  it('should check localStorage when callFetchPlanets is called', () => {
+  it('should check localStorage when pullPlanetData is called', async () => {
     localStorage.setItem('planets', JSON.stringify([{test: 'test'}]))
     
-    await wrapper.instance().callFetchVehicles()
+    await wrapper.instance().pullPlanetData()
     expect(wrapper.state().planets).toEqual([{test: 'test'}])
   })  
 })
