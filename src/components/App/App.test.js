@@ -142,5 +142,43 @@ describe('App', () => {
     expect(wrapper.state().planets).toEqual([{planet: 'earth'}, {planet: 'mars'}])
   });
 
+  it('should set an error on state after a failed crawlCall call', async () => {
+    const mockFetch = jest.fn().mockImplementation(() =>
+      Promise.reject());
+    wrapper.state().fetchCall = mockFetch;
 
+    await wrapper.instance().crawlCall();
+
+    expect(wrapper.state().error).toEqual(true);
+  });
+
+  it('should set an error on state after a failed fetchPeople call', async () => {
+    const mockFetch = jest.fn().mockImplementation(() =>
+      Promise.reject());
+    wrapper.state().fetchPeople = mockFetch;
+
+    await wrapper.instance().callFetchPeople();
+
+    expect(wrapper.state().error).toEqual(true);
+  });
+
+  it('should set an error on state after a failed fetchVehicles call', async () => {
+    const mockFetch = jest.fn().mockImplementation(() =>
+      Promise.reject());
+    wrapper.state().fetchVehicles = mockFetch;
+
+    await wrapper.instance().callFetchVehicles();
+
+    expect(wrapper.state().error).toEqual(true);
+  });
+
+  it('should set an error on state after a failed fetchPlanets call', async () => {
+    const mockFetch = jest.fn().mockImplementation(() =>
+      Promise.reject());
+    wrapper.state().fetchPlanets = mockFetch;
+
+    await wrapper.instance().callFetchPlanets();
+
+    expect(wrapper.state().error).toEqual(true);
+  });
 })
