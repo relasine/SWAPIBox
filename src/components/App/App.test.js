@@ -128,14 +128,14 @@ describe('App', () => {
     expect(mockFetch).toHaveBeenCalled();
   });
 
-  it('should set state after callFetchPeople is called', async () => {
+  it('should set state after fetchPeopleData is called', async () => {
     const mockFetch = jest.fn(() => {
       return [{person: 'joe'}, {person: 'sara'}]
     });
     const mockPeopleClass = {fetchPeople: mockFetch}
     wrapper.state().fetchPeople = mockPeopleClass;
     
-    await wrapper.instance().callFetchPeople();
+    await wrapper.instance().fetchPeopleData();
 
     expect(wrapper.state().people).toEqual([{person: 'joe'}, {person: 'sara'}])
   });
@@ -212,14 +212,14 @@ describe('App', () => {
     expect(window.localStorage.vehicles).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
-  it('should put data into localStorage when callFetchPeople is called', async () => {
+  it('should put data into localStorage when fetchPeopleData is called', async () => {
     const mockFetch = jest.fn(() => { 
       return [{test: 'test'}]
     });
     const mockFetchPeople = {fetchPeople: mockFetch}
     wrapper.state().fetchPeople = mockFetchPeople
 
-    await wrapper.instance().callFetchPeople()
+    await wrapper.instance().fetchPeopleData()
     expect(window.localStorage.people).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
@@ -241,10 +241,10 @@ describe('App', () => {
     expect(wrapper.state().vehicles).toEqual([{test: 'test'}])
   })
 
-  it('should check localStorage when callFetchPeople is called', async () => {
+  it('should check localStorage when pullPeopleData is called', async () => {
     localStorage.setItem('people', JSON.stringify([{test: 'test'}]))
     
-    await wrapper.instance().callFetchVehicles()
+    await wrapper.instance().pullPeopleData()
     expect(wrapper.state().people).toEqual([{test: 'test'}])
   })
 

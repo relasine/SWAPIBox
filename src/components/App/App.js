@@ -90,35 +90,44 @@ class App extends Component {
     }
   }
 
-  callFetchPeople = async () => {
+  callFetchPeople = () => {
     if(localStorage.people){
-      const response = localStorage.getItem('people')
+      this.pullPeopleData();
+    } else {
+      this.fetchPeopleData();
+    }
+  }
+
+  pullPeopleData = () => {
+    const response = localStorage.getItem('people')
       const people = JSON.parse(response)
       this.setState({
         people: people,
         currentSelection: 'people',
         loading: false,
         error: false
+    })
+  }
+
+  fetchPeopleData = async () => {
+    await this.setState({ loading: true })
+
+    try {
+      const cleanedPeople = await this.state.fetchPeople.fetchPeople();
+      this.setState({
+        people: cleanedPeople,
+        currentSelection: 'people',
+        loading: false,
+        error: false
       })
-    } else {
-      await this.setState({ loading: true })
-      try{
-        const cleanedPeople = await this.state.fetchPeople.fetchPeople();
-        this.setState({
-          people: cleanedPeople,
-          currentSelection: 'people',
-          loading: false,
-          error: false
-        })
-        localStorage.setItem('people', JSON.stringify(cleanedPeople))
-      } catch(error) {
-        this.setState({ error: true, currentSelection: '' })
-      }
+      localStorage.setItem('people', JSON.stringify(cleanedPeople))
+    } catch(error) {
+      this.setState({ error: true, currentSelection: '' })
     }
   }
 
   callFetchPlanets = () => {
-    if(localStorage.planets){
+    if (localStorage.planets){
       this.pullPlanetData()
     } else {
       this.fetchPlanetData()
