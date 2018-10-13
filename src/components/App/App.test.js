@@ -205,7 +205,6 @@ describe('App', () => {
     wrapper.state().fetchVehicles = mockFetchVehicles
 
     await wrapper.instance().callFetchVehicles()
-    console.log(window.localStorage.vehicles)
     expect(window.localStorage.vehicles).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
@@ -219,7 +218,6 @@ describe('App', () => {
     wrapper.state().fetchPeople = mockFetchPeople
 
     await wrapper.instance().callFetchPeople()
-    console.log(window.localStorage.people)
     expect(window.localStorage.people).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
@@ -233,7 +231,6 @@ describe('App', () => {
     wrapper.state().fetchPlanets = mockFetchPlanets
 
     await wrapper.instance().callFetchPlanets()
-    console.log(window.localStorage.planets)
     expect(window.localStorage.planets).toEqual(JSON.stringify([{test: 'test'}]))
   })
 

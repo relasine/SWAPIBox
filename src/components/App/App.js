@@ -89,6 +89,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      localStorage.setItem('people', JSON.stringify(cleanedPeople))
     } catch(error) {
       this.setState({ error: true, currentSelection: '' })
     }
@@ -104,6 +105,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
     } catch(error) {
       this.setState({ error: true })
     }
