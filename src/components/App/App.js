@@ -63,7 +63,7 @@ class App extends Component {
   }
 
   callFetchVehicles = async () => {
-    
+
     if(localStorage.vehicles){
       const response = localStorage.getItem('vehicles')
       const vehicles = JSON.parse(response)
@@ -91,34 +91,56 @@ class App extends Component {
   }
 
   callFetchPeople = async () => {
-    await this.setState({ loading: true })
-    try{
-      const cleanedPeople = await this.state.fetchPeople.fetchPeople();
+    if(localStorage.people){
+      const response = localStorage.getItem('people')
+      const people = JSON.parse(response)
       this.setState({
-        people: cleanedPeople,
+        people: people,
         currentSelection: 'people',
         loading: false,
         error: false
       })
-      localStorage.setItem('people', JSON.stringify(cleanedPeople))
-    } catch(error) {
-      this.setState({ error: true, currentSelection: '' })
+    } else {
+      await this.setState({ loading: true })
+      try{
+        const cleanedPeople = await this.state.fetchPeople.fetchPeople();
+        this.setState({
+          people: cleanedPeople,
+          currentSelection: 'people',
+          loading: false,
+          error: false
+        })
+        localStorage.setItem('people', JSON.stringify(cleanedPeople))
+      } catch(error) {
+        this.setState({ error: true, currentSelection: '' })
+      }
     }
   }
 
   callFetchPlanets = async () => {
-    await this.setState({ loading: true })
-    try{
-      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
+    if(localStorage.planets){
+      const response = localStorage.getItem('planets')
+      const planets = JSON.parse(response)
       this.setState({
-        planets: cleanedPlanets,
+        planets: planets,
         currentSelection: 'planets',
         loading: false,
         error: false
       })
-      localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
-    } catch(error) {
-      this.setState({ error: true })
+    } else {
+      await this.setState({ loading: true })
+      try{
+        const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
+        this.setState({
+          planets: cleanedPlanets,
+          currentSelection: 'planets',
+          loading: false,
+          error: false
+        })
+        localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
+      } catch(error) {
+        this.setState({ error: true })
+      }
     }
   }
 
