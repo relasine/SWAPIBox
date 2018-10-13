@@ -52,9 +52,7 @@ class App extends Component {
     }
   }
 
-
   handleSelection = (currentSelection) => {
-
     if (currentSelection === 'people') {
       this.callFetchPeople();
     } else if (currentSelection === 'vehicles') {
