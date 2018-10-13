@@ -33,7 +33,25 @@ class App extends Component {
     this.crawlCall();
   }
 
-  crawlCall = async () => {
+  crawlCall = () => {
+    if (localStorage.films) {
+      this.getFilms();
+    } else {
+      this.fetchFilms();
+    }
+  }
+
+  getFilms = () => {
+    const films = JSON.parse(localStorage.getItem('films'));
+    const randomNum = Math.floor(Math.random() * (films.count));
+    this.setState({
+      openingCrawl: films.results[randomNum], 
+      loading: false,
+      error: false
+    })
+  }
+
+  fetchFilms = async () => {
     const url = 'https://swapi.co/api/films/';
     try {
       const films = await this.state.fetchCall(url);
@@ -44,6 +62,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      localStorage.setItem('films', JSON.stringify(films))
     } catch(error) {
       this.setState({ 
         error: true, 
@@ -57,68 +76,85 @@ class App extends Component {
       this.callFetchPeople();
     } else if (currentSelection === 'vehicles') {
       this.callFetchVehicles();
-    } else if (currentSelection === 'planets') {
+    } else {
       this.callFetchPlanets()
     }
   }
 
-  callFetchVehicles = async () => {
-
+  callFetchVehicles = () => {
     if(localStorage.vehicles){
-      const response = localStorage.getItem('vehicles')
-      const vehicles = JSON.parse(response)
+      this.pullVehicleData();
+    } else {
+      this.fetchVehicleData();
+    }
+  }
+
+  pullVehicleData = () => {
+    const response = localStorage.getItem('vehicles')
+    const vehicles = JSON.parse(response)
+    this.setState({
+      vehicles: vehicles,
+      currentSelection: 'vehicles',
+      loading: false,
+      error: false
+    })    
+  }
+
+  fetchVehicleData = async() => {
+    await this.setState({ loading: true })
+
+    try {
+      const cleanData = await this.state.fetchVehicles.fetchVehicles()
       this.setState({
-        vehicles: vehicles,
+        vehicles: cleanData,
         currentSelection: 'vehicles',
         loading: false,
         error: false
       })
-    } else {
-      await this.setState({ loading: true })
-      try {
-        const cleanData = await this.state.fetchVehicles.fetchVehicles()
-        this.setState({
-          vehicles: cleanData,
-          currentSelection: 'vehicles',
-          loading: false,
-          error: false
-        })
-        localStorage.setItem('vehicles', JSON.stringify(cleanData))
-      } catch(error) {
-        this.setState({ error: true, currentSelection: '' })
-      }
+      localStorage.setItem('vehicles', JSON.stringify(cleanData))
+    } catch(error) {
+      this.setState({ error: true, currentSelection: '' })
     }
   }
 
-  callFetchPeople = async () => {
-    if(localStorage.people){
-      const response = localStorage.getItem('people')
+  callFetchPeople = () => {
+    if (localStorage.people) {
+      this.pullPeopleData();
+    } else {
+      this.fetchPeopleData();
+    }
+  }
+
+  pullPeopleData = () => {
+    const response = localStorage.getItem('people')
       const people = JSON.parse(response)
       this.setState({
         people: people,
         currentSelection: 'people',
         loading: false,
         error: false
+    })
+  }
+
+  fetchPeopleData = async () => {
+    await this.setState({ loading: true })
+
+    try {
+      const cleanedPeople = await this.state.fetchPeople.fetchPeople();
+      this.setState({
+        people: cleanedPeople,
+        currentSelection: 'people',
+        loading: false,
+        error: false
       })
-    } else {
-      await this.setState({ loading: true })
-      try{
-        const cleanedPeople = await this.state.fetchPeople.fetchPeople();
-        this.setState({
-          people: cleanedPeople,
-          currentSelection: 'people',
-          loading: false,
-          error: false
-        })
-        localStorage.setItem('people', JSON.stringify(cleanedPeople))
-      } catch(error) {
-        this.setState({ error: true, currentSelection: '' })
-      }
+      localStorage.setItem('people', JSON.stringify(cleanedPeople))
+    } catch(error) {
+      this.setState({ error: true, currentSelection: '' })
     }
   }
 
   callFetchPlanets = () => {
-    if(localStorage.planets){
+    if (localStorage.planets){
       this.pullPlanetData()
     } else {
       this.fetchPlanetData()
