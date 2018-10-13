@@ -63,6 +63,7 @@ class App extends Component {
   }
 
   callFetchVehicles = async () => {
+    
     if(localStorage.vehicles){
       const response = localStorage.getItem('vehicles')
       const vehicles = JSON.parse(response)

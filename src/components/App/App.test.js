@@ -15,7 +15,13 @@ describe('App', () => {
   beforeEach(() => {
     wrapper = shallow(<App />)
     wrapper.instance().fetchCall = jest.fn()
+    let localStorage = new LocalStorage
+    window.localStorage = localStorage
   });
+
+  afterEach(() => {
+    localStorage.clear() 
+  })
 
   const defaultState = {
     totalFavorites: 0,
@@ -196,8 +202,6 @@ describe('App', () => {
   });
 
   it('should put data into localStorage when callFetchVehicles is called', async () => {
-    const localStorage = new LocalStorage
-    window.localStorage = localStorage
     const mockFetch = jest.fn(() => { 
       return [{test: 'test'}]
     });
@@ -209,8 +213,6 @@ describe('App', () => {
   })
 
   it('should put data into localStorage when callFetchPeople is called', async () => {
-    const localStorage = new LocalStorage
-    window.localStorage = localStorage
     const mockFetch = jest.fn(() => { 
       return [{test: 'test'}]
     });
@@ -222,8 +224,6 @@ describe('App', () => {
   })
 
   it('should put data into localStorage when callFetchPlanets is called', async () => {
-    const localStorage = new LocalStorage
-    window.localStorage = localStorage
     const mockFetch = jest.fn(() => { 
       return [{test: 'test'}]
     });
@@ -235,9 +235,7 @@ describe('App', () => {
   })
 
   it('should check localStorage when callFetchVehicles is called', async () => {
-    const localStorage = new LocalStorage
-    window.localStorage = localStorage
-    localStorage.setItem('vehicles',JSON.stringify([{test: 'test'}]))
+    localStorage.setItem('vehicles', JSON.stringify([{test: 'test'}]))
     
     await wrapper.instance().callFetchVehicles()
     expect(wrapper.state().vehicles).toEqual([{test: 'test'}])
