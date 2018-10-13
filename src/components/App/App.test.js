@@ -68,15 +68,27 @@ describe('App', () => {
   });
 
   it('should call callFetchPeople if people is currentSelection', () => {
+    const mockCurrentSelection = 'people';
+    wrapper.instance().callFetchPeople = jest.fn();
 
+    wrapper.instance().handleSelection(mockCurrentSelection)
+    expect(wrapper.instance().callFetchPeople).toHaveBeenCalled();
   });
 
   it('should call callFetchVehicles if vehicles is currentSelection', () => {
+    const mockCurrentSelection = 'vehicles';
+    wrapper.instance().callFetchVehicles = jest.fn();
 
+    wrapper.instance().handleSelection(mockCurrentSelection)
+    expect(wrapper.instance().callFetchVehicles).toHaveBeenCalled();
   });
 
   it('should call callFetchPlanets if planets is currentSelection', () => {
+    const mockCurrentSelection = 'planets';
+    wrapper.instance().callFetchPlanets = jest.fn();
 
+    wrapper.instance().handleSelection(mockCurrentSelection)
+    expect(wrapper.instance().callFetchPlanets).toHaveBeenCalled();
   });
 
   it('should call fetchVehicles if callFetchVehicles is called', async () => {
