@@ -56,23 +56,24 @@ describe('App', () => {
     expect(wrapper.instance().crawlCall).toHaveBeenCalled()
   });
 
-  it('should call fetch when crawlCall is called', async () => {
-    const mockFetch = jest.fn()
-    wrapper.state().fetchCall = mockFetch
-    await wrapper.instance().crawlCall()
-    expect(mockFetch).toHaveBeenCalled()
+  it('should call getFilms when crawlCall is called if data in LS', () => {
+    const mockGetFilms = jest.fn()
+    wrapper.instance().getFilms = mockGetFilms;
+    localStorage.films = JSON.stringify({results: [{num: '1'}, {num: '1'}], count: 2});
 
+    wrapper.instance().crawlCall()
+
+    expect(mockGetFilms).toHaveBeenCalled()
   });
 
-  it('should set state when crawlCall is called', async () => {
-    const mockFetch = jest.fn(() => { return {
-      results: [{film: 'test'}, {film: 'test'}], count: 2
-    }});
-    wrapper.state().fetchCall = mockFetch
-    await wrapper.instance().crawlCall()
+  it('should set state when getFilms is called', () => {
+    localStorage.films = JSON.stringify({results: [{num: '1'}, {num: '1'}], count: 2});
+    wrapper.instance().getFilms()
 
-    expect(wrapper.state().openingCrawl).toEqual({film: 'test'})
+    expect(wrapper.state().openingCrawl).toEqual({num: '1'})
   });
+
+
 
   it('should call callFetchPeople if people is currentSelection', () => {
     const mockCurrentSelection = 'people';
@@ -161,12 +162,12 @@ describe('App', () => {
     expect(wrapper.state().planets).toEqual([{planet: 'earth'}, {planet: 'mars'}])
   });
 
-  it('should set an error on state after a failed crawlCall call', async () => {
+  it('should set an error on state after a failed fetchFilms call', async () => {
     const mockFetch = jest.fn().mockImplementation(() =>
       Promise.reject());
     wrapper.state().fetchCall = mockFetch;
 
-    await wrapper.instance().crawlCall();
+    await wrapper.instance().fetchFilms();
 
     expect(wrapper.state().error).toEqual(true);
   });
@@ -281,6 +282,28 @@ describe('App', () => {
 
     expect(wrapper.instance().pullPlanetData).toHaveBeenCalled();
   });
+
+  it('should call fetchVehicleData if no data in localStorage', () => {
+    wrapper.instance().fetchVehicleData = jest.fn();
+
+    wrapper.instance().callFetchVehicles();
+
+    expect(wrapper.instance().fetchVehicleData).toHaveBeenCalled();
+  })
+  it('should call fetchPlanetData if no data in localStorage', () => {
+    wrapper.instance().fetchPlanetData = jest.fn();
+
+    wrapper.instance().callFetchPlanets();
+
+    expect(wrapper.instance().fetchPlanetData).toHaveBeenCalled();
+  })
+  it('should call fetchPeopleData if no data in localStorage', () => {
+    wrapper.instance().fetchPeopleData = jest.fn();
+
+    wrapper.instance().callFetchPeople();
+
+    expect(wrapper.instance().fetchPeopleData).toHaveBeenCalled();
+  })
 })
 
 

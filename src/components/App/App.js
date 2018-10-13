@@ -33,7 +33,25 @@ class App extends Component {
     this.crawlCall();
   }
 
-  crawlCall = async () => {
+  crawlCall = () => {
+    if (localStorage.films) {
+      this.getFilms();
+    } else {
+      this.fetchFilms();
+    }
+  }
+
+  getFilms = () => {
+    const films = JSON.parse(localStorage.getItem('films'));
+    const randomNum = Math.floor(Math.random() * (films.count));
+    this.setState({
+      openingCrawl: films.results[randomNum], 
+      loading: false,
+      error: false
+    })
+  }
+
+  fetchFilms = async () => {
     const url = 'https://swapi.co/api/films/';
     try {
       const films = await this.state.fetchCall(url);
@@ -44,6 +62,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      localStorage.setItem('films', JSON.stringify(films))
     } catch(error) {
       this.setState({ 
         error: true, 
@@ -99,7 +118,7 @@ class App extends Component {
   }
 
   callFetchPeople = () => {
-    if(localStorage.people){
+    if (localStorage.people) {
       this.pullPeopleData();
     } else {
       this.fetchPeopleData();
