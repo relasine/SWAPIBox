@@ -242,11 +242,17 @@ describe('App', () => {
   })
 
   it('should check localStorage when callFetchPeople is called', () => {
-
+    localStorage.setItem('people', JSON.stringify([{test: 'test'}]))
+    
+    await wrapper.instance().callFetchVehicles()
+    expect(wrapper.state().people).toEqual([{test: 'test'}])
   })
 
   it('should check localStorage when callFetchPlanets is called', () => {
-
+    localStorage.setItem('planets', JSON.stringify([{test: 'test'}]))
+    
+    await wrapper.instance().callFetchVehicles()
+    expect(wrapper.state().planets).toEqual([{test: 'test'}])
   })  
 })
 
