@@ -209,6 +209,34 @@ describe('App', () => {
     expect(window.localStorage.vehicles).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
+  it('should put data into localStorage when callFetchPeople is called', async () => {
+    const localStorage = new LocalStorage
+    window.localStorage = localStorage
+    const mockFetch = jest.fn(() => { 
+      return [{test: 'test'}]
+    });
+    const mockFetchPeople = {fetchPeople: mockFetch}
+    wrapper.state().fetchPeople = mockFetchPeople
+
+    await wrapper.instance().callFetchPeople()
+    console.log(window.localStorage.people)
+    expect(window.localStorage.people).toEqual(JSON.stringify([{test: 'test'}]))
+  })
+
+  it('should put data into localStorage when callFetchPlanets is called', async () => {
+    const localStorage = new LocalStorage
+    window.localStorage = localStorage
+    const mockFetch = jest.fn(() => { 
+      return [{test: 'test'}]
+    });
+    const mockFetchPlanets = {fetchPlanets: mockFetch}
+    wrapper.state().fetchPlanets = mockFetchPlanets
+
+    await wrapper.instance().callFetchPlanets()
+    console.log(window.localStorage.planets)
+    expect(window.localStorage.planets).toEqual(JSON.stringify([{test: 'test'}]))
+  })
+
 
 
   it('should check localStorage when callFetchPeople is called', () => {
