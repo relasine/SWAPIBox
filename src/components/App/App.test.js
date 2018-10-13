@@ -254,6 +254,33 @@ describe('App', () => {
     await wrapper.instance().pullPlanetData()
     expect(wrapper.state().planets).toEqual([{test: 'test'}])
   })  
+
+  it('should call pullVehicleData if data in localStorage', () => {
+    localStorage.setItem('vehicles', JSON.stringify([{test: 'test'}]))
+    wrapper.instance().pullVehicleData = jest.fn()
+
+    wrapper.instance().callFetchVehicles();
+
+    expect(wrapper.instance().pullVehicleData).toHaveBeenCalled();
+  });
+
+  it('should call pullPeopleData if data in localStorage', () => {
+    localStorage.setItem('people', JSON.stringify([{test: 'test'}]))
+    wrapper.instance().pullPeopleData = jest.fn()
+
+    wrapper.instance().callFetchPeople();
+
+    expect(wrapper.instance().pullPeopleData).toHaveBeenCalled();
+  });
+
+  it('should call pullPlanetData if data in localStorage', () => {
+    localStorage.setItem('planets', JSON.stringify([{test: 'test'}]))
+    wrapper.instance().pullPlanetData = jest.fn()
+
+    wrapper.instance().callFetchPlanets();
+
+    expect(wrapper.instance().pullPlanetData).toHaveBeenCalled();
+  });
 })
 
 
