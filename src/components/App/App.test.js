@@ -234,7 +234,14 @@ describe('App', () => {
     expect(window.localStorage.planets).toEqual(JSON.stringify([{test: 'test'}]))
   })
 
-
+  it('should check localStorage when callFetchVehicles is called', async () => {
+    const localStorage = new LocalStorage
+    window.localStorage = localStorage
+    localStorage.setItem('vehicles',JSON.stringify([{test: 'test'}]))
+    
+    await wrapper.instance().callFetchVehicles()
+    expect(wrapper.state().vehicles).toEqual([{test: 'test'}])
+  })
 
   it('should check localStorage when callFetchPeople is called', () => {
 

@@ -63,19 +63,29 @@ class App extends Component {
   }
 
   callFetchVehicles = async () => {
-
-    await this.setState({ loading: true })
-    try {
-      const cleanData = await this.state.fetchVehicles.fetchVehicles()
+    if(localStorage.vehicles){
+      const response = localStorage.getItem('vehicles')
+      const vehicles = JSON.parse(response)
       this.setState({
-        vehicles: cleanData,
+        vehicles: vehicles,
         currentSelection: 'vehicles',
         loading: false,
         error: false
       })
-      localStorage.setItem('vehicles', JSON.stringify(cleanData))
-    } catch(error) {
-      this.setState({ error: true, currentSelection: '' })
+    } else {
+      await this.setState({ loading: true })
+      try {
+        const cleanData = await this.state.fetchVehicles.fetchVehicles()
+        this.setState({
+          vehicles: cleanData,
+          currentSelection: 'vehicles',
+          loading: false,
+          error: false
+        })
+        localStorage.setItem('vehicles', JSON.stringify(cleanData))
+      } catch(error) {
+        this.setState({ error: true, currentSelection: '' })
+      }
     }
   }
 
