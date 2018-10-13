@@ -24,8 +24,17 @@ describe('Button', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it('should have a className of button if selected', () => {
+  it('should have a className of button-selected if selected', () => {
     expect(wrapper.hasClass('nav-button button-selected')).toEqual(true);
+  })
+
+  it('should have a className of nav-button if not selected', () => {
+    wrapper = shallow(<Button 
+      buttonName="people"
+      handleSelection={mockHandleSelection}
+      currentSelection="planets"
+    />)
+    expect(wrapper.hasClass('nav-button')).toEqual(true);
   })
 
   it('should render a button', () => {
