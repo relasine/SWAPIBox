@@ -78,6 +78,8 @@ class App extends Component {
       this.removeFavorite(cardData)
     } else {
       this.toggleFavoriteInDatabase(cardData);
+      cardData.favorite = true;
+      console.log(cardData.favorite)
       const newFavorites = [...this.state.favorites, cardData]
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
       this.setState({
