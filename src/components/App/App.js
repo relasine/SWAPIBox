@@ -14,7 +14,6 @@ class App extends Component {
     super()
 
     this.state = {
-      totalFavorites: 0,
       currentSelection: '',
       openingCrawl: {},
       people: [],
@@ -26,7 +25,7 @@ class App extends Component {
       fetchVehicles: new Vehicles(),
       fetchPeople: new People(),
       fetchPlanets: new Planets(),
-      favorites: [],
+      favorites: JSON.parse(localStorage.getItem('favorites')) || []
     };
   }
 
@@ -80,11 +79,8 @@ class App extends Component {
     } else {
       this.toggleFavoriteInDatabase(cardData);
       const newFavorites = [...this.state.favorites, cardData]
-      let favCount = this.state.totalFavorites
-      favCount++
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
       this.setState({
-        totalFavorites: favCount,
         favorites: newFavorites,
         planets: JSON.parse(localStorage.getItem('planets')) || [],
         vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
@@ -102,11 +98,8 @@ class App extends Component {
 
   removeFavorite = (cardData) => {
     const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
-    let favCount = this.state.totalFavorites
-    favCount--
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
     this.setState({
-      totalFavorites: favCount,
       favorites: updatedFavorites,
       planets: JSON.parse(localStorage.getItem('planets')) || [],
       vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
