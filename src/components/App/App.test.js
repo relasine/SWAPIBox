@@ -94,8 +94,6 @@ describe('App', () => {
     expect(localStorage.films).toEqual(JSON.stringify(mockResponse))
   })
 
-
-
   it('should call callFetchPeople if people is currentSelection', () => {
     const mockCurrentSelection = 'people';
     wrapper.instance().callFetchPeople = jest.fn();
@@ -324,6 +322,39 @@ describe('App', () => {
     wrapper.instance().callFetchPeople();
 
     expect(wrapper.instance().fetchPeopleData).toHaveBeenCalled();
+  })
+
+  describe('toggleFavorite', () => {
+    it('should call removeFavorite if it is already a favorite', () => {
+
+    })
+    
+    it('should increase the totalFavorites by one', () => {
+      
+    })
+
+    it('should set the favorite into local storage', () => {
+      
+    })
+
+    it('should update state', () => {
+      
+    })
+
+  })
+
+  describe('removeFavorite', () => {
+    it('should decrease totalFavorites by one', () => {
+      
+    })
+    it('should should remove the card from favorites', () => {
+      
+    })
+
+    it('should update state', () => {
+      
+    })
+    
   })
 })
 
