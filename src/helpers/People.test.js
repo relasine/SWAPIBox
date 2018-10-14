@@ -142,7 +142,8 @@ describe('cleanPeople', () => {
         {language: 'English'},
         {species: 'Human'},
         {population: '7.3bill'},
-      ]
+      ],
+      favorite: false
     },
     { 
       name: 'George',
@@ -151,7 +152,8 @@ describe('cleanPeople', () => {
         {language: 'Spanish'},
         {species: 'Human'},
         {population: '7.3bill'},
-      ]
+      ],
+      favorite: false
     }
   ]
 

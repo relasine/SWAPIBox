@@ -35,7 +35,8 @@ describe('App', () => {
     fetchCall: fetchCall,
     fetchVehicles: new Vehicles(),
     fetchPeople: new People(),
-    fetchPlanets: new Planets()
+    fetchPlanets: new Planets(),
+    favorites: []
   };
 
   it('should exist', () => {

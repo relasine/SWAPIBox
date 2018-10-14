@@ -22,7 +22,8 @@ class People {
           {language: person.language},
           {species: person.species},
           {population: person.population}
-        ]
+        ],
+        favorite: false
       } 
       return personObject;
     });
