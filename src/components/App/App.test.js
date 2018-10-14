@@ -184,7 +184,7 @@ describe('App', () => {
 
     it('should update state', () => {
       wrapper.setState({ favorites: [{name: 'Darth'}, {name: 'Luke'}]}) ;
-      
+
       wrapper.instance().removeFavorite(mockCardData)
       expect(wrapper.state().favorites).toEqual([{name: 'Darth'}])
     })  
@@ -214,6 +214,17 @@ describe('App', () => {
       wrapper.instance().handleSelection(mockCurrentSelection)
       expect(wrapper.instance().callFetchPlanets).toHaveBeenCalled();
     });
+
+    it('should setState if the selection is a favorites', () => {
+      const mockCurrentSelection = 'favorites';
+
+      wrapper.instance().handleSelection(mockCurrentSelection)
+      expect(wrapper.state().currentSelection).toEqual('favorites')
+      expect(wrapper.state().loading).toEqual(false)
+      expect(wrapper.state().error).toEqual(false)
+
+
+    })
   })
 
   describe('callFetchVehicles', () => {
