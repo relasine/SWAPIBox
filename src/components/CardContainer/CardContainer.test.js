@@ -9,38 +9,48 @@ describe('CardContainer', () => {
   let mockSelection;
   let mockPlanets;
   let mockVehicles;
+  let mockFavorites;
 
   beforeEach(() => {
     mockPeople = [{
-        name: 'Luke',
-        info: [
-          {homeworld: 'Earch'},
-          {language: 'English'},
-          {species: 'Human'},
-          {population: 'billions'}
-        ]
-      }]
+      name: 'Luke',
+      info: [
+        {homeworld: 'Earch'},
+        {language: 'English'},
+        {species: 'Human'},
+        {population: 'billions'}
+      ]
+    }]
     mockPlanets = [{
-        name: "Earth",
-        info: [
-          {terrain: 'mountains'},
-          {population: 'billions'},
-          {climate: 'warm'},
-          {residents: 'Bob, Sally, and Steve'}
-        ]
-      }]
+      name: "Earth",
+      info: [
+        {terrain: 'mountains'},
+        {population: 'billions'},
+        {climate: 'warm'},
+        {residents: 'Bob, Sally, and Steve'}
+      ]
+    }]
     mockVehicles = [{
-        name: 'car',
-        info: [
-          {model: 'toyota'},
-          {class: 'hybrid'},
-          {passengers: '2'}
-        ]
-      }]
+      name: 'car',
+      info: [
+        {model: 'toyota'},
+        {class: 'hybrid'},
+        {passengers: '2'}
+      ]
+    }]
+    mockFavorites = [{
+      name: 'hot dogs',
+      info: [
+        {model: 'vienna'},
+        {class: 'world'},
+        {taste: 'delicious'}
+      ]
+    }]
     wrapper = shallow(<CardContainer 
                         people={mockPeople}
                         planets={mockPlanets}
                         vehicles={mockVehicles}
+                        favorites={mockFavorites}
                         selection={mockSelection} />)
   })
 
@@ -58,6 +68,7 @@ describe('CardContainer', () => {
                         people={mockPeople}
                         planets={mockPlanets}
                         vehicles={mockVehicles}
+                        favorites={mockFavorites}
                         selection={mockSelection} />)
     expect(wrapper.find(Card).length).toEqual(1);
   })
@@ -68,6 +79,7 @@ describe('CardContainer', () => {
                         people={mockPeople}
                         planets={mockPlanets}
                         vehicles={mockVehicles}
+                        favorites={mockFavorites}
                         selection={mockSelection} />)
     expect(wrapper.find(Card).length).toEqual(1);
   })
@@ -77,8 +89,20 @@ describe('CardContainer', () => {
     wrapper = shallow(<CardContainer 
                         people={mockPeople}
                         planets={mockPlanets}
+                        favorites={mockFavorites}
                         vehicles={mockVehicles}
                         selection={mockSelection} />)
     expect(wrapper.find(Card).length).toEqual(1);
   })
+
+  it('should render all the favorite cards', () => {
+    mockSelection = 'favorites'
+    wrapper = shallow(<CardContainer 
+                        people={mockPeople}
+                        planets={mockPlanets}
+                        vehicles={mockVehicles}
+                        favorites={mockFavorites}
+                        selection={mockSelection} />)
+    expect(wrapper.find(Card).length).toEqual(1);
+  });
 })
