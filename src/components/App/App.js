@@ -74,8 +74,13 @@ class App extends Component {
   }
 
   toggleFavorite = (cardData) => {
-    if(this.state.favorites.find( fav => cardData.name === fav.name)){
-      this.removeFavorite(cardData)
+    console.log(this.state.favorites)
+    console.log(cardData.name)
+    if(this.state.favorites.find( fav => {
+        console.log(fav)
+        return cardData.name === fav.name
+        })
+      ) { this.removeFavorite(cardData)
     } else {
       const newFavorites = [...this.state.favorites, cardData]
       let favCount = this.state.totalFavorites

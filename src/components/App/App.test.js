@@ -326,15 +326,29 @@ describe('App', () => {
   })
 
   describe('toggleFavorite', () => {
+    
+    const mockCardData = {name: 'Luke'};
+      
     it('should call removeFavorite if it is already a favorite', () => {
+      wrapper.instance().removeFavorites = jest.fn();
+      wrapper.state().favorites = [{name: 'Luke'}];
 
+      wrapper.instance().toggleFavorite(mockCardData);
+
+      expect(wrapper.instance().removeFavorites).toHaveBeenCalled();
     })
     
     it('should increase the totalFavorites by one', () => {
-      
+      // const mockCardData = {name: 'Luke'};
+      wrapper.state().totalFavorites = 1
+
+      wrapper.instance().toggleFavorite(mockCardData);
+
+      expect(wrapper.state().totalFavorites).toEqual(2);
     })
 
     it('should set the favorite into local storage', () => {
+
       
     })
 
@@ -345,7 +359,14 @@ describe('App', () => {
   })
 
   describe('removeFavorite', () => {
+    const mockCardData = {name: 'Luke'};
+    
     it('should decrease totalFavorites by one', () => {
+      wrapper.state().totalFavorites = 1
+
+      wrapper.instance().removeFavorite(mockCardData);
+
+      expect(wrapper.state().totalFavorites).toEqual(0);
       
     })
     it('should should remove the card from favorites', () => {
