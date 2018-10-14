@@ -78,17 +78,22 @@ class App extends Component {
       this.removeFavorite(cardData)
     } else {
       const newFavorites = [...this.state.favorites, cardData]
+      let favCount = this.state.totalFavorites
+      favCount++
       this.setState({
-        favorites: newFavorites
+        totalFavorites: favCount,
+        favorites: newFavorites,
       })
     }
   }
 
   removeFavorite = (cardData) => {
     const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
-
+    let favCount = this.state.totalFavorites
+    favCount--
     this.setState({
-      favorites: updatedFavorites
+      totalFavorites: favCount,
+      favorites: updatedFavorites,
     })
   }
  
