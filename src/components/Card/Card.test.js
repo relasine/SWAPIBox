@@ -16,7 +16,8 @@ describe('Card', () => {
           {language: 'English'},
           {species: 'Human'},
           {population: 'billions'}
-        ]
+        ],
+        favorite: false
       };
 
     wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
@@ -38,5 +39,19 @@ describe('Card', () => {
     wrapper.find('.favorite-toggle').simulate('click');
 
     expect(mockToggleFavorite).toHaveBeenCalled();
+  })
+
+  it('should set favoriteClass to favorited if the passed down prop is true', () => {
+    mockData.favorite = true;
+    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
+
+    expect(wrapper.props().children[1].props.children[0].props.children[1].props.className).toEqual('favorite-toggle favorited')
+  })
+
+  it('should not set favoriteClass to favorited if the passed down prop is false', () => {
+    mockData.favorite = false;
+    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
+
+    expect(wrapper.props().children[1].props.children[0].props.children[1].props.className).toEqual('favorite-toggle')
   })
 })
