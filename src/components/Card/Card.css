@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.favorited {
+  background: url(./images/rebel-selected.png);
+}
+
 
 article p {
   margin: 0;

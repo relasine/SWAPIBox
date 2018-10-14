@@ -3,6 +3,13 @@ import './Card.css';
 import Images from '../../images.js'
 
 const Card = ( {data, toggleFavorite} ) => {
+  let favoriteClass;
+
+  if (data.favorite) {
+    favoriteClass = 'favorite-toggle favorited'
+  } else {
+    favoriteClass = 'favorite-toggle'
+  }
 
   const stats = data.info.map((point) => {
     return <p key={Object.keys(point)[0]}>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
@@ -17,7 +24,7 @@ const Card = ( {data, toggleFavorite} ) => {
         <div className='card-header'>
           <h2>{data.name}</h2>
           <div 
-            className='favorite-toggle' 
+            className={favoriteClass} 
             onClick={() => { 
               toggleFavorite(data) 
             }}

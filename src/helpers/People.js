@@ -23,7 +23,8 @@ class People {
           {species: person.species},
           {population: person.population}
         ],
-        favorite: false
+        favorite: false,
+        category: 'people'
       } 
       return personObject;
     });

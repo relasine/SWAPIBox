@@ -23,7 +23,8 @@ class Planets {
           {climate: planet.climate},
           {residents: planet.residents.join(', ')}
         ],
-        favorite: false
+        favorite: false,
+        category: 'planets'
       }
       return planetObject
     });
