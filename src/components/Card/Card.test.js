@@ -6,6 +6,8 @@ describe('Card', () => {
   let wrapper;
   let mockData;
 
+  const mockToggleFavorite = jest.fn();
+
   beforeEach(() => {
     mockData = {
         name: 'Luke',
@@ -17,7 +19,7 @@ describe('Card', () => {
         ]
       };
 
-    wrapper = shallow(<Card data={mockData} />);
+    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
   })
 
   it('should exist', () => {
@@ -30,5 +32,11 @@ describe('Card', () => {
 
   it('should render all the stats on the card as p tags', () => {
     expect(wrapper.find('p').length).toEqual(4);
+  })
+
+  it('should call toggleFavorite on click', () => {
+    wrapper.find('.favorite-toggle').simulate('click');
+
+    expect(mockToggleFavorite).toHaveBeenCalled();
   })
 })

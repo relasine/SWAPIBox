@@ -23,7 +23,10 @@ exports[`Card should match snapshot 1`] = `
       </h2>
       <div
         className="favorite-toggle"
-      />
+        onClick={[Function]}
+      >
+         
+      </div>
     </div>
     <div
       className="card-stats"

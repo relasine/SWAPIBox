@@ -20,7 +20,8 @@ class Vehicles {
           {model: vehicle.model},
           {class: vehicle.vehicle_class},
           {passengers: vehicle.passengers}
-        ]
+        ],
+        favorite: false
       }
       return vehicleObject;
     })
