@@ -80,6 +80,7 @@ class App extends Component {
       const newFavorites = [...this.state.favorites, cardData]
       let favCount = this.state.totalFavorites
       favCount++
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
       this.setState({
         totalFavorites: favCount,
         favorites: newFavorites,
