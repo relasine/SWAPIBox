@@ -92,6 +92,7 @@ class App extends Component {
     const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
     let favCount = this.state.totalFavorites
     favCount--
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
     this.setState({
       totalFavorites: favCount,
       favorites: updatedFavorites,
