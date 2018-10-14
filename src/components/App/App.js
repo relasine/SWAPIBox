@@ -33,7 +33,6 @@ class App extends Component {
     this.crawlCall();
   }
 
-
   crawlCall = () => {
     if (localStorage.films) {
       this.getFilms();
@@ -73,11 +72,11 @@ class App extends Component {
   }
 
   toggleFavorite = (cardData) => {
-    if(this.state.favorites.find( fav => cardData.name === fav.name)){
       this.toggleFavoriteInDatabase(cardData);
+    if(this.state.favorites.find( fav => cardData.name === fav.name)){
       this.removeFavorite(cardData)
     } else {
-      this.toggleFavoriteInDatabase(cardData);
+      // this.toggleFavoriteInDatabase(cardData);
       cardData.favorite = true;
       console.log(cardData.favorite)
       const newFavorites = [...this.state.favorites, cardData]
@@ -233,16 +232,6 @@ class App extends Component {
   }
 
   render() {
-    const mockPeople = {results: 
-      [ 
-        {
-          name: 'bob',
-          homeworld: {name: 'earth', population: '7.5billion'},
-          species: {name: 'human', language: 'english'}
-        }
-      ]
-    }
-
     if( this.state.error ){
       return(
         <div className="App">Error</div>
@@ -283,7 +272,6 @@ class App extends Component {
               <section className='main-content'>
                 <h1 className='category'>{this.state.currentSelection}</h1>
                 <CardContainer 
-                  data={mockPeople}
                   people={this.state.people}
                   planets={this.state.planets}
                   vehicles={this.state.vehicles}
