@@ -5,7 +5,6 @@ import './CardContainer.css'
 const CardContainer = (props) => {
 
   let cards;
-console.log(props)
 
   if (props.selection === 'people') {
     cards = props.people.map( person => {

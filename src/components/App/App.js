@@ -25,7 +25,8 @@ class App extends Component {
       fetchCall: fetchCall,
       fetchVehicles: new Vehicles(),
       fetchPeople: new People(),
-      fetchPlanets: new Planets()
+      fetchPlanets: new Planets(),
+      favorites: [],
     };
   }
 
@@ -73,9 +74,24 @@ class App extends Component {
   }
 
   toggleFavorite = (cardData) => {
-    console.log('workin')
+    if(this.state.favorites.find( fav => cardData.name === fav.name)){
+      this.removeFavorite(cardData)
+    } else {
+      const newFavorites = [...this.state.favorites, cardData]
+      this.setState({
+        favorites: newFavorites
+      })
+    }
   }
 
+  removeFavorite = (cardData) => {
+    const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
+
+    this.setState({
+      favorites: updatedFavorites
+    })
+  }
+ 
   handleSelection = (currentSelection) => {
     if (currentSelection === 'people') {
       this.callFetchPeople();

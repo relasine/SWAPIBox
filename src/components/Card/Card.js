@@ -3,8 +3,6 @@ import './Card.css';
 import Images from '../../images.js'
 
 const Card = ( {data, toggleFavorite} ) => {
-  console.log(data)
-  console.log(toggleFavorite)
 
   const stats = data.info.map((point) => {
     return <p key={Object.keys(point)[0]}>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
