@@ -100,7 +100,9 @@ const mappedResponse = [
         terrain: 'Lots of it',
         climate: 'Getting hotter',
         residents: ['tom', 'joe', 'lisa']
-      ]
+      ],
+      favorite: false,
+      category: 'planets'
 
     },
     {
@@ -109,7 +111,9 @@ const mappedResponse = [
         terrain: 'red',
         climate: 'cold',
         residents: ['moe', 'steph', 'jane']
-      ]
+      ],
+      favorite: false,
+      category: 'planets'
     }
   ]
 

@@ -30,6 +30,14 @@ const CardContainer = (props) => {
                 toggleFavorite={props.toggleFavorite} 
               />
     });
+  } else if (props.selection === 'favorites') {
+    cards = props.favorites.map( favorite => {
+      return  <Card 
+                data={favorite} 
+                key={favorite.name} 
+                toggleFavorite={props.toggleFavorite} 
+              />
+    });
   }
 
   
