@@ -222,8 +222,6 @@ describe('App', () => {
       expect(wrapper.state().currentSelection).toEqual('favorites')
       expect(wrapper.state().loading).toEqual(false)
       expect(wrapper.state().error).toEqual(false)
-
-
     })
   })
 
