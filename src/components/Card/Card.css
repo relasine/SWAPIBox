@@ -19,19 +19,29 @@
 
 .favorite-toggle {
   background: url(./images/rebel-white.png);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: 40px;
   width: 40px;
   height: 40px;
   display: inline-block;
   margin: auto;
+  padding: 5px;
+  border-radius: 50%;
 }
 
 .favorite-toggle:hover {
-  background: url(./images/rebel-hover.png);
-  background-size: 40px;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
   cursor: pointer;
 }
 
+.favorited {
+  background: url(./images/rebel-selected.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 article p {
   margin: 0;

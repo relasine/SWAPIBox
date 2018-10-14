@@ -21,7 +21,8 @@ class Vehicles {
           {class: vehicle.vehicle_class},
           {passengers: vehicle.passengers}
         ],
-        favorite: false
+        favorite: false,
+        category: 'vehicles'
       }
       return vehicleObject;
     })

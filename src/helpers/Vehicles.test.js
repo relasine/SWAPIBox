@@ -69,7 +69,8 @@ describe('cleanVehicles', () => {
         {class: 'Hybrid'},
         {passengers: '4'},
       ],
-      favorite: false
+      favorite: false,
+      category: 'vehicles'
     },
     { 
       name: 'truck',
@@ -78,7 +79,8 @@ describe('cleanVehicles', () => {
         {class: 'Pickup'},
         {passengers: '2'},
       ],
-      favorite: false
+      favorite: false,
+      category: 'vehicles'
     }
   ];
 
