@@ -33,6 +33,7 @@ class App extends Component {
     this.crawlCall();
   }
 
+
   crawlCall = () => {
     if (localStorage.films) {
       this.getFilms();
@@ -69,6 +70,10 @@ class App extends Component {
         currentSelection: '' 
       })
     }
+  }
+
+  toggleFavorite = (cardData) => {
+    console.log('workin')
   }
 
   handleSelection = (currentSelection) => {
@@ -224,10 +229,16 @@ class App extends Component {
                   currentSelection={this.state.currentSelection}
                   handleSelection={this.handleSelection} 
                   buttonName='planets' 
-                />              <Button 
+                />              
+                <Button 
                   currentSelection={this.state.currentSelection}
                   handleSelection={this.handleSelection} 
                   buttonName='vehicles' 
+                />
+                <Button 
+                  currentSelection={this.state.currentSelection}
+                  handleSelection={this.handleSelection} 
+                  buttonName='favorites' 
                 />
               </section>
               <section className='main-content'>
@@ -238,6 +249,7 @@ class App extends Component {
                   planets={this.state.planets}
                   vehicles={this.state.vehicles}
                   selection={this.state.currentSelection}
+                  toggleFavorite={this.toggleFavorite}
                 />
               </section>
             </section>
