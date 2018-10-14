@@ -330,16 +330,15 @@ describe('App', () => {
     const mockCardData = {name: 'Luke'};
       
     it('should call removeFavorite if it is already a favorite', () => {
-      wrapper.instance().removeFavorites = jest.fn();
-      wrapper.state().favorites = [{name: 'Luke'}];
+      wrapper.instance().removeFavorite = jest.fn();
+      wrapper.setState({favorites: [{name: 'Luke'}]});
 
       wrapper.instance().toggleFavorite(mockCardData);
 
-      expect(wrapper.instance().removeFavorites).toHaveBeenCalled();
+      expect(wrapper.instance().removeFavorite).toHaveBeenCalled();
     })
     
     it('should increase the totalFavorites by one', () => {
-      // const mockCardData = {name: 'Luke'};
       wrapper.state().totalFavorites = 1
 
       wrapper.instance().toggleFavorite(mockCardData);
@@ -348,35 +347,49 @@ describe('App', () => {
     })
 
     it('should set the favorite into local storage', () => {
+      wrapper.instance().toggleFavorite(mockCardData)
 
-      
+      expect(window.localStorage.favorites).toEqual(JSON.stringify([{name: 'Luke'}]))
     })
 
     it('should update state', () => {
-      
+      wrapper.instance().toggleFavorite(mockCardData)
+      expect(wrapper.state().totalFavorites).toEqual(1)
+      expect(wrapper.state().favorites).toEqual([{name: 'Luke'}])
     })
 
   })
 
   describe('removeFavorite', () => {
     const mockCardData = {name: 'Luke'};
-    
+
     it('should decrease totalFavorites by one', () => {
       wrapper.state().totalFavorites = 1
 
       wrapper.instance().removeFavorite(mockCardData);
 
       expect(wrapper.state().totalFavorites).toEqual(0);
-      
     })
-    it('should should remove the card from favorites', () => {
+
+    it('should should remove the card from favorites in local storage', () => {
+      wrapper.setState({ favorites: [{name: 'Darth'}, {name: 'Luke'}]}) ;
+      localStorage.setItem('favorites', JSON.stringify([{name: 'Darth'}, {name: 'Luke'}])),
+
+      wrapper.instance().removeFavorite(mockCardData),
       
+      expect(window.localStorage.favorites).toEqual(JSON.stringify([{name: 'Darth'}]))
     })
 
     it('should update state', () => {
-      
-    })
-    
+      wrapper.setState({ 
+                favorites: [{name: 'Darth'}, {name: 'Luke'}], 
+                totalFavorites: 2
+              })
+
+      wrapper.instance().removeFavorite(mockCardData)
+      expect(wrapper.state().totalFavorites).toEqual(1)
+      expect(wrapper.state().favorites).toEqual([{name: 'Darth'}])
+    })  
   })
 })
 
