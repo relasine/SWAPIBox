@@ -115,10 +115,12 @@ describe('App', () => {
   describe('toggleFavorite', () => {
     
     const mockCardData = {name: 'Luke'};
+
+    beforeEach(() => {
+      wrapper.instance().toggleFavoriteInDatabase = jest.fn();
+    })
     
     it('should call toggleFavoriteInDatabase', () => {
-      wrapper.instance().toggleFavoriteInDatabase = jest.fn();
-
       wrapper.instance().toggleFavorite(mockCardData);
 
       expect(wrapper.instance().toggleFavoriteInDatabase).toHaveBeenCalled();
@@ -133,7 +135,6 @@ describe('App', () => {
       expect(wrapper.instance().removeFavorite).toHaveBeenCalled();
     })
     
-
     it('should toggle card favorite property to true', () => {
       wrapper.setState({favorites: [{name: 'Darth', favorite: true}]});
 
@@ -143,29 +144,29 @@ describe('App', () => {
     })
 
     it('should set the favorite into local storage', () => {
+      wrapper.setState({favorites: []});
+
       wrapper.instance().toggleFavorite(mockCardData)
 
-      expect(window.localStorage.favorites).toEqual(JSON.stringify([{name: 'Luke'}]))
+      expect(window.localStorage.favorites).toEqual(JSON.stringify([{name: 'Luke', favorite: true}]))
     })
 
     it('should update state', () => {
       wrapper.instance().toggleFavorite(mockCardData)
-      // expect(wrapper.state().totalFavorites).toEqual(1)
-      expect(wrapper.state().favorites).toEqual([{name: 'Luke'}])
+
+      expect(wrapper.state().favorites).toEqual([{name: 'Luke', favorite: true}])
     })
   })
 
   describe('toggleFavoriteInDatabase', () => {
-    const mockCardData = {name: 'Luke', favorite: false};
+    const mockCardData = {name: 'Luke', favorite: true, category: 'people'};
 
-    it('should toggle favorite property on selected card', () => {
-      wrapper.instance().toggleFavoriteInDatabase(mockCardData)
-//check on that card if favorite is true
-      expect(wrapper.find().favorite).toEqual(true)
-    })
+    it('should toggle favorite and set local Storage', () => {
+      localStorage.setItem('people', JSON.stringify([{name: 'Luke', favorite: true, category: 'people'}]))
 
-    it('should set local storage', () => {
+      wrapper.instance().toggleFavoriteInDatabase(mockCardData);
 
+      expect(window.localStorage.people).toEqual(JSON.stringify([{name: 'Luke', favorite: false, category: 'people'}]))
     })
   })
 
@@ -173,8 +174,8 @@ describe('App', () => {
     const mockCardData = {name: 'Luke'};
 
     it('should should remove the card from favorites in local storage', () => {
-      wrapper.setState({ favorites: [{name: 'Darth'}, {name: 'Luke'}]}) ;
       localStorage.setItem('favorites', JSON.stringify([{name: 'Darth'}, {name: 'Luke'}])),
+      wrapper.setState({ favorites: [{name: 'Darth'}, {name: 'Luke'}]}) ;
 
       wrapper.instance().removeFavorite(mockCardData),
       
@@ -182,13 +183,9 @@ describe('App', () => {
     })
 
     it('should update state', () => {
-      wrapper.setState({ 
-                favorites: [{name: 'Darth'}, {name: 'Luke'}], 
-                totalFavorites: 2
-              })
-
+      wrapper.setState({ favorites: [{name: 'Darth'}, {name: 'Luke'}]}) ;
+      
       wrapper.instance().removeFavorite(mockCardData)
-      expect(wrapper.state().totalFavorites).toEqual(1)
       expect(wrapper.state().favorites).toEqual([{name: 'Darth'}])
     })  
   })
