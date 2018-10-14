@@ -25,13 +25,15 @@ class App extends Component {
       fetchCall: fetchCall,
       fetchVehicles: new Vehicles(),
       fetchPeople: new People(),
-      fetchPlanets: new Planets()
+      fetchPlanets: new Planets(),
+      favorites: [],
     };
   }
 
   componentDidMount() {
     this.crawlCall();
   }
+
 
   crawlCall = () => {
     if (localStorage.films) {
@@ -71,6 +73,32 @@ class App extends Component {
     }
   }
 
+  toggleFavorite = (cardData) => {
+    if(this.state.favorites.find( fav => cardData.name === fav.name)){
+      this.removeFavorite(cardData)
+    } else {
+      const newFavorites = [...this.state.favorites, cardData]
+      let favCount = this.state.totalFavorites
+      favCount++
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
+      this.setState({
+        totalFavorites: favCount,
+        favorites: newFavorites,
+      })
+    }
+  }
+
+  removeFavorite = (cardData) => {
+    const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
+    let favCount = this.state.totalFavorites
+    favCount--
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
+    this.setState({
+      totalFavorites: favCount,
+      favorites: updatedFavorites,
+    })
+  }
+ 
   handleSelection = (currentSelection) => {
     if (currentSelection === 'people') {
       this.callFetchPeople();
@@ -224,10 +252,16 @@ class App extends Component {
                   currentSelection={this.state.currentSelection}
                   handleSelection={this.handleSelection} 
                   buttonName='planets' 
-                />              <Button 
+                />              
+                <Button 
                   currentSelection={this.state.currentSelection}
                   handleSelection={this.handleSelection} 
                   buttonName='vehicles' 
+                />
+                <Button 
+                  currentSelection={this.state.currentSelection}
+                  handleSelection={this.handleSelection} 
+                  buttonName='favorites' 
                 />
               </section>
               <section className='main-content'>
@@ -238,6 +272,7 @@ class App extends Component {
                   planets={this.state.planets}
                   vehicles={this.state.vehicles}
                   selection={this.state.currentSelection}
+                  toggleFavorite={this.toggleFavorite}
                 />
               </section>
             </section>

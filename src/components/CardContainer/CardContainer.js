@@ -6,18 +6,29 @@ const CardContainer = (props) => {
 
   let cards;
 
-
   if (props.selection === 'people') {
     cards = props.people.map( person => {
-      return <Card data={person} key={person.name} />
+      return  <Card 
+                data={person} 
+                key={person.name} 
+                toggleFavorite={props.toggleFavorite} 
+              />
     });
   } else if (props.selection === 'vehicles') {
     cards = props.vehicles.map( vehicle => {
-      return <Card data={vehicle} key={vehicle.name} />
+      return  <Card 
+                data={vehicle} 
+                key={vehicle.name} 
+                toggleFavorite={props.toggleFavorite} 
+              />
     })
   } else if (props.selection === 'planets') {
     cards = props.planets.map( planet => {
-      return <Card data={planet} key={planet.name} />
+      return  <Card 
+                data={planet} 
+                key={planet.name} 
+                toggleFavorite={props.toggleFavorite} 
+              />
     });
   }
 
