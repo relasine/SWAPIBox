@@ -8,7 +8,7 @@ import fetchCall from '../../helpers/fetchCalls';
 import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import NavBar from './NavBar';
 import Error from './Error';
 
@@ -238,6 +238,64 @@ class App extends Component {
   }
 
   render() {
+    return (
+      <div>
+        <Route path='/' render={() => (
+          <NavBar currentSelection={this.state.currentSelection} handleSelection={this.handleSelection} />
+        )} />
+
+        <Switch>
+          <Route exact path='/' render={() => (
+            <Crawl film={this.state.openingCrawl} />
+          )} />
+
+          <Route exact path='/people' render={() => (
+            <CardContainer 
+              data={this.state.people} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route exact path='/planets' render={() => (
+            <CardContainer 
+              data={this.state.planets} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route exact path='/vehicles' render={() => (
+            <CardContainer 
+              data={this.state.vehicles} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route exact path='/people' render={() => (
+            <CardContainer 
+              data={this.state.favorites} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+          <Route path='/error' component={Error} />
+        </Switch>
+      </div>
+    )
+          // <Route component={404} />
+  }
+}
+
+export default App;
+
+
+
+
+
+/*  
+render() {
     if( this.state.error ){
       return(
         <div className="App">Error</div>
@@ -292,58 +350,4 @@ class App extends Component {
       );
     }
   }
-}
-
-export default App;
-
-
-Render() {
-  return (
-      <div>
-        <Route path='/' render={() => (
-          <NavBar currentSelection={this.state.currentSelection} handleSelection={this.handleSelection} />
-        )} />
-
-        <Switch>
-          <Route exact path='/' render={() => (
-            <Crawl film={this.state.openingCrawl} />
-          )} />
-
-          <Route exact path='/people' render={() => (
-            <CardContainer 
-              data={this.state.people} 
-              selection={this.state.currentSelection}
-              toggleFavorite={this.toggleFavorite}
-            />
-          )} />
-
-          <Route exact path='/planets' render={() => (
-            <CardContainer 
-              data={this.state.planets} 
-              selection={this.state.currentSelection}
-              toggleFavorite={this.toggleFavorite}
-            />
-          )} />
-
-          <Route exact path='/vehicles' render={() => (
-            <CardContainer 
-              data={this.state.vehicles} 
-              selection={this.state.currentSelection}
-              toggleFavorite={this.toggleFavorite}
-            />
-          )} />
-
-          <Route exact path='/people' render={() => (
-            <CardContainer 
-              data={this.state.favorites} 
-              selection={this.state.currentSelection}
-              toggleFavorite={this.toggleFavorite}
-            />
-          )} />
-
-          <Route path='/error' component={Error} />
-          <Route component={404} />
-        </Switch>
-      </div>
-  )
-}
+  */
