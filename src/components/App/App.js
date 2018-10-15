@@ -9,6 +9,7 @@ import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import { Route, NavLink } from 'react-router-dom';
+import NavBar from './NavBar';
 
 
 class App extends Component {
@@ -247,7 +248,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Crawl film={this.state.openingCrawl}/>
+          <Route path='/' render={() => <Crawl film={this.state.openingCrawl} />}    
           <main>
             <Header totalFavorites={this.state.favorites.length} />
             <section className="content-wrapper">
@@ -293,3 +294,32 @@ class App extends Component {
 }
 
 export default App;
+
+
+Render() {
+  return (
+      <div>
+        <Route path='/' render={() => 
+          <NavBar currentSelection={this.state.currentSelection} handleSelection={this.handleSelection} />
+        }
+
+        <Switch>
+          <Route path='/' component={Crawl} exact />
+          <Route path='/people render={() => {
+            <CardContainer data={this.state.people}
+          }/>
+          <Route path='/vehicles render={() => {
+            <CardContainer data={this.state.vehicles}
+          }/>
+          <Route path='/planets render={() => {
+            <CardContainer data={this.state.planets}
+          }/>
+          <Route path='/favorites render={() => {
+            <CardContainer data={this.state.favorites}
+          }/>
+          <Route path='/error component={Error} />
+          <Route component={404} />
+        </Switch>
+      </div>
+  )
+}
