@@ -237,12 +237,24 @@ class App extends Component {
     })
   }
 
-  render() {
-    return (
-      <div>
+
+        /*
         <Route path='/' render={() => (
           <NavBar currentSelection={this.state.currentSelection} handleSelection={this.handleSelection} />
         )} />
+        */
+
+  render() {
+    return (
+      <div className='App'>
+        <div className="button-section">
+          <header>
+            <NavLink to='/people' className='nav-button'>People</NavLink>
+            <NavLink to='/planets' className='nav-button'>Planets</NavLink>
+            <NavLink to='/vehicles' className='nav-button'>Vehicles</NavLink>
+            <NavLink to='/favorites' className='nav-button'>Favorites</NavLink>
+          </header>
+        </div>
 
         <Switch>
           <Route exact path='/' render={() => (

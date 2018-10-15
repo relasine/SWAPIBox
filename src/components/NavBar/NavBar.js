@@ -3,7 +3,16 @@ import Button from '../Button/Button'
 
 const NavBar = ({currentSelection, handleSelection}) => {
   return(
-    <section className='button-section'>
+    <div>
+      
+    </div>
+  )
+}
+
+export default NavBar
+
+
+   /* <section className='button-section'>
       <Button 
         currentSelection={currentSelection}
         handleSelection={handleSelection} 
@@ -24,9 +33,4 @@ const NavBar = ({currentSelection, handleSelection}) => {
         handleSelection={handleSelection} 
         buttonName='favorites' 
       />
-    </section>
-
-  )
-}
-
-export default NavBar
+     </section>. */
