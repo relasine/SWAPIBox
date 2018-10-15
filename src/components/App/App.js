@@ -9,8 +9,8 @@ import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import NavBar from './NavBar';
-import Error from './Error';
+import NavBar from '../NavBar/NavBar';
+import ErrorPage from '../Error/ErrorPage';
 
 
 class App extends Component {

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../Button/Button'
 
 const NavBar = ({currentSelection, handleSelection}) => {
   return(
