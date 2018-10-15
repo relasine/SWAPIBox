@@ -4,10 +4,12 @@ import Crawl from '../Crawl/Crawl';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
-import fetchCall from '../../helpers/fetchCalls'
-import Vehicles from '../../helpers/Vehicles'
-import Planets from '../../helpers/Planets'
-import People from '../../helpers/People'
+import fetchCall from '../../helpers/fetchCalls';
+import Vehicles from '../../helpers/Vehicles';
+import Planets from '../../helpers/Planets';
+import People from '../../helpers/People';
+import { Route, NavLink } from 'react-router-dom';
+
 
 class App extends Component {
   constructor() {
