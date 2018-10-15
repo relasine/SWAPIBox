@@ -237,13 +237,6 @@ class App extends Component {
     })
   }
 
-
-        /*
-        <Route path='/' render={() => (
-          <NavBar currentSelection={this.state.currentSelection} handleSelection={this.handleSelection} />
-        )} />
-        */
-
   render() {
     return (
       <div className='App'>
@@ -262,7 +255,7 @@ class App extends Component {
           )} />
 
           <Route exact path='/people' render={() => (
-            <CardContainer 
+            <People 
               data={this.state.people} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
@@ -270,7 +263,7 @@ class App extends Component {
           )} />
 
           <Route exact path='/planets' render={() => (
-            <CardContainer 
+            <Planets 
               data={this.state.planets} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
@@ -278,7 +271,7 @@ class App extends Component {
           )} />
 
           <Route exact path='/vehicles' render={() => (
-            <CardContainer 
+            <Vehicles 
               data={this.state.vehicles} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
@@ -286,7 +279,7 @@ class App extends Component {
           )} />
 
           <Route exact path='/people' render={() => (
-            <CardContainer 
+            <Favorites 
               data={this.state.favorites} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
