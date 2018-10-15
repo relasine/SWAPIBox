@@ -2,13 +2,12 @@ import React from 'react'
 import Card from '../Card/Card'
 import './Planets.css'
 
-const Planets = () => {
+const PlanetsContainer = () => {
   return(
-    <div className="p
-    lanets-container">
+    <div className="planets-container">
 
     </div>
   )
 }
 
-export default Planets
+export default PlanetsContainer

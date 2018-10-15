@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Card/Card'
 import './Favorites.css'
 
-const Favorites = () => {
+const FavoritesContainer = () => {
   return(
     <div className="favorites-container">
 
@@ -10,4 +10,4 @@ const Favorites = () => {
   )
 }
 
-export default Favorites
+export default FavoritesContainer

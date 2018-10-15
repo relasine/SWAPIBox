@@ -2,8 +2,7 @@ import React from 'react'
 import Card from '../Card/Card'
 import './Vehicles.css'
 
-
-const Vehicles = () => {
+const VehiclesContainer = () => {
   return(
     <div className="vehicles-container">
 
@@ -11,4 +10,4 @@ const Vehicles = () => {
   )
 }
 
-export default Vehicles
+export default VehiclesContainer

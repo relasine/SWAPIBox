@@ -3,6 +3,10 @@ import './App.css';
 import Crawl from '../Crawl/Crawl';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
+import PeopleContainer from '../People/PeopleContainer';
+import PlanetsContainer from '../Planets/PlanetsContainer';
+import VehiclesContainer from '../Vehicles/VehiclesContainer';
+import FavoritesContainer from '../Favorites/FavoritesContainer';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls';
 import Vehicles from '../../helpers/Vehicles';
@@ -255,32 +259,32 @@ class App extends Component {
           )} />
 
           <Route exact path='/people' render={() => (
-            <People 
-              data={this.state.people} 
+            <PeopleContainer 
+              people={this.state.people} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />
           )} />
 
           <Route exact path='/planets' render={() => (
-            <Planets 
-              data={this.state.planets} 
+            <PlanetsContainer 
+              planets={this.state.planets} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />
           )} />
 
           <Route exact path='/vehicles' render={() => (
-            <Vehicles 
-              data={this.state.vehicles} 
+            <VehiclesContainer 
+              vehicles={this.state.vehicles} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />
           )} />
 
-          <Route exact path='/people' render={() => (
-            <Favorites 
-              data={this.state.favorites} 
+          <Route exact path='/favorites' render={() => (
+            <FavoritesContainer 
+              favorites={this.state.favorites} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />

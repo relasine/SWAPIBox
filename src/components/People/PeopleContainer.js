@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Card/Card'
 import './People.css'
 
-const People = () => {
+const PeopleContainer = () => {
   return(
     <div className="people-container">
 
@@ -10,4 +10,4 @@ const People = () => {
   )
 }
 
-export default People
+export default PeopleContainer
