@@ -10,6 +10,7 @@ import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import { Route, NavLink } from 'react-router-dom';
 import NavBar from './NavBar';
+import Error from './Error';
 
 
 class App extends Component {
@@ -299,25 +300,48 @@ export default App;
 Render() {
   return (
       <div>
-        <Route path='/' render={() => 
+        <Route path='/' render={() => (
           <NavBar currentSelection={this.state.currentSelection} handleSelection={this.handleSelection} />
-        }
+        )} />
 
         <Switch>
-          <Route path='/' component={Crawl} exact />
-          <Route path='/people render={() => {
-            <CardContainer data={this.state.people}
-          }/>
-          <Route path='/vehicles render={() => {
-            <CardContainer data={this.state.vehicles}
-          }/>
-          <Route path='/planets render={() => {
-            <CardContainer data={this.state.planets}
-          }/>
-          <Route path='/favorites render={() => {
-            <CardContainer data={this.state.favorites}
-          }/>
-          <Route path='/error component={Error} />
+          <Route exact path='/' render={() => (
+            <Crawl film={this.state.openingCrawl} />
+          )} />
+
+          <Route exact path='/people' render={() => (
+            <CardContainer 
+              data={this.state.people} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route exact path='/planets' render={() => (
+            <CardContainer 
+              data={this.state.planets} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route exact path='/vehicles' render={() => (
+            <CardContainer 
+              data={this.state.vehicles} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route exact path='/people' render={() => (
+            <CardContainer 
+              data={this.state.favorites} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+            />
+          )} />
+
+          <Route path='/error' component={Error} />
           <Route component={404} />
         </Switch>
       </div>
