@@ -246,10 +246,10 @@ class App extends Component {
       <div className='App'>
         <div className="button-section">
           <header>
-            <NavLink to='/people' className='nav-button'>People</NavLink>
-            <NavLink to='/planets' className='nav-button'>Planets</NavLink>
-            <NavLink to='/vehicles' className='nav-button'>Vehicles</NavLink>
-            <NavLink to='/favorites' className='nav-button'>Favorites</NavLink>
+            <NavLink to='/people' className='nav-button' onClick={() => { this.handleSelection('people')}}>People</NavLink>
+            <NavLink to='/planets' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
+            <NavLink to='/vehicles' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Vehicles</NavLink>
+            <NavLink to='/favorites' className='nav-button' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
           </header>
         </div>
 
@@ -259,32 +259,32 @@ class App extends Component {
           )} />
 
           <Route exact path='/people' render={() => (
-            <PeopleContainer 
-              people={this.state.people} 
+            <CardContainer 
+              data={this.state.people} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />
           )} />
 
           <Route exact path='/planets' render={() => (
-            <PlanetsContainer 
-              planets={this.state.planets} 
+            <CardContainer 
+              data={this.state.planets} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />
           )} />
 
           <Route exact path='/vehicles' render={() => (
-            <VehiclesContainer 
-              vehicles={this.state.vehicles} 
+            <CardContainer 
+              data={this.state.vehicles} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />
           )} />
 
           <Route exact path='/favorites' render={() => (
-            <FavoritesContainer 
-              favorites={this.state.favorites} 
+            <CardContainer 
+              data={this.state.favorites} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
             />

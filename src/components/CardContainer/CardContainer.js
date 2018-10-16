@@ -4,44 +4,16 @@ import './CardContainer.css'
 
 const CardContainer = (props) => {
 
-  let cards;
+  console.log(props.data)
 
-  if (props.selection === 'people') {
-    cards = props.people.map( person => {
-      return  <Card 
-                data={person} 
-                key={person.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    });
-  } else if (props.selection === 'vehicles') {
-    cards = props.vehicles.map( vehicle => {
-      return  <Card 
-                data={vehicle} 
-                key={vehicle.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    })
-  } else if (props.selection === 'planets') {
-    cards = props.planets.map( planet => {
-      return  <Card 
-                data={planet} 
-                key={planet.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    });
-  } else if (props.selection === 'favorites') {
-    cards = props.favorites.map( favorite => {
-      return  <Card 
-                data={favorite} 
-                key={favorite.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    });
-  }
+  const cards = props.data.map( point => {
+    return  <Card 
+      data={point} 
+      key={point.name} 
+      toggleFavorite={props.toggleFavorite} 
+    />;
+  }) 
 
-  
-  
   return (
     <div className="card-container">
       {cards}
