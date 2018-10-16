@@ -7,33 +7,28 @@ import './CardContainer.css'
 
 const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
 
-  console.log(data)
-  console.log(loading)
+  const cards = data.map( point => {
+    return  <Card 
+      data={point} 
+      key={point.name} 
+      toggleFavorite={toggleFavorite} 
+    />;
+  }) 
 
-    const cards = data.map( point => {
-      return  <Card 
-        data={point} 
-        key={point.name} 
-        toggleFavorite={toggleFavorite} 
-      />;
-    }) 
+  let display;
 
-      let display;
+  if (loading) {
+    display = <Loading />
+  } else if (error){
+    display = <ErrorPage />
+  } else {
+    display = cards}
 
-      if (loading) {
-        display = <Loading />
-      } else if (error){
-        display = <ErrorPage />
-      } else {display = cards}
-
-    return (
-      <div className="card-container">
-      
-        {display}
-      </div>
-    );
-  // }
-
+  return (
+    <div className="card-container">
+      {display}
+    </div>
+  );
 }
 
 export default CardContainer;
