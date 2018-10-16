@@ -21,13 +21,14 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
       let display;
 
       if (loading) {
-        display = <Route path='/loading' component={Loading} />
+        display = <Loading />
       } else if (error){
-        display = <Route path='/error' component={ErrorPage} />
+        display = <ErrorPage />
       } else {display = cards}
 
     return (
       <div className="card-container">
+      
         {display}
       </div>
     );
