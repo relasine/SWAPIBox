@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../Card/Card'
-import { Route } from 'react-router-dom';
 import ErrorPage from '../Error/ErrorPage';
 import Loading from '../Loading/Loading';
 import './CardContainer.css'
