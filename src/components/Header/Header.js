@@ -17,7 +17,7 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-  totalFavorites: PropTypes.number.isRequired
+  // totalFavorites: PropTypes.number.isRequired
 };
 
 export default Header;

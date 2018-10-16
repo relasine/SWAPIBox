@@ -3,18 +3,12 @@ import './App.css';
 import Crawl from '../Crawl/Crawl';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
-import PeopleContainer from '../People/PeopleContainer';
-import PlanetsContainer from '../Planets/PlanetsContainer';
-import VehiclesContainer from '../Vehicles/VehiclesContainer';
-import FavoritesContainer from '../Favorites/FavoritesContainer';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls';
 import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
-import ErrorPage from '../Error/ErrorPage';
 
 
 class App extends Component {
@@ -246,7 +240,9 @@ class App extends Component {
       <div className='App'>
         <div className="button-section">
           <header>
-            <NavLink to='/people' className='nav-button' onClick={() => { this.handleSelection('people')}}>People</NavLink>
+            <Route path='/' component={Header} />
+            <NavLink 
+              to='/people' className='nav-button' onClick={() => { this.handleSelection('people')}}>People</NavLink>
             <NavLink to='/planets' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
             <NavLink to='/vehicles' className='nav-button' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
             <NavLink to='/favorites' className='nav-button' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
@@ -263,6 +259,8 @@ class App extends Component {
               data={this.state.people} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading}
             />
           )} />
 
@@ -271,6 +269,8 @@ class App extends Component {
               data={this.state.planets} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading}
             />
           )} />
 
@@ -279,6 +279,8 @@ class App extends Component {
               data={this.state.vehicles} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading}
             />
           )} />
 
@@ -287,9 +289,11 @@ class App extends Component {
               data={this.state.favorites} 
               selection={this.state.currentSelection}
               toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading} 
             />
           )} />
-          <Route path='/error' component={Error} />
+          
         </Switch>
       </div>
     )
@@ -300,63 +304,3 @@ class App extends Component {
 export default App;
 
 
-
-
-
-/*  
-render() {
-    if( this.state.error ){
-      return(
-        <div className="App">Error</div>
-      )
-    } else if (this.state.loading) { 
-      return(
-        <div className="App">Loading</div>
-      )
-    } else {
-      return (
-        <div className="App">
-          <Route path='/' render={() => <Crawl film={this.state.openingCrawl} />}    
-          <main>
-            <Header totalFavorites={this.state.favorites.length} />
-            <section className="content-wrapper">
-              <section className='button-section'>
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='people' 
-                />
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='planets' 
-                />              
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='vehicles' 
-                />
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='favorites' 
-                />
-              </section>
-              <section className='main-content'>
-                <h1 className='category'>{this.state.currentSelection}</h1>
-                <CardContainer 
-                  people={this.state.people}
-                  planets={this.state.planets}
-                  vehicles={this.state.vehicles}
-                  selection={this.state.currentSelection}
-                  toggleFavorite={this.toggleFavorite}
-                  favorites={this.state.favorites}
-                />
-              </section>
-            </section>
-          </main>
-        </div>
-      );
-    }
-  }
-  */
