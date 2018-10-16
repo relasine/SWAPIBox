@@ -1,0 +1,76 @@
+
+
+.wrapper {
+  position: relative;
+}
+
+.dot, 
+.dot-two {
+  position: absolute;
+  top: -4.5px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ADD8E6;
+  box-shadow: 0 0 10px .1px #ADD8E6;  
+}
+
+.dot-two {
+  top: 77px;
+}
+
+.loading-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  
+  border: 1px solid #ADD8E6;
+  border-radius: 50%;
+  box-shadow: 0 0 10px .1px #ADD8E6;  
+  
+  animation-name: loader;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.icon {
+  top: 12px;
+  left: 14px;
+  position: absolute;
+  color: #ADD8E6;
+  font-size: 55px;
+  animation-name: icon;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  text-align: center;
+  line-height: 1;
+}
+
+@keyframes icon {
+  0%,
+  5%,
+  95%,
+  100% {
+    opacity: 0;
+  }
+  45%,
+  55% {
+    opacity: 1;
+/*     box-shadow: 0 3px 7px 0 #ADD8E6;   */
+  }
+}

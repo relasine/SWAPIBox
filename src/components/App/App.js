@@ -4,10 +4,12 @@ import Crawl from '../Crawl/Crawl';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
-import fetchCall from '../../helpers/fetchCalls'
-import Vehicles from '../../helpers/Vehicles'
-import Planets from '../../helpers/Planets'
-import People from '../../helpers/People'
+import fetchCall from '../../helpers/fetchCalls';
+import Vehicles from '../../helpers/Vehicles';
+import Planets from '../../helpers/Planets';
+import People from '../../helpers/People';
+import { Route, Switch, NavLink } from 'react-router-dom';
+
 
 class App extends Component {
   constructor() {
@@ -234,60 +236,71 @@ class App extends Component {
   }
 
   render() {
-    if( this.state.error ){
-      return(
-        <div className="App">Error</div>
-      )
-    } else if (this.state.loading) { 
-      return(
-        <div className="App">Loading</div>
-      )
-    } else {
-      return (
-        <div className="App">
-          <Crawl film={this.state.openingCrawl}/>
-          <main>
-            <Header totalFavorites={this.state.favorites.length} />
-            <section className="content-wrapper">
-              <section className='button-section'>
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='people' 
-                />
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='planets' 
-                />              
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='vehicles' 
-                />
-                <Button 
-                  currentSelection={this.state.currentSelection}
-                  handleSelection={this.handleSelection} 
-                  buttonName='favorites' 
-                />
-              </section>
-              <section className='main-content'>
-                <h1 className='category'>{this.state.currentSelection}</h1>
-                <CardContainer 
-                  people={this.state.people}
-                  planets={this.state.planets}
-                  vehicles={this.state.vehicles}
-                  selection={this.state.currentSelection}
-                  toggleFavorite={this.toggleFavorite}
-                  favorites={this.state.favorites}
-                />
-              </section>
-            </section>
-          </main>
+    return (
+      <div className='App'>
+        <div className="button-section">
+          <header>
+            <Route path='/' component={Header} />
+            <NavLink 
+              to='/people' className='nav-button' onClick={() => { this.handleSelection('people')}}>People</NavLink>
+            <NavLink to='/planets' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
+            <NavLink to='/vehicles' className='nav-button' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
+            <NavLink to='/favorites' className='nav-button' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
+          </header>
         </div>
-      );
-    }
+
+        <Switch>
+          <Route exact path='/' render={() => (
+            <Crawl film={this.state.openingCrawl} />
+          )} />
+
+          <Route exact path='/people' render={() => (
+            <CardContainer 
+              data={this.state.people} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading}
+            />
+          )} />
+
+          <Route exact path='/planets' render={() => (
+            <CardContainer 
+              data={this.state.planets} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading}
+            />
+          )} />
+
+          <Route exact path='/vehicles' render={() => (
+            <CardContainer 
+              data={this.state.vehicles} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading}
+            />
+          )} />
+
+          <Route exact path='/favorites' render={() => (
+            <CardContainer 
+              data={this.state.favorites} 
+              selection={this.state.currentSelection}
+              toggleFavorite={this.toggleFavorite}
+              error={this.state.error}
+              loading={this.state.loading} 
+            />
+          )} />
+        
+        </Switch>
+      </div>
+    )
+          // <Route component={404} />
   }
 }
 
 export default App;
+
+

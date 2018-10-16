@@ -6,36 +6,39 @@ const Card = ( {data, toggleFavorite} ) => {
   let favoriteClass;
 
   if (data.favorite) {
-    favoriteClass = 'favorite-toggle favorited'
+    favoriteClass = 'favorited'
   } else {
-    favoriteClass = 'favorite-toggle'
+    favoriteClass = ''
   }
 
   const stats = data.info.map((point) => {
     return <p key={Object.keys(point)[0]}>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
   })
 
-  return (
-    <article className="card">
-      <section className="front">
-        <img className='portrait' src={Images[data.name]} alt={data.name} />
-      </section>
-      <section className="back">
-        <div className='card-header'>
-          <h2>{data.name}</h2>
-          <div 
-            className={favoriteClass} 
-            onClick={() => { 
-              toggleFavorite(data) 
-            }}
-          > </div>
-        </div>
-        <div className="card-stats">
-          {stats}
-        </div>
-      </section>
+  return(
+    <article className='card-wrapper'>
+      <article className='figure'>
+        <img
+          className='card-image' 
+          src={Images[data.name]}
+          alt={data.name}
+        />
+        <section className='caption'>
+          <div className='card-header'>
+            <h2 className='card-title'>{data.name}</h2>
+            <div className='favorite-icon'></div>
+          </div>
+          <div className='card-content'>
+            {stats}
+            <div className='icon-wrapper'>
+              <i className={`fab fa-jedi-order icon ${favoriteClass}`}></i>
+            </div>
+          </div>
+        </section>
+      </article>
     </article>
-  );
+  )
 }
+
 
 export default Card;

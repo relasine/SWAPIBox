@@ -1,50 +1,31 @@
 import React from 'react';
 import Card from '../Card/Card'
+import ErrorPage from '../Error/ErrorPage';
+import Loading from '../Loading/Loading';
 import './CardContainer.css'
 
-const CardContainer = (props) => {
+const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
 
-  let cards;
+  const cards = data.map( point => {
+    return  <Card 
+      data={point} 
+      key={point.name} 
+      toggleFavorite={toggleFavorite} 
+    />;
+  }) 
 
-  if (props.selection === 'people') {
-    cards = props.people.map( person => {
-      return  <Card 
-                data={person} 
-                key={person.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    });
-  } else if (props.selection === 'vehicles') {
-    cards = props.vehicles.map( vehicle => {
-      return  <Card 
-                data={vehicle} 
-                key={vehicle.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    })
-  } else if (props.selection === 'planets') {
-    cards = props.planets.map( planet => {
-      return  <Card 
-                data={planet} 
-                key={planet.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    });
-  } else if (props.selection === 'favorites') {
-    cards = props.favorites.map( favorite => {
-      return  <Card 
-                data={favorite} 
-                key={favorite.name} 
-                toggleFavorite={props.toggleFavorite} 
-              />
-    });
-  }
+  let display;
 
-  
-  
+  if (loading) {
+    display = <Loading />
+  } else if (error){
+    display = <ErrorPage />
+  } else {
+    display = cards}
+
   return (
     <div className="card-container">
-      {cards}
+      {display}
     </div>
   );
 }
