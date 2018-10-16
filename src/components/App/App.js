@@ -248,7 +248,7 @@ class App extends Component {
           <header>
             <NavLink to='/people' className='nav-button' onClick={() => { this.handleSelection('people')}}>People</NavLink>
             <NavLink to='/planets' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
-            <NavLink to='/vehicles' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Vehicles</NavLink>
+            <NavLink to='/vehicles' className='nav-button' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
             <NavLink to='/favorites' className='nav-button' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
           </header>
         </div>
