@@ -30,8 +30,8 @@ const Card = ( {data, toggleFavorite} ) => {
           </div>
           <div className='card-content'>
             {stats}
-            <div className='icon-wrapper'>
-              <i className={`fab fa-jedi-order icon ${favoriteClass}`}></i>
+            <div className='icon-wrapper' onClick={()=>{toggleFavorite(data)}}>
+              <i className={`fab fa-jedi-order favorite-icon ${favoriteClass}`}></i>
             </div>
           </div>
         </section>
@@ -39,6 +39,5 @@ const Card = ( {data, toggleFavorite} ) => {
     </article>
   )
 }
-
 
 export default Card;

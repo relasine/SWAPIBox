@@ -3,5 +3,44 @@
 exports[`CardContainer should match snapshot 1`] = `
 <div
   className="card-container"
-/>
+>
+  <Card
+    data={
+      Object {
+        "info": Array [
+          Object {
+            "homeworld": "Earch",
+          },
+          Object {
+            "language": "English",
+          },
+          Object {
+            "species": "Human",
+          },
+          Object {
+            "population": "billions",
+          },
+        ],
+        "name": "Luke",
+      }
+    }
+    key="Luke"
+  />
+</div>
+`;
+
+exports[`CardContainer should render Error if error is true 1`] = `
+<div
+  className="card-container"
+>
+  <ErrorPage />
+</div>
+`;
+
+exports[`CardContainer should render Loading if loading is true 1`] = `
+<div
+  className="card-container"
+>
+  <Loading />
+</div>
 `;
