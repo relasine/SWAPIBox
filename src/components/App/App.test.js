@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from './App';
 import fetchCall from '../../helpers/fetchCalls'
 import Vehicles from '../../helpers/Vehicles'
@@ -440,6 +440,31 @@ describe('App', () => {
       expect(wrapper.state().planets).toEqual([{test: 'test'}])
     }) 
   })
+
+  // describe('BrowserRouter', () => {
+  //   it('should render CardContainer with people', () => {
+  //     wrapper = mount(<App />)
+  //     wrapper.find('.people').simulate('click')
+
+
+  //     expect(wrapper).toMatchSnapshot()    
+  //   })
+  //   it('should render CardContainer with planets', () => {
+  //     wrapper.find('.planets').simulate('click')
+
+  //     expect(wrapper).toMatchSnapshot()    
+  //   })
+  //   it('should render CardContainer with vehicles', () => {
+  //     wrapper.find('.vehicles').simulate('click')
+
+  //     expect(wrapper).toMatchSnapshot()    
+  //   })
+  //   it('should render CardContainer with favorites', () => {
+  //     wrapper.find('.favorites').simulate('click')
+
+  //     expect(wrapper).toMatchSnapshot()    
+  //   })
+  // })
 
 
 })

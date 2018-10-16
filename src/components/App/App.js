@@ -242,10 +242,10 @@ class App extends Component {
           <header>
             <Route path='/' component={Header} />
             <NavLink 
-              to='/people' className='nav-button' onClick={() => { this.handleSelection('people')}}>People</NavLink>
-            <NavLink to='/planets' className='nav-button' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
-            <NavLink to='/vehicles' className='nav-button' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
-            <NavLink to='/favorites' className='nav-button' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
+              to='/people' className='nav-button people' onClick={() => { this.handleSelection('people')}}>People</NavLink>
+            <NavLink to='/planets' className='nav-button planets' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
+            <NavLink to='/vehicles' className='nav-button vehicles' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
+            <NavLink to='/favorites' className='nav-button favorites' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
           </header>
         </div>
 

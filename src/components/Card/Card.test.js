@@ -36,7 +36,7 @@ describe('Card', () => {
   })
 
   it('should call toggleFavorite on click', () => {
-    wrapper.find('.favorite-toggle').simulate('click');
+    wrapper.find('.icon-wrapper').simulate('click');
 
     expect(mockToggleFavorite).toHaveBeenCalled();
   })
@@ -44,14 +44,13 @@ describe('Card', () => {
   it('should set favoriteClass to favorited if the passed down prop is true', () => {
     mockData.favorite = true;
     wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
-
-    expect(wrapper.props().children[1].props.children[0].props.children[1].props.className).toEqual('favorite-toggle favorited')
+    expect(wrapper.props().children.props.children[1].props.children[1].props.children[1].props.children.props.className).toEqual('fab fa-jedi-order favorite-icon favorited')
   })
 
   it('should not set favoriteClass to favorited if the passed down prop is false', () => {
     mockData.favorite = false;
     wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
 
-    expect(wrapper.props().children[1].props.children[0].props.children[1].props.className).toEqual('favorite-toggle')
+    expect(wrapper.props().children.props.children[1].props.children[1].props.children[1].props.children.props.className).toEqual('fab fa-jedi-order favorite-icon ')
   })
 })

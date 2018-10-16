@@ -90,7 +90,7 @@
   font-size: 16px;
 }
 
-.icon {
+.favorite-icon {
   color: #ADD8E6;
   font-size: 30px;
 }
@@ -105,7 +105,7 @@
   cursor: pointer;
 }
 
-.icon-wrapper:hover .icon {
+.icon-wrapper:hover .favorite-icon {
   color: #fff;
 }
 

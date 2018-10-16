@@ -2,72 +2,79 @@
 
 exports[`Card should match snapshot 1`] = `
 <article
-  className="card"
+  className="card-wrapper"
 >
-  <section
-    className="front"
+  <article
+    className="figure"
   >
     <img
       alt="Luke"
-      className="portrait"
+      className="card-image"
     />
-  </section>
-  <section
-    className="back"
-  >
-    <div
-      className="card-header"
+    <section
+      className="caption"
     >
-      <h2>
-        Luke
-      </h2>
       <div
-        className="favorite-toggle"
-        onClick={[Function]}
+        className="card-header"
       >
-         
+        <h2
+          className="card-title"
+        >
+          Luke
+        </h2>
+        <div
+          className="favorite-icon"
+        />
       </div>
-    </div>
-    <div
-      className="card-stats"
-    >
-      <p
-        key="homeworld"
+      <div
+        className="card-content"
       >
-        homeworld
-        : 
-        <span>
-          Earch
-        </span>
-      </p>
-      <p
-        key="language"
-      >
-        language
-        : 
-        <span>
-          English
-        </span>
-      </p>
-      <p
-        key="species"
-      >
-        species
-        : 
-        <span>
-          Human
-        </span>
-      </p>
-      <p
-        key="population"
-      >
-        population
-        : 
-        <span>
-          billions
-        </span>
-      </p>
-    </div>
-  </section>
+        <p
+          key="homeworld"
+        >
+          homeworld
+          : 
+          <span>
+            Earch
+          </span>
+        </p>
+        <p
+          key="language"
+        >
+          language
+          : 
+          <span>
+            English
+          </span>
+        </p>
+        <p
+          key="species"
+        >
+          species
+          : 
+          <span>
+            Human
+          </span>
+        </p>
+        <p
+          key="population"
+        >
+          population
+          : 
+          <span>
+            billions
+          </span>
+        </p>
+        <div
+          className="icon-wrapper"
+          onClick={[Function]}
+        >
+          <i
+            className="fab fa-jedi-order favorite-icon "
+          />
+        </div>
+      </div>
+    </section>
+  </article>
 </article>
 `;

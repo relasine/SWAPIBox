@@ -21,36 +21,9 @@ describe('CardContainer', () => {
         {population: 'billions'}
       ]
     }]
-    mockPlanets = [{
-      name: "Earth",
-      info: [
-        {terrain: 'mountains'},
-        {population: 'billions'},
-        {climate: 'warm'},
-        {residents: 'Bob, Sally, and Steve'}
-      ]
-    }]
-    mockVehicles = [{
-      name: 'car',
-      info: [
-        {model: 'toyota'},
-        {class: 'hybrid'},
-        {passengers: '2'}
-      ]
-    }]
-    mockFavorites = [{
-      name: 'hot dogs',
-      info: [
-        {model: 'vienna'},
-        {class: 'world'},
-        {taste: 'delicious'}
-      ]
-    }]
+
     wrapper = shallow(<CardContainer 
-                        people={mockPeople}
-                        planets={mockPlanets}
-                        vehicles={mockVehicles}
-                        favorites={mockFavorites}
+                        data={mockPeople}
                         selection={mockSelection} />)
   })
 
@@ -65,44 +38,50 @@ describe('CardContainer', () => {
   it('should render all the people cards', () => {
     mockSelection = 'people'
     wrapper = shallow(<CardContainer 
-                        people={mockPeople}
-                        planets={mockPlanets}
-                        vehicles={mockVehicles}
-                        favorites={mockFavorites}
-                        selection={mockSelection} />)
+                        data={mockPeople}
+                      />)
     expect(wrapper.find(Card).length).toEqual(1);
   })
 
   it('should render all the planet cards', () => { 
     mockSelection = 'planets'
     wrapper = shallow(<CardContainer 
-                        people={mockPeople}
-                        planets={mockPlanets}
-                        vehicles={mockVehicles}
-                        favorites={mockFavorites}
-                        selection={mockSelection} />)
+                        data={mockPeople}
+                      />)
     expect(wrapper.find(Card).length).toEqual(1);
   })
 
   it('should render all the vehicle cards', () => {
     mockSelection = 'vehicles'
     wrapper = shallow(<CardContainer 
-                        people={mockPeople}
-                        planets={mockPlanets}
-                        favorites={mockFavorites}
-                        vehicles={mockVehicles}
-                        selection={mockSelection} />)
+                        data={mockPeople}
+                      />)
     expect(wrapper.find(Card).length).toEqual(1);
   })
 
   it('should render all the favorite cards', () => {
     mockSelection = 'favorites'
     wrapper = shallow(<CardContainer 
-                        people={mockPeople}
-                        planets={mockPlanets}
-                        vehicles={mockVehicles}
-                        favorites={mockFavorites}
-                        selection={mockSelection} />)
+                        data={mockPeople}
+                      />)
     expect(wrapper.find(Card).length).toEqual(1);
   });
+  it('should render Loading if loading is true', () => {
+    let mockLoading = true
+
+    wrapper = shallow(<CardContainer
+                        data={mockPeople}
+                        loading={mockLoading}
+                      />)
+    expect(wrapper).toMatchSnapshot()
+  })
+    it('should render Error if error is true', () => {
+    let mockError = true
+
+    wrapper = shallow(<CardContainer
+                        data={mockPeople}
+                        error={mockError}
+                      />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })
