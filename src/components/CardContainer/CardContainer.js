@@ -8,16 +8,8 @@ import './CardContainer.css'
 const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
 
   console.log(data)
+  console.log(loading)
 
-  if(loading){
-    return(
-      <Route path='/loading' component={Loading} />
-    )
-  } else if(error){
-    return(
-      <Route path='/error' component={ErrorPage} />
-    )
-  } else {
     const cards = data.map( point => {
       return  <Card 
         data={point} 
@@ -26,12 +18,20 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
       />;
     }) 
 
+      let display;
+
+      if (loading) {
+        display = <Route path='/loading' component={Loading} />
+      } else if (error){
+        display = <Route path='/error' component={ErrorPage} />
+      } else {display = cards}
+
     return (
       <div className="card-container">
-        {cards}
+        {display}
       </div>
     );
-  }
+  // }
 
 }
 
