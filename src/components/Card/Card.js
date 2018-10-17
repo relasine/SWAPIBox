@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './Card.css';
 import Images from '../../images.js'
 
@@ -38,6 +39,12 @@ const Card = ( {data, toggleFavorite} ) => {
       </article>
     </article>
   )
+}
+
+Card.propTypes = {
+  data: PropTypes.object.isRequired,
+  key: PropTypes.string.isRequired,
+  toggleFavorite: PropTypes.func.isRequired
 }
 
 export default Card;
