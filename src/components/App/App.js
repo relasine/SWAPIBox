@@ -50,10 +50,30 @@ class App extends Component {
   }
 
   setReady = () => {
-    this.setState({
-      ready: true,
-      login: ''
-    })
+    if (window.location.pathname === '/people') {
+      this.setState({
+        ready: true,
+        login: '',
+        currentSelection: 'people'
+      })
+    } else if (window.location.pathname === '/planets') {
+      this.setState({
+        ready: true,
+        login: '',
+        currentSelection: 'planets'
+      })
+    } else if (window.location.pathname === '/vehicles') {
+      this.setState({
+        ready: true,
+        login: '',
+        currentSelection: 'vehicles'
+      })
+    } else {
+      this.setState({
+        ready: true,
+        login: ''
+      })
+    }
   }
 
   loginWarning = () => {
