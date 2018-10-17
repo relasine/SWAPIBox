@@ -1,9 +1,11 @@
 import React from 'react';
 
+import './ErrorPage.css';
+
 const ErrorPage = () => {
   return(
     <div className="error">
-      <h3>Error</h3>
+      <h1 class="error">Connection lost...</h1>
     </div>
   )
 }
