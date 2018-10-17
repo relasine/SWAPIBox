@@ -1,27 +1,27 @@
 .card-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 1200px;
-  margin: auto;
+  width: 1000px;
+  margin: 2rem auto;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   .card-container {
     grid-template-columns: 1fr 1fr 1fr;
-    width: 900px;
+    width: 750px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 750px) {
   .card-container {
     grid-template-columns: 1fr 1fr;
-    width: 600px;
+    width: 500px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .card-container {
     grid-template-columns: 1fr;
-    width: 300px;
+    width: 250px;
   }
 }
