@@ -16,6 +16,7 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
   }) 
 
   let display;
+  let centerpiece;
 
   if (error) {
     display = <ErrorPage />
@@ -23,12 +24,13 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
     display = <Loading />
   } else {
     display = cards
+    centerpiece = <CardCenterpiece selection={selection} />
   }
 
   return (
     <div className="card-container">
       {display}
-      <CardCenterpiece selection={selection} />
+      {centerpiece}
     </div>
   );
 }
