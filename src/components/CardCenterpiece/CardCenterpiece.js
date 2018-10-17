@@ -24,3 +24,7 @@ const CardCenterpiece = ({selection}) => {
 }
 
 export default CardCenterpiece
+
+CardCenterpiece.propTypes = {
+  selection: PropTypes.string.isRequired
+};
