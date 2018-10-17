@@ -1,24 +1,12 @@
 .App {
   display: grid;
-  /*grid-template-columns: 400px 1fr;*/
-  height: 100vh;
   color: #fff;
   background: #000;
 }
 
-aside {
-  background-color: #000;
-  width: 400px;
-  margin: auto;
-}
-
-.crawl-box {
-  width: 400px;
-}
-
 .button-section {
   display: flex;
-  justify-content: center;
+  height: 100px;
 }
 
 .category {
@@ -27,8 +15,21 @@ aside {
   margin-bottom: 0;
   font-size: 1.7reme}
 
-main {
+header {
+  position: relative;
+  height: 100px;
+  margin: 0;
+}
 
+.button-wrapper {
+  position: absolute;
+  top: 40px;
+  left: -400px;
+  transition: .5s;
+}
+
+.deploy-buttons {
+  left: 100px;
 }
 
 .content-wrapper {
@@ -36,4 +37,19 @@ main {
   width: 90%;
   margin: 2rem auto;
   border-radius: 10px;
+}
+
+.please-login {
+  position: absolute;
+  color: #ADD8E6;
+  left: -300px;
+  width: 275px;
+  font-size: 12px;
+  top: 28px;
+  transition: .3s;
+  font-family: Andale Mono,AndaleMono,monospace;
+}
+
+.display-login {
+  left: 105px;
 }
