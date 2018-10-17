@@ -16,12 +16,17 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
 
   let display;
 
-  if (loading) {
-    display = <Loading />
-  } else if (error){
+  if (error) {
     display = <ErrorPage />
+  } else if (loading) {
+    display = <Loading />
   } else {
-    display = cards}
+    display = cards
+  }
+
+  console.log(error)
+
+
 
   return (
     <div className="card-container">

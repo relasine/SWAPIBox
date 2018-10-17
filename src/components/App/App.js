@@ -9,6 +9,7 @@ import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import { Route, Switch, NavLink } from 'react-router-dom';
+import Hamburger from '../Hamburger/Hamburger'
 
 
 class App extends Component {
@@ -241,6 +242,7 @@ class App extends Component {
         <div className="button-section">
           <header>
             <Route path='/' component={Header} />
+            <Hamburger />
             <NavLink 
               to='/people' className='nav-button people' onClick={() => { this.handleSelection('people')}}>People</NavLink>
             <NavLink to='/planets' className='nav-button planets' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>

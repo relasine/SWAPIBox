@@ -72,6 +72,14 @@ aside {
   color: transparent;
 }
 
+.securing:hover,
+.handshake:hover,
+.welcome:hover,
+.briefing:hover,
+.crawl-text-wrapper:hover {
+  cursor: default;
+}
+
 
 
 .securing {
@@ -119,25 +127,25 @@ aside {
 .print-securing:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 3s steps(16);
+  animation: type 2s steps(16);
 }
 
 .print-handshake:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 3s steps(15);
+  animation: type 2s steps(15);
 }
 
 .print-welcome:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 3s steps(14);
+  animation: type 2s steps(14);
 }
 
 .print-briefing:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 3s steps(17); 
+  animation: type 2s steps(17); 
 }
 
 @keyframes type {
