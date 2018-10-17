@@ -1,28 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Crawl should match snapshot 1`] = `
-<aside>
+<aside
+  onClick={[Function]}
+>
   <section
-    className="crawl-container"
+    className="header-section"
   >
     <div
-      className="crawl-header"
+      className="header-logo-wrapper"
     >
-      <h1
-        className="crawl-episode"
-      >
-        EPISODE 
-      </h1>
-      <h1
-        className="crawl-title"
+      <i
+        className="fab fa-jedi-order header-logo"
       />
     </div>
-    <p
-      className="crawl-text"
-    />
-    <p
-      className="crawl-date"
-    />
   </section>
+  <main
+    className="main-landing-section  "
+  >
+    <section
+      className="landing-loading"
+    >
+      <h3>
+        Imprint thumb to connect
+      </h3>
+    </section>
+    <h3
+      className="securing "
+      data-text="Securing connection..."
+    >
+      Securing connection...
+    </h3>
+    <h3
+      className="handshake "
+      data-text="Handshake successful!"
+    >
+      Handshake successful.
+    </h3>
+    <h3
+      className="welcome "
+      data-text="Welcome, Master Jedi"
+    >
+      Welcome, Master Jedi.
+    </h3>
+    <div
+      className="thumbprint "
+      onClick={[Function]}
+    >
+      <img
+        alt="fingerprint"
+        src="./fingerprint.png"
+      />
+    </div>
+    <h2
+      className="briefing "
+      data-text="Tap to receive briefing"
+    >
+      Tap to receive briefing
+    </h2>
+  </main>
+  <main
+    className="crawl-text-wrapper "
+  >
+    <h2>
+      Situation Briefing
+    </h2>
+    <p />
+    <p
+      className="smol-text"
+    >
+      Briefing Title: 
+      <span />
+    </p>
+    <p
+      className="smol-text"
+    >
+      Galaxy Date: 
+      <span />
+    </p>
+  </main>
 </aside>
 `;

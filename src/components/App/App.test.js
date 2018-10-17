@@ -82,7 +82,7 @@ describe('App', () => {
   describe('fetchFilms', () => {
     it('should set state when fetchFilms is called', async () => {
       wrapper.state().fetchCall = jest.fn(() => {
-        return {results: [{num: '1'}, {num: '1'}], count: 2};
+        return Promise.resolve({results: [{num: '1'}, {num: '1'}], count: 2});
       });
 
       await wrapper.instance().fetchFilms();
@@ -93,7 +93,7 @@ describe('App', () => {
     it('should set localStorage when fetchFilms is called', async () => {
       const mockResponse = {results: [{num: '1'}, {num: '1'}], count: 2}
       wrapper.state().fetchCall = jest.fn(() => {
-        return mockResponse;
+        return Promise.resolve(mockResponse);
       });
 
       await wrapper.instance().fetchFilms();
@@ -255,7 +255,9 @@ describe('App', () => {
     });
 
     it('should call fetchVehicleData if no data in localStorage', () => {
-      wrapper.instance().fetchVehicleData = jest.fn();
+      wrapper.instance().fetchVehicleData = jest.fn(() => {
+        return Promise.resolve();
+      });
 
       wrapper.instance().callFetchVehicles();
 
@@ -275,7 +277,7 @@ describe('App', () => {
   describe('fetchVehicleData', () => {
     it('should set state after fetchVehicleData is called', async () => {
       const mockFetch = jest.fn(() => {
-        return [{vehicle: 'car'}, {vehicle: 'boat'}]
+        return Promist.resolve([{vehicle: 'car'}, {vehicle: 'boat'}]);
       });
       const mockVehicleClass = {fetchVehicles: mockFetch}
       wrapper.state().fetchVehicles = mockVehicleClass;
@@ -287,7 +289,7 @@ describe('App', () => {
 
     it('should put data into localStorage when fetchVehicleData is called', async () => {
       const mockFetch = jest.fn(() => { 
-        return [{test: 'test'}]
+        return Promise.resolve([{test: 'test'}]);
       });
       const mockFetchVehicles = {fetchVehicles: mockFetch}
       wrapper.state().fetchVehicles = mockFetchVehicles
@@ -299,7 +301,9 @@ describe('App', () => {
 
   describe('callFetchPeople', () => {
     it('should call fetchPeople if callFetchPeople is called', async () => {
-      const mockFetch = jest.fn();
+      const mockFetch = jest.fn(() => {
+        return Promise.resolve()
+      });
       const mockPeopleClass = {fetchPeople: mockFetch}
       wrapper.state().fetchPeople = mockPeopleClass;
 
@@ -327,7 +331,9 @@ describe('App', () => {
     });
 
     it('should call fetchPeopleData if no data in localStorage', () => {
-      wrapper.instance().fetchPeopleData = jest.fn();
+      wrapper.instance().fetchPeopleData = jest.fn(() => {
+        return Promise.resolve()
+      });
 
       wrapper.instance().callFetchPeople();
 
@@ -347,7 +353,7 @@ describe('App', () => {
   describe('fetchPeopleData', () => {
     it('should put data into localStorage when fetchPeopleData is called', async () => {
       const mockFetch = jest.fn(() => { 
-        return [{test: 'test'}]
+        return Promise.resolve([{test: 'test'}]);
       });
       const mockFetchPeople = {fetchPeople: mockFetch}
       wrapper.state().fetchPeople = mockFetchPeople
@@ -358,7 +364,7 @@ describe('App', () => {
 
     it('should set state after fetchPeopleData is called', async () => {
       const mockFetch = jest.fn(() => {
-        return [{person: 'joe'}, {person: 'sara'}]
+        return Promise.resolve([{person: 'joe'}, {person: 'sara'}]);
       });
       const mockPeopleClass = {fetchPeople: mockFetch}
       wrapper.state().fetchPeople = mockPeopleClass;
@@ -371,7 +377,9 @@ describe('App', () => {
 
   describe('callFetchPlanets', () => {
     it('should call fetchPlanetData if no data in localStorage', () => {
-      wrapper.instance().fetchPlanetData = jest.fn();
+      wrapper.instance().fetchPlanetData = jest.fn(() => {
+        return Promise.resolve();
+      });
 
       wrapper.instance().callFetchPlanets();
 
@@ -380,7 +388,9 @@ describe('App', () => {
 
     it('should call pullPlanetData if data in localStorage', () => {
       localStorage.setItem('planets', JSON.stringify([{test: 'test'}]))
-      wrapper.instance().pullPlanetData = jest.fn()
+      wrapper.instance().pullPlanetData = jest.fn(() => {
+        return Promise.resolve();
+      })
 
       wrapper.instance().callFetchPlanets();
 
@@ -390,7 +400,9 @@ describe('App', () => {
 
   describe('fetchPlanetData', () => {
     it('should call fetchPlanets if fetchPlanetData is called', async () => {
-      const mockFetch = jest.fn();
+      const mockFetch = jest.fn(() => {
+        return Promise.resolve();
+      });
       const mockPlanetsClass = {fetchPlanets: mockFetch}
       wrapper.state().fetchPlanets = mockPlanetsClass;
 
@@ -400,7 +412,7 @@ describe('App', () => {
     
     it('should set state after fetchPlanetData is called', async () => {
       const mockFetch = jest.fn(() => {
-        return [{planet: 'earth'}, {planet: 'mars'}]
+        return Promise.resolve([{planet: 'earth'}, {planet: 'mars'}]);
       });
       const mockPlanetClass = {fetchPlanets: mockFetch}
       wrapper.state().fetchPlanets = mockPlanetClass;
@@ -422,7 +434,7 @@ describe('App', () => {
 
     it('should put data into localStorage when fetchPlanetData is called', async () => {
       const mockFetch = jest.fn(() => { 
-        return [{test: 'test'}]
+        return Promise.resolve([{test: 'test'}]);
       });
       const mockFetchPlanets = {fetchPlanets: mockFetch}
       wrapper.state().fetchPlanets = mockFetchPlanets

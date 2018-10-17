@@ -5,7 +5,10 @@ exports[`Button should match snapshot 1`] = `
   className="nav-button button-selected"
   onClick={[Function]}
 >
-  <h3>
+  <h3
+    className="nav-button-text"
+    data-text="people"
+  >
     people
   </h3>
 </div>

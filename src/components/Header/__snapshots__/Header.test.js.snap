@@ -2,9 +2,6 @@
 
 exports[`Header should match snapshot 1`] = `
 <header>
-  <h1>
-    SWAPI BOX
-  </h1>
   <div
     className="favorites"
   >
