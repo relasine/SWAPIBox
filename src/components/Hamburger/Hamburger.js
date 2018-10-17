@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import PropTypes from 'prop-types';
 import './Hamburger.css';
 
 class Hamburger extends Component {
@@ -17,7 +17,6 @@ class Hamburger extends Component {
       login: 'hide-login'
     }
   }
-
 
   handleHamburger = () => {
     if (this.state.topToggled === '' && this.props.ready) {
@@ -73,6 +72,12 @@ class Hamburger extends Component {
       </section>
     )
   }
+}
+
+Hamburger.propTypes = {
+  hamburgerChange: PropTypes.func.isRequired,
+  loginWarning: PropTYpes.func.isRequired,
+  ready: PropTypes.bool.isRequired
 }
 
 export default Hamburger

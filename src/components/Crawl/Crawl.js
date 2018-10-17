@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './Crawl.css';
 import PropTypes from 'prop-types';
 
-
 class Crawl extends Component {
   constructor() {
     super()
@@ -55,7 +54,6 @@ class Crawl extends Component {
       ready: true
     })
   }
-
 
   render() {
     return (
@@ -111,9 +109,9 @@ class Crawl extends Component {
   }
 }
   
-
 Crawl.propTypes = {
-  film: PropTypes.object.isRequired
+  film: PropTypes.object.isRequired,
+  setReady: PropTypes.bool.isRequired
 };
 
 export default Crawl;
