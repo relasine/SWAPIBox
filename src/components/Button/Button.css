@@ -25,23 +25,7 @@
   /*text-shadow: 1px 1px 1px #fff;*/
 }
 
-.nav-button:before {
-  background-color: #7bfe86;
-  box-shadow: 3px 3px 3px #fff;
-  content: '';
-  top: -80px;
-  right: 140%;
-  height: 550%;
-  width: 12%;
-  transform: skewX(-30deg);
-  position: absolute;
-  transition: .6s;
-}
 
-.nav-button:hover:before {
-  right: 100%;
-  transform: rotate(-180deg)
-}
 
 .button-selected {
   background: #fff;
