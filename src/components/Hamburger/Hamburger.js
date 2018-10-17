@@ -76,7 +76,7 @@ class Hamburger extends Component {
 
 Hamburger.propTypes = {
   hamburgerChange: PropTypes.func.isRequired,
-  loginWarning: PropTYpes.func.isRequired,
+  loginWarning: PropTypes.func.isRequired,
   ready: PropTypes.bool.isRequired
 }
 
