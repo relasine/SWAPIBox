@@ -1,8 +1,9 @@
 import React from 'react';
-import Card from '../Card/Card'
+import Card from '../Card/Card';
+import CardCenterpiece from '../CardCenterpiece/CardCenterpiece';
 import ErrorPage from '../Error/ErrorPage';
 import Loading from '../Loading/Loading';
-import './CardContainer.css'
+import './CardContainer.css';
 
 const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
 
@@ -24,13 +25,10 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
     display = cards
   }
 
-  console.log(error)
-
-
-
   return (
     <div className="card-container">
       {display}
+      <CardCenterpiece selection={selection} />
     </div>
   );
 }
