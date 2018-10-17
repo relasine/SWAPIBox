@@ -1,6 +1,6 @@
 .App {
   display: grid;
-  grid-template-columns: 400px 1fr;
+  /*grid-template-columns: 400px 1fr;*/
   height: 100vh;
   color: #fff;
   background: #000;
@@ -9,6 +9,7 @@
 aside {
   background-color: #000;
   width: 400px;
+  margin: auto;
 }
 
 .crawl-box {
@@ -27,10 +28,7 @@ aside {
   font-size: 1.7reme}
 
 main {
-  background: url('./images/13_Luke_Skywalker.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+
 }
 
 .content-wrapper {

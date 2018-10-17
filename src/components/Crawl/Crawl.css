@@ -1,38 +1,184 @@
 aside {
-  overflow: hidden;
-  display: flex;
-  height: 100vh;
-  perspective: 400px;
-  color: #feda4a;
-  font-family: 'Pathway Gothic One', sans-serif;
-  font-size: 300%;
-  font-weight: 600;
-  letter-spacing: 6px;
-  line-height: 150%;
-  text-align: center;
+  margin: auto;
 }
 
-.crawl-title {
+.header-logo-wrapper {
+  width: 70px;
+  margin: 2rem auto 0;
+}
+
+.header-logo {
+  color: #ADD8E6;
+  font-size: 80px;
+}
+
+.landing-loading h3 {
+  font-family: Andale Mono,AndaleMono,monospace;
+  color: #ADD8E6;
+  text-align: center;
+  letter-spacing: 5px;
   text-transform: uppercase;
 }
 
-.crawl-container {
-  position: relative;
-  top: -100px;
-  transform-origin: 50% 100%;
-
-  animation: crawl-container 100s linear;
+.thumbprint {
+  height: 65px;
+  width: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border: #ADD8E6 1px solid;
+  margin: 2rem auto 0;
+  transition: 1s;
 }
 
-@keyframes crawl-container {
+.thumbprint img {
+  padding-top: 5px;
+  opacity: 0;
+  height: 55px;
+  width: 45px;
+  transition: 1s;
+  display: block;
+  margin: auto;
+}
+
+.thumbprint:hover {
+  cursor: pointer;
+}
+
+.thumbprint:hover img {
+  opacity: 1;
+}
+
+.active-thumbprint img {
+  opacity: 1;
+}
+
+.active-thumbprint {
+  box-shadow: 0 3px 10px #ADD8E6;
+}
+
+.securing,
+.handshake,
+.welcome,
+.briefing {
+  text-align: center;
+  margin: 0 auto;
+  font-size: .8rem;
+  position: relative;
+  font-family: Andale Mono,AndaleMono,monospace;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: transparent;
+}
+
+.securing:hover,
+.handshake:hover,
+.welcome:hover,
+.briefing:hover,
+.crawl-text-wrapper:hover {
+  cursor: default;
+}
+
+
+
+.securing {
+  width: 274px;
+} 
+
+.handshake {
+  width: 253px;
+}
+
+.welcome {
+  width: 253px;
+}
+
+.briefing {
+  margin: 2rem auto;
+  width: 290px;
+}
+
+.securing:before,
+.handshake:before,
+.welcome:before,
+.briefing:before {
+  margin: 0;
+  text-align: center;
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.briefing:before {
+  padding: .5rem  0;
+}
+
+.securing:before {
+  width: 274px;
+}
+
+.print-securing:before {
+  text-align: center;
+  color: #ADD8E6;
+  animation: type 2s steps(16);
+}
+
+.print-handshake:before {
+  text-align: center;
+  color: #ADD8E6;
+  animation: type 2s steps(15);
+}
+
+.print-welcome:before {
+  text-align: center;
+  color: #ADD8E6;
+  animation: type 2s steps(14);
+}
+
+.print-briefing:before {
+  text-align: center;
+  color: #ADD8E6;
+  animation: type 2s steps(17); 
+}
+
+@keyframes type {
   0% {
-    top: 0;
-    transform: rotateX(20deg) translateZ(0);
+    width: 0;
   }
-
+  50% {
+    width: 50%;
+  }
   100% {
-    top: -6000px;
-
-    transform: rotateX(25deg) translateZ(-2500px);
+    width: 100%;
   }
+}
+
+.crawl-text-wrapper {
+  opacity: 0;
+  color: #ADD8E6;
+  transition: .5s;
+}
+
+.show-crawl {
+  opacity: 1;
+}
+
+.hide-welcome {
+  display: none;
+}
+
+.crawl-text-wrapper h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.smol-text {
+  font-size: .5rem;
 }

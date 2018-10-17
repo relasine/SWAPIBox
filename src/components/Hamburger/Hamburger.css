@@ -1,0 +1,312 @@
+body {
+  background: #000;
+}
+
+.lightsaburger {
+  position: relative;
+  background: #000;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 10rem auto;
+  
+  animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  
+  -webkit-animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  
+  -moz-animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  
+  -o-animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.top,
+.middle,
+.bottom {
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.top {
+  transform: translate(15px, 20px);
+  -webkit-transform: translate(15px, 20px);
+}
+
+.middle {
+  transform: translate(15px, 35px);
+  -webkit-transform: translate(15px, 35px);
+}
+
+.bottom {
+  transform: translate(15px, 50px);
+  -webkit-transform: translate(15px, 50px);
+}
+
+.blade,
+.grip {
+  height: 2px;
+  background: #fff;
+}
+
+.blade {
+  width: 30px;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -o-transition: .5s;
+}
+
+.grip {
+  width: 7px;
+}
+
+.top-blade,
+.bottom-blade,
+.middle-grip {
+  margin-right: 3px;
+}
+
+.lightsaburger:hover {
+  cursor: pointer;
+}
+
+.lightsaburger:hover .grip {
+  background: #c0c0c0;
+}
+
+.lightsaburger:hover .top-blade {
+  background: #6CC4EE;
+}
+
+.lightsaburger:hover .middle-blade {
+  background: #FFD300;
+}
+
+.lightsaburger:hover .bottom-blade {
+  background: #2FF923;
+}
+
+.lightsaburger:hover .blade {
+  box-shadow: 0 0 15px #fff;
+}
+
+.top-blade-toggled {
+  box-shadow: 0 0 10px #fff;
+  background: #6CC4EE;
+}
+
+.middle-blade-toggled {
+  box-shadow: 0 0 10px #fff;
+  background: #FFD300;
+}
+
+.bottom-blade-toggled {
+  box-shadow: 0 0 10px #fff;
+  background: #2FF923;
+}
+
+.middle-toggled {
+  animation-name: mid-shift;
+  animation-duration: .8s;
+  
+  -webkit-animation-name: mid-shift;
+  -webkit-animation-duration: .8s;
+  
+  -moz-animation-name: mid-shift;
+  -moz-animation-duration: .8s;
+  
+  -o-animation-name: mid-shift;
+  -o-animation-duration: .8s;
+  
+  -moz-transform: rotate(-45.1deg);
+  -o-transform: rotate(-45.1deg);
+  
+  -webkit-transform: translate(15px, 35px) rotate(-45deg);
+  transform: translate(15px, 35px) rotate(-45deg);
+}
+
+.bottom-toggled {
+  animation-name: bottom-shift;
+  animation-duration: 1s;
+  
+  -webkit-animation-name: bottom-shift;
+  -webkit-animation-duration: 1s;
+  
+  transform: translate(15px, 35px) rotate(45deg);
+  -webkit-transform: translate(15px, 35px) rotate(45deg);
+
+}
+
+.top-toggled {
+  animation-name: top-shift;
+  -webkit-animation-name: top-shift;
+  -moz-animation-name: top-shift;
+  -o-animation-name: top-shift;
+  
+  animation-duration: 1.2s;
+  -webkit-animation-duration: 1.2s;
+  -moz-animation-duration: 1.2s;
+  -o-animation-duration: 1.2s;
+  
+  transform: translate(15px, 35px) rotate(450deg);
+  webkit-transform: translate(30px -15px) rotate(450deg);
+}
+
+.grip-toggled {
+  background: #c0c0c0;
+}
+
+@keyframes top-shift {
+  0% {
+    transform: translate(15px, 20px) rotate(0);
+  }
+
+  90% {
+    transform: translate(15px, 100px) rotate(450deg);
+  }
+  
+  100% {
+    transform: translate(15px, 35px) rotate(450deg);
+  }
+}
+
+@-webkit-keyframes top-shift {
+  0% {
+    -webkit-transform: translate(15px, 20px) rotate(0);
+  }
+
+  90% {
+    -webkit-transform: translate(15px, 100px) rotate(450deg);
+  }
+  
+  100% {
+    -webkit-transform: translate(15px, 35px) rotate(450deg);
+  }
+}
+
+@keyframes mid-shift {
+  0% {
+    
+  }
+  
+  92% {
+    transform: translate(-45px, 100px) rotate(-405deg);  
+  }
+  
+  100% {
+    transform: translate(15px, 35px) rotate(-405deg);  
+  }
+}
+
+@-webkit-keyframes mid-shift {
+  0% {
+    
+  }
+  
+  92% {
+    -webkit-transform: translate(-45px, 100px) rotate(-405deg);  
+  }
+  
+  100% {
+    -webkit-transform: translate(15px, 35px) rotate(-405deg);  
+  }
+}
+
+@keyframes bottom-shift {
+  0% {
+    transform: translate(15px, 35px) rotate(0deg);
+  }
+  
+  92% {  
+    transform: translate(95px, 100px) rotate(405deg);
+  }
+  
+  100% {
+    transform: translate(15px, 35px) rotate(405deg);
+  }
+}
+
+@-webkit-keyframes bottom-shift {
+  0% {
+    -webkit-transform: translate(15px, 35px) rotate(0deg);
+  }
+  
+  92% {  
+    -webkit-transform: translate(95px, 100px) rotate(405deg);
+  }
+  
+  100% {
+    -webkit-transform: translate(15px, 35px) rotate(405deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+  65% {
+    box-shadow: 0 0 10px 5px #ADD8E6;
+  }
+  85% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+  65% {
+    box-shadow: 0 0 10px 5px #ADD8E6;
+  }
+  85% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+  65% {
+    box-shadow: 0 0 10px 5px #ADD8E6;
+  }
+  85% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+}
+
+@-o-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+  65% {
+    box-shadow: 0 0 10px 5px #ADD8E6;
+  }
+  85% {
+    box-shadow: 0 0 0 0 #ADD8E6;
+  }
+}
+
+@media (max-width: 450px) {
+  .top-toggled,
+  .middle-toggled,
+  .bottom-toggled {
+    animation-name: none;
+  }
+}
