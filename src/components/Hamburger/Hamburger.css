@@ -1,15 +1,11 @@
-body {
-  background: #000;
-}
-
 .lightsaburger {
+  margin: 1rem;
   position: relative;
   background: #000;
   height: 70px;
   width: 70px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 10rem auto;
   
   animation-name: pulse;
   animation-duration: 3s;
@@ -169,6 +165,12 @@ body {
 
 .grip-toggled {
   background: #c0c0c0;
+}
+
+.please-login {
+  position: absolute;
+  color: #ADD8E6;
+  opacity: 1;
 }
 
 @keyframes top-shift {

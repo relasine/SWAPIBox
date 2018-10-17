@@ -1,5 +1,7 @@
 aside {
-  margin: auto;
+  background-color: #000;
+  width: 400px;
+  margin: 0 auto;
 }
 
 .header-logo-wrapper {
@@ -127,25 +129,25 @@ aside {
 .print-securing:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 2s steps(16);
+  animation: type 1s steps(16);
 }
 
 .print-handshake:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 2s steps(15);
+  animation: type 1s steps(15);
 }
 
 .print-welcome:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 2s steps(14);
+  animation: type 1s steps(14);
 }
 
 .print-briefing:before {
   text-align: center;
   color: #ADD8E6;
-  animation: type 2s steps(17); 
+  animation: type 1s steps(17); 
 }
 
 @keyframes type {
