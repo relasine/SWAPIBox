@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const Button = ({handleSelection, buttonName, currentSelection}) => {
 
   let buttonState;
+  let buttonPath = `./${buttonName}.png`;
 
   if (currentSelection === buttonName) {
     buttonState = 'button-selected'
@@ -13,6 +14,8 @@ const Button = ({handleSelection, buttonName, currentSelection}) => {
   }
 
 
+  console.log(buttonPath);
+
   return(
     <div 
       className={`nav-button ${buttonState}`}
@@ -20,7 +23,10 @@ const Button = ({handleSelection, buttonName, currentSelection}) => {
         handleSelection(buttonName)
       }}
     >
-      <h3>{buttonName}</h3>
+      <h3 
+        data-text={buttonName}
+        className='nav-button-text'>{buttonName}
+      </h3>
     </div>
   );
 }

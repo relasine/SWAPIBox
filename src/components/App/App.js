@@ -320,10 +320,45 @@ class App extends Component {
             <h4 className={`please-login ${this.state.login}`}>Please login to access the archives</h4>
             <section className={`button-wrapper ${this.state.buttons}`}>
               <NavLink 
-                to='/people' className='nav-button people' onClick={() => { this.handleSelection('people')}}>People</NavLink>
-              <NavLink to='/planets' className='nav-button planets' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
-              <NavLink to='/vehicles' className='nav-button vehicles' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
-              <NavLink to='/favorites' className='nav-button favorite' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
+                to='/people' 
+                className='nav-button people' 
+              >
+                <Button 
+                  currentSelection={this.state.currentSelection}
+                  buttonName='people'
+                  handleSelection={this.handleSelection}
+                />
+              </NavLink>
+              <NavLink 
+                to='/planets' 
+                className='nav-button planets' 
+              >
+                <Button 
+                  currentSelection={this.state.currentSelection}
+                  buttonName='planets'
+                  handleSelection={this.handleSelection}
+                />
+              </NavLink>
+              <NavLink 
+                to='/vehicles' 
+                className='nav-button vehicles' 
+              >
+                <Button 
+                  currentSelection={this.state.currentSelection}
+                  buttonName='vehicles'
+                  handleSelection={this.handleSelection}
+                />
+              </NavLink>
+              <NavLink 
+                to='/favorites' 
+                className='nav-button favorites' 
+              >
+                <Button 
+                  currentSelection={this.state.currentSelection}
+                  buttonName='favorites'
+                  handleSelection={this.handleSelection}
+                />
+              </NavLink>
             </section>
           </header>
         </div>
