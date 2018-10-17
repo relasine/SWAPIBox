@@ -19,7 +19,6 @@ class Hamburger extends Component {
 
   handleHamburger = () => {
     if (this.state.topToggled === '') {
-      console.log('poo');
       this.setState({
         topToggled: 'top-toggled',
         middleToggled: 'middle-toggled',
@@ -29,6 +28,7 @@ class Hamburger extends Component {
         bottomBladeToggled: 'bottom-blade-toggled',
         gripToggled: 'grip-toggled'
       })
+      this.props.hamburgerChange();
     } else {
       this.setState({
         topToggled: '',
@@ -38,7 +38,8 @@ class Hamburger extends Component {
         middleBladeToggled: '',
         bottomBladeToggled: '',
         gripToggled: ''
-      }) 
+      });
+      this.props.hamburgerChange()
     }
   }
 

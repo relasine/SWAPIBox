@@ -1,15 +1,11 @@
-body {
-  background: #000;
-}
-
 .lightsaburger {
+  margin: 1rem;
   position: relative;
   background: #000;
   height: 70px;
   width: 70px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 10rem auto;
   
   animation-name: pulse;
   animation-duration: 3s;

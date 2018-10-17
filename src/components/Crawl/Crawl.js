@@ -15,7 +15,7 @@ class Crawl extends Component {
       fadeWelcome: '',
       hideWelcome: '',
       showCrawl: '',
-      ready: false
+      ready: false,
     }
   }
 
@@ -31,9 +31,9 @@ class Crawl extends Component {
   handleFingerPrint = async () => {
     await this.setState({thumbprint: 'active-thumbprint'})
     await setTimeout(this.printConnect, 500);
-    await setTimeout(this.printHandshake, 4500);
-    await setTimeout(this.printWelcome, 8000);
-    await setTimeout(this.printBriefing, 11000)
+    await setTimeout(this.printHandshake, 2500);
+    await setTimeout(this.printWelcome, 5000);
+    await setTimeout(this.printBriefing, 6500)
   }
 
   printConnect = async () => {
@@ -57,7 +57,6 @@ class Crawl extends Component {
 
 
   render() {
-    console.log(this.props.film)
     return (
       <aside onClick={() => {this.checkReady()}}>
         <section className='header-section'>

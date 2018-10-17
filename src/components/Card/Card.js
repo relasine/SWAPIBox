@@ -41,3 +41,4 @@ const Card = ( {data, toggleFavorite} ) => {
 }
 
 export default Card;
+

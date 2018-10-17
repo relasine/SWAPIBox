@@ -28,12 +28,38 @@ class App extends Component {
       fetchVehicles: new Vehicles(),
       fetchPeople: new People(),
       fetchPlanets: new Planets(),
-      favorites: JSON.parse(localStorage.getItem('favorites')) || []
+      favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+      hamburger: 'closed',
+      buttons: 'hide-buttons'
     };
   }
 
   componentDidMount() {
     this.crawlCall();
+    this.checkStorage();
+  }
+
+  checkStorage = () => {
+    this.setState({
+        favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+        planets: JSON.parse(localStorage.getItem('planets')) || [],
+        vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
+        people: JSON.parse(localStorage.getItem('people')) || []
+    })
+  }
+
+  hamburgerChange = () => {
+    if (this.state.hamburger === 'closed') {
+      this.setState({
+        hamburger: 'deployed',
+        buttons: 'deploy-buttons'
+      });
+    } else {
+      this.setState({
+        hamburger: 'closed',
+        buttons: 'hide-buttons'
+      });
+    }
   }
 
   crawlCall = () => {
@@ -75,7 +101,7 @@ class App extends Component {
   }
 
   toggleFavorite = (cardData) => {
-      this.toggleFavoriteInDatabase(cardData);
+    this.toggleFavoriteInDatabase(cardData);
       
     if(this.state.favorites.find( fav => cardData.name === fav.name)){
       this.removeFavorite(cardData)
@@ -241,13 +267,14 @@ class App extends Component {
       <div className='App'>
         <div className="button-section">
           <header>
-            <Route path='/' component={Header} />
-            <Hamburger />
-            <NavLink 
-              to='/people' className='nav-button people' onClick={() => { this.handleSelection('people')}}>People</NavLink>
-            <NavLink to='/planets' className='nav-button planets' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
-            <NavLink to='/vehicles' className='nav-button vehicles' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
-            <NavLink to='/favorites' className='nav-button favorite' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
+            <Hamburger hamburgerChange={this.hamburgerChange}/>
+            <section className={`button-wrapper ${this.state.buttons}`}>
+              <NavLink 
+                to='/people' className='nav-button people' onClick={() => { this.handleSelection('people')}}>People</NavLink>
+              <NavLink to='/planets' className='nav-button planets' onClick={() => { this.handleSelection('planets')}}>Planets</NavLink>
+              <NavLink to='/vehicles' className='nav-button vehicles' onClick={() => { this.handleSelection('vehicles')}}>Vehicles</NavLink>
+              <NavLink to='/favorites' className='nav-button favorite' onClick={() => { this.handleSelection('favorites')}}>Favorites</NavLink>
+            </section>
           </header>
         </div>
 
