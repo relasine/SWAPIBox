@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import CardCenterpiece from '../CardCenterpiece/CardCenterpiece';
 import ErrorPage from '../Error/ErrorPage';
 import Loading from '../Loading/Loading';
+import PropTypes from 'prop-types';
 import './CardContainer.css';
 
 const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
@@ -34,5 +35,14 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
     </div>
   );
 }
+
+CardContainer.propTypes = {
+  data: PropTypes.array.isRequired,
+  selection:PropTypes.string.isRequired,
+  toggleFavorites:PropTypes.func.isRequired,
+  error:PropTypes.bool.isRequired,
+  loading:PropTypes.bool.isRequired
+}
+
 
 export default CardContainer;
