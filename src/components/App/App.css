@@ -38,3 +38,18 @@ header {
   margin: 2rem auto;
   border-radius: 10px;
 }
+
+.please-login {
+  position: absolute;
+  color: #ADD8E6;
+  left: -300px;
+  width: 275px;
+  font-size: 12px;
+  top: 28px;
+  transition: .3s;
+  font-family: Andale Mono,AndaleMono,monospace;
+}
+
+.display-login {
+  left: 105px;
+}

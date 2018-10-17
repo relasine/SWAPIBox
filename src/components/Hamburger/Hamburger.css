@@ -167,6 +167,12 @@
   background: #c0c0c0;
 }
 
+.please-login {
+  position: absolute;
+  color: #ADD8E6;
+  opacity: 1;
+}
+
 @keyframes top-shift {
   0% {
     transform: translate(15px, 20px) rotate(0);

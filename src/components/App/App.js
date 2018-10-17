@@ -17,6 +17,7 @@ class App extends Component {
     super()
 
     this.state = {
+      ready: false,
       currentSelection: '',
       openingCrawl: {},
       people: [],
@@ -30,13 +31,35 @@ class App extends Component {
       fetchPlanets: new Planets(),
       favorites: JSON.parse(localStorage.getItem('favorites')) || [],
       hamburger: 'closed',
-      buttons: 'hide-buttons'
+      buttons: 'hide-buttons',
+      login: ''
     };
   }
 
   componentDidMount() {
     this.crawlCall();
     this.checkStorage();
+    this.checkURL();
+  }
+
+  checkURL = () => {
+    if (window.location.pathname !== '/'
+    ) {
+      this.setReady();
+    }
+  }
+
+  setReady = () => {
+    this.setState({
+      ready: true,
+      login: ''
+    })
+  }
+
+  loginWarning = () => {
+    this.setState({
+      login: 'display-login'
+    })
   }
 
   checkStorage = () => {
@@ -52,12 +75,14 @@ class App extends Component {
     if (this.state.hamburger === 'closed') {
       this.setState({
         hamburger: 'deployed',
-        buttons: 'deploy-buttons'
+        buttons: 'deploy-buttons',
+        login: ''
       });
     } else {
       this.setState({
         hamburger: 'closed',
-        buttons: 'hide-buttons'
+        buttons: 'hide-buttons',
+        login: ''
       });
     }
   }
@@ -267,7 +292,12 @@ class App extends Component {
       <div className='App'>
         <div className="button-section">
           <header>
-            <Hamburger hamburgerChange={this.hamburgerChange}/>
+            <Hamburger 
+              hamburgerChange={this.hamburgerChange}
+              loginWarning={this.loginWarning}
+              ready={this.state.ready}
+            />
+            <h4 className={`please-login ${this.state.login}`}>Please login to access the archives</h4>
             <section className={`button-wrapper ${this.state.buttons}`}>
               <NavLink 
                 to='/people' className='nav-button people' onClick={() => { this.handleSelection('people')}}>People</NavLink>
@@ -280,7 +310,10 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/' render={() => (
-            <Crawl film={this.state.openingCrawl} />
+            <Crawl 
+              film={this.state.openingCrawl}
+              setReady={this.setReady}
+            />
           )} />
 
           <Route exact path='/people' render={() => (

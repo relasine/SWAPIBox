@@ -34,6 +34,7 @@ class Crawl extends Component {
     await setTimeout(this.printHandshake, 2500);
     await setTimeout(this.printWelcome, 5000);
     await setTimeout(this.printBriefing, 6500)
+    await setTimeout(this.props.setReady, 6500);
   }
 
   printConnect = async () => {

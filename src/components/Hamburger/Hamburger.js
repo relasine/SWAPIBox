@@ -13,12 +13,14 @@ class Hamburger extends Component {
       topBladeToggled: '',
       middleBladeToggled: '',
       bottomBladeToggled: '',
-      gripToggled: ''
+      gripToggled: '',
+      login: 'hide-login'
     }
   }
 
+
   handleHamburger = () => {
-    if (this.state.topToggled === '') {
+    if (this.state.topToggled === '' && this.props.ready) {
       this.setState({
         topToggled: 'top-toggled',
         middleToggled: 'middle-toggled',
@@ -26,10 +28,11 @@ class Hamburger extends Component {
         topBladeToggled: 'top-blade-toggled',
         middleBladeToggled: 'middle-blade-toggled',
         bottomBladeToggled: 'bottom-blade-toggled',
-        gripToggled: 'grip-toggled'
+        gripToggled: 'grip-toggled',
+        login: 'hide-login'
       })
       this.props.hamburgerChange();
-    } else {
+    } else if (this.props.ready) {
       this.setState({
         topToggled: '',
         middleToggled: '',
@@ -37,9 +40,12 @@ class Hamburger extends Component {
         topBladeToggled: '',
         middleBladeToggled: '',
         bottomBladeToggled: '',
-        gripToggled: ''
+        gripToggled: '',
+        login: 'hide-login'
       });
       this.props.hamburgerChange()
+    } else {
+      this.props.loginWarning()
     }
   }
 
@@ -63,6 +69,7 @@ class Hamburger extends Component {
          <div className={`bottom-blade blade ${this.state.bottomBladeToggled}`}></div>
          <div className={`bottom-grip grip ${this.state.gripToggled}`}></div>
         </div>
+
       </section>
     )
   }
