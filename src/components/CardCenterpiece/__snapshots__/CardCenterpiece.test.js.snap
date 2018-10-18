@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardCenterpiece should match snapshot 1`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Persons of Interest
+  </h3>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot 2`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Locations of Interest
+  </h3>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot 3`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Available Conveyance
+  </h3>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot 4`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Saved items
+  </h3>
+</div>
+`;
