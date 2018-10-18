@@ -39,7 +39,7 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
 CardContainer.propTypes = {
   data: PropTypes.array.isRequired,
   selection:PropTypes.string.isRequired,
-  toggleFavorites:PropTypes.func.isRequired,
+  toggleFavorite:PropTypes.func.isRequired,
   error:PropTypes.bool.isRequired,
   loading:PropTypes.bool.isRequired
 }
