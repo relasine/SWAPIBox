@@ -28,7 +28,8 @@ const Images = {
   "R2-D2": './r2d2.png',
   "R5-D4": './r5d4.png',
   "Biggs Darklighter": './bigg.png',
-  "Obi-Wan Kenobi": './obiwan.png'
+  "Obi-Wan Kenobi": './obiwan.png',
+  "Available Memory": ''
 }
 
 export default Images

@@ -41,7 +41,6 @@ class App extends Component {
     this.crawlCall();
     this.checkStorage();
     this.checkURL();
-
   }
 
   checkURL = () => {
@@ -386,6 +385,7 @@ class App extends Component {
               film={this.state.openingCrawl}
               setReady={this.setReady}
               error={this.state.error}
+              loading={this.state.error}
             />
           )} />
 

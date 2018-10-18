@@ -62,22 +62,7 @@ exports[`Crawl should match snapshot 1`] = `
   <main
     className="crawl-text-wrapper "
   >
-    <h2>
-      Situation Briefing
-    </h2>
-    <p />
-    <p
-      className="smol-text"
-    >
-      Briefing Title: 
-      <span />
-    </p>
-    <p
-      className="smol-text"
-    >
-      Galaxy Date: 
-      <span />
-    </p>
+    <Briefing />
   </main>
   <ErrorPage
     errorState=""
