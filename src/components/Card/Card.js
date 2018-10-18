@@ -46,7 +46,6 @@ const Card = ( {data, toggleFavorite} ) => {
 
 Card.propTypes = {
   data: PropTypes.object.isRequired,
-  key: PropTypes.string.isRequired,
   toggleFavorite: PropTypes.func.isRequired
 }
 

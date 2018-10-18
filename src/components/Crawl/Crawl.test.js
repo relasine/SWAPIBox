@@ -18,7 +18,12 @@ describe('Crawl', () => {
   }
 
   beforeEach(() => {
-    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={false} />)
+
+    let mockReady = jest.fn();
+
+    wrapper = shallow(<Crawl film={{}}
+                        setReady={mockReady}
+                        error={false}/>)
   })
 
   it('should exist', () => {

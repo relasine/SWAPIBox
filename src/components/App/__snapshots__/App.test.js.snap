@@ -13,6 +13,15 @@ exports[`App should match snapshot 1`] = `
         loginWarning={[Function]}
         ready={false}
       />
+      <section
+        className="modal-wrapper"
+      >
+        <ModalButtons
+          currentSelection=""
+          hamburger="closed"
+          handleSelection={[Function]}
+        />
+      </section>
       <h4
         className="please-login "
       >

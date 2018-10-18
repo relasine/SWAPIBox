@@ -120,7 +120,9 @@ class Crawl extends Component {
   
 Crawl.propTypes = {
   film: PropTypes.object.isRequired,
-  setReady: PropTypes.func.isRequired
+  setReady: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired
+
 };
 
 export default Crawl;

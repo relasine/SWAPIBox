@@ -3,6 +3,7 @@
 exports[`Card should match snapshot 1`] = `
 <article
   className="card-wrapper"
+  onClick={[Function]}
 >
   <article
     className="figure"
@@ -12,7 +13,7 @@ exports[`Card should match snapshot 1`] = `
       className="card-image"
     />
     <section
-      className="caption"
+      className="caption "
     >
       <div
         className="card-header"
@@ -67,10 +68,9 @@ exports[`Card should match snapshot 1`] = `
         </p>
         <div
           className="icon-wrapper"
-          onClick={[Function]}
         >
           <i
-            className="fab fa-jedi-order favorite-icon "
+            className="fab fa-jedi-order favorite-icon"
           />
         </div>
       </div>
