@@ -11,20 +11,12 @@ import People from '../../helpers/People';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Hamburger from '../Hamburger/Hamburger'
 import ModalButtons from '../ModalButtons/ModalButtons'
+import favPlaceholders from '../../placeholders'
 
 
 class App extends Component {
   constructor() {
     super()
-
-    const favPlaceholder = {
-      name: 'Available Memory',
-      info: [],
-      favorite: true,
-      category: 'favorites'
-    }
-    const favPlaceholders = [favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder, favPlaceholder]
-
 
     this.state = {
       ready: false,
@@ -39,8 +31,7 @@ class App extends Component {
       fetchVehicles: new Vehicles(),
       fetchPeople: new People(),
       fetchPlanets: new Planets(),
-      // favorites: JSON.parse(localStorage.getItem('favorites')) || [],
-      favorites: favPlaceholders,
+      favorites: [],
       hamburger: 'closed',
       buttons: 'hide-buttons',
       login: ''
@@ -98,7 +89,7 @@ class App extends Component {
 
 
     this.setState({
-        favorites: JSON.parse(localStorage.getItem('favorites')) || this.state.favorites,
+        favorites: JSON.parse(localStorage.getItem('favorites')) || favPlaceholders,
         planets: JSON.parse(localStorage.getItem('planets')) || [],
         vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
         people: JSON.parse(localStorage.getItem('people')) || []
@@ -166,21 +157,21 @@ class App extends Component {
 
     if(this.state.favorites.find( fav => cardData.name === fav.name)){
       this.removeFavorite(cardData)
-      return
-    } 
+    } else {
 
-    updatedFavorites.pop()
-    console.log(updatedFavorites)
+      updatedFavorites.pop()
+      console.log(updatedFavorites)
 
-    cardData.favorite = true;
-    const newFavorites = [cardData, ...updatedFavorites]
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
-    this.setState({
-      favorites: newFavorites,
-      planets: JSON.parse(localStorage.getItem('planets')) || [],
-      vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
-      people: JSON.parse(localStorage.getItem('people')) || []
-    })
+      cardData.favorite = true;
+      const newFavorites = [cardData, ...updatedFavorites]
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      this.setState({
+        favorites: newFavorites,
+        planets: JSON.parse(localStorage.getItem('planets')) || [],
+        vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
+        people: JSON.parse(localStorage.getItem('people')) || []
+      })
+    }
   }
 
   toggleFavoriteInDatabase = (cardData) => {
@@ -199,7 +190,9 @@ class App extends Component {
     }
 
     const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
-    updatedFavorites.push(favPlaceholder)
+    if(updatedFavorites.length < 10) {
+      updatedFavorites.push(favPlaceholder)
+    } 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
     this.setState({
       favorites: updatedFavorites,
@@ -216,7 +209,7 @@ class App extends Component {
       this.callFetchVehicles();
     } else if (currentSelection === 'planets') {
       this.callFetchPlanets()
-    } else {
+    } else if (currentSelection === 'favorites') {
       this.setState({
         currentSelection: 'favorites',
         loading: false,
