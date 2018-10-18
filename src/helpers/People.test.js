@@ -63,7 +63,7 @@ describe('People', async () => {
   ]
 
   const mockFetchCall = jest.fn(() => {
-    return mockResponse;
+    return Promise.resolve(mockResponse);
   });
 
   beforeEach(() => {

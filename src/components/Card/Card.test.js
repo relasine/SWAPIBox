@@ -29,32 +29,47 @@ describe('Card', () => {
 
   it('should exist', () => {
     expect(wrapper).toBeDefined();
+  });
+
+  it('sets favoritedClass to an empty string if passed down as a prop as false', () => {
+
+
+    expect(wrapper.props().children.props.children[1].props.className).toEqual('caption ')
+  });
+
+  it('sets favoritedClass to a favorited if passed down as a prop as false', () => {
+
+    const newTrueClass = {
+        name: 'Luke',
+        info: [
+          {homeworld: 'Earch'},
+          {language: 'English'},
+          {species: 'Human'},
+          {population: 'billions'}
+        ],
+        favorite: true
+      };
+
+    wrapper = shallow(<Card 
+        data={newTrueClass} 
+        toggleFavorite={mockToggleFavorite}
+      />);
+
+    expect(wrapper.props().children.props.children[1].props.className).toEqual('caption favorited')
   })
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
   it('should render all the stats on the card as p tags', () => {
     expect(wrapper.find('p').length).toEqual(4);
-  })
+  });
 
   it('should call toggleFavorite on click', () => {
     wrapper.find('.card-wrapper').simulate('click');
 
     expect(mockToggleFavorite).toHaveBeenCalled();
-  })
+  });
 
-  it('should set favoriteClass to favorited if the passed down prop is true', () => {
-    mockData.favorite = true;
-    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite} />);
-    expect(wrapper.props().children.props.children[1].props.children[1].props.children[1].props.children.props.className).toEqual('fab fa-jedi-order favorite-icon favorited')
-  })
-
-  it('should not set favoriteClass to favorited if the passed down prop is false', () => {
-    mockData.favorite = false;
-    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite} />);
-
-    expect(wrapper.props().children.props.children[1].props.children[1].props.children[1].props.children.props.className).toEqual('fab fa-jedi-order favorite-icon ')
-  })
 })
