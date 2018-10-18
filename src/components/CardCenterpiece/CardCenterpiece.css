@@ -22,17 +22,10 @@
   color: #ADD8E6;
   font-size: 1.7em;
   text-align: center;
-  padding: 20px 20px 10px 20px;
+  padding: 20px;
   text-transform: uppercase;
   margin-top: 0;
-  margin-bottom: 0;
-}
-
-.fav-instructions {
-  font-family: Andale Mono,AndaleMono,monospace;
-  color: #ADD8E6;
-  text-align: center;
-  margin-top: 0;
+  /*opacity: 0.7;*/
 }
 
 @media (max-width: 1000px) {
