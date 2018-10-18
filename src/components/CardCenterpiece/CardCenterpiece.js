@@ -13,12 +13,15 @@ const CardCenterpiece = ({selection}) => {
     centertext = 'Available Conveyance'
   } else if (selection === 'favorites') {
     centertext = 'Saved items'
-  } 
+  } else {
+    centertext = ''
+  }
 
   return(
     <div className="card-centerpiece">
       <i className='fab fa-jedi-order centerpiece-icon'></i>
       <h3 className='centerpiece-text'>{centertext}</h3>
+      <p className='fav-instructions'>Tap to save data</p>
     </div>
   )
 }
