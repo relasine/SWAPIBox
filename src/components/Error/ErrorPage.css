@@ -1,3 +1,13 @@
+.error-page {
+  margin: auto;
+  width: 350px;
+}
+
+.card-container .error-page {
+  margin-top: 2rem;
+  grid-column: 1/3;
+}
+
 .error {
   overflow: hidden;
   width: 350px;

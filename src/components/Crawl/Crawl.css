@@ -162,6 +162,14 @@ aside {
   }
 }
 
+aside .error-page {
+  display: none;
+}
+
+aside .display-crawl-error {
+  display: block;
+}
+
 .crawl-text-wrapper {
   opacity: 0;
   color: #ADD8E6;

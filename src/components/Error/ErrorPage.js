@@ -2,9 +2,9 @@ import React from 'react';
 
 import './ErrorPage.css';
 
-const ErrorPage = () => {
+const ErrorPage = ({ errorState }) => {
   return(
-    <div className="error">
+    <div className={`error-page ${errorState}`}>
       <h1 class="error">Connection lost...</h1>
     </div>
   )

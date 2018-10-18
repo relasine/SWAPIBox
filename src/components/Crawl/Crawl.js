@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Crawl.css';
 import PropTypes from 'prop-types';
+import Error from '../Error/ErrorPage'
 
 class Crawl extends Component {
   constructor() {
@@ -15,13 +16,21 @@ class Crawl extends Component {
       hideWelcome: '',
       showCrawl: '',
       ready: false,
+      error: ''
     }
   }
 
   checkReady = () => {
-    if (this.state.ready) {
+    if (this.state.ready && !this.props.error) {
+
       this.setState({
         showCrawl: 'show-crawl',
+        hideWelcome: 'hide-welcome'
+      })
+    } else if (this.state.ready && this.props.error) {
+      console.log('poooo')
+      this.setState({
+        error: 'display-crawl-error',
         hideWelcome: 'hide-welcome'
       })
     }
@@ -32,7 +41,7 @@ class Crawl extends Component {
     await setTimeout(this.printConnect, 500);
     await setTimeout(this.printHandshake, 2500);
     await setTimeout(this.printWelcome, 5000);
-    await setTimeout(this.printBriefing, 6500)
+    await setTimeout(this.printBriefing, 6500);
     await setTimeout(this.props.setReady, 6500);
   }
 
@@ -104,6 +113,7 @@ class Crawl extends Component {
           <p className='smol-text'>Briefing Title: <span>{this.props.film.title}</span></p>
           <p className='smol-text'>Galaxy Date: <span>{this.props.film.episode_id}</span></p>
         </main>
+        <Error errorState={this.state.error}/>
       </aside>
     );
   }
