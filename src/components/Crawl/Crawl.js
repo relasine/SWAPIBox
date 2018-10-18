@@ -3,6 +3,7 @@ import './Crawl.css';
 import PropTypes from 'prop-types';
 import Error from '../Error/ErrorPage';
 import Briefing from '../Briefing/Briefing';
+import Loading from '../Loading/Loading'
 
 class Crawl extends Component {
   constructor() {
@@ -108,11 +109,13 @@ class Crawl extends Component {
           </h2>
         </main>
         <main className={`crawl-text-wrapper ${this.state.showCrawl}`}>
-          <Briefing 
+          {!this.props.loading && <Briefing 
             crawl={this.props.film.opening_crawl}
             title={this.props.film.title}
             id={this.props.film.episode_id}
-          />
+          />}
+          {this.props.loading && <Loading />}
+
         </main>
         <Error errorState={this.state.error}/>
       </aside>
