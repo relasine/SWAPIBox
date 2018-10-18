@@ -41,17 +41,20 @@ class App extends Component {
     this.crawlCall();
     this.checkStorage();
     this.checkURL();
-    if (window.location.pathname === '/people') {
-      this.callFetchPeople();
-    } else if (window.location.pathname === '/planets') {
-      this.callFetchPlanets();
-    } else if (window.location.pathname === '/vehicles') 
-      this.callFetchVehicles();;
+
   }
 
   checkURL = () => {
-    if (window.location.pathname !== '/'
-    ) {
+    if (window.location.pathname === '/people') {
+      this.callFetchPeople();
+      this.setReady();
+    } else if (window.location.pathname === '/planets') {
+      this.callFetchPlanets();
+      this.setReady();
+    } else if (window.location.pathname === '/vehicles') {
+      this.callFetchVehicles();
+      this.setReady();
+    } else if (window.location.pathname !== '/') {
       this.setReady();
     }
   }
