@@ -1,0 +1,42 @@
+.modal-buttons-wrapper {
+  position: absolute;
+  background: rgba(0, 0, 0, .9);
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  padding-left: 1rem;
+  display: none;
+  top: 100px;
+  left: -500px;
+  transition: .5s;
+}
+
+.modal-wrapper .deployed {
+  left: 0;
+}
+
+.modal-buttons-wrapper .nav-button {
+  text-align: default;
+}
+
+@media (max-width: 475px){
+  .modal-buttons-wrapper {
+    display: block;
+  }
+
+  .nav-button-text {
+    text-align: start;
+    font-size: 1rem;
+    width: 125px;
+  }
+
+  .nav-button {
+    width: 125px;
+  }
+
+  .nav-button-text:before {
+    width: 125px;
+    font-size: .8rem;
+    left: 0;
+  }
+}

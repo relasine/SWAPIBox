@@ -65,7 +65,7 @@
 
 .favorited:after,
 .favorited:before {
-  box-shadow: 2px 5px 5px #ADD8E6;
+  box-shadow: 2px 5px 5px #fff;
 }
 
 .caption .card-content,
