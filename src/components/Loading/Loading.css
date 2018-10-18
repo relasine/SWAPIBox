@@ -1,4 +1,8 @@
-
+.loading {
+  margin: auto;
+  grid-column: 1/5;
+  align-self: end;
+}
 
 .wrapper {
   position: relative;

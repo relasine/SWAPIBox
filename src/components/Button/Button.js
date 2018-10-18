@@ -12,10 +12,7 @@ const Button = ({handleSelection, buttonName, currentSelection}) => {
   } else {
     buttonState = ''
   }
-
-
-  console.log(buttonPath);
-
+  
   return(
     <div 
       className={`nav-button ${buttonState}`}

@@ -17,22 +17,25 @@ const Card = ( {data, toggleFavorite} ) => {
   })
 
   return(
-    <article className='card-wrapper'>
+    <article 
+      className='card-wrapper'
+      onClick={()=>{toggleFavorite(data)}}
+    >
       <article className='figure'>
         <img
           className='card-image' 
           src={Images[data.name]}
           alt={data.name}
         />
-        <section className='caption'>
+        <section className={`caption ${favoriteClass}`}>
           <div className='card-header'>
             <h2 className='card-title'>{data.name}</h2>
             <div className='favorite-icon'></div>
           </div>
           <div className='card-content'>
             {stats}
-            <div className='icon-wrapper' onClick={()=>{toggleFavorite(data)}}>
-              <i className={`fab fa-jedi-order favorite-icon ${favoriteClass}`}></i>
+            <div className='icon-wrapper' >
+              <i className={'fab fa-jedi-order favorite-icon'}></i>
             </div>
           </div>
         </section>

@@ -10,6 +10,7 @@ import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Hamburger from '../Hamburger/Hamburger'
+import ModalButtons from '../ModalButtons/ModalButtons'
 
 
 class App extends Component {
@@ -317,6 +318,13 @@ class App extends Component {
               loginWarning={this.loginWarning}
               ready={this.state.ready}
             />
+            <section className='modal-wrapper'>
+              <ModalButtons 
+                hamburger={this.state.hamburger}
+                currentSelection={this.state.currentSelection}
+                handleSelection={this.handleSelection}
+              />
+            </section>
             <h4 className={`please-login ${this.state.login}`}>Please login to access the archives</h4>
             <section className={`button-wrapper ${this.state.buttons}`}>
               <NavLink 

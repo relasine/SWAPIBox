@@ -56,3 +56,9 @@ header {
   opacity: 1;
   left: 105px;
 }
+
+@media (max-width: 475px) {
+  .button-wrapper {
+    display: none;
+  }
+}
