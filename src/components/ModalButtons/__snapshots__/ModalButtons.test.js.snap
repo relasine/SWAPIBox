@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalButtons should match the snapshot 1`] = `
+<aside
+  className="modal-buttons-wrapper "
+>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="nav-button people"
+    to="/people"
+  >
+    <Button
+      buttonName="people"
+      currentSelection="people"
+      handleSelection={[MockFunction]}
+    />
+  </NavLink>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="nav-button planets"
+    to="/planets"
+  >
+    <Button
+      buttonName="planets"
+      currentSelection="people"
+      handleSelection={[MockFunction]}
+    />
+  </NavLink>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="nav-button vehicles"
+    to="/vehicles"
+  >
+    <Button
+      buttonName="vehicles"
+      currentSelection="people"
+      handleSelection={[MockFunction]}
+    />
+  </NavLink>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="nav-button favorites"
+    to="/favorites"
+  >
+    <Button
+      buttonName="favorites"
+      currentSelection="people"
+      handleSelection={[MockFunction]}
+    />
+  </NavLink>
+</aside>
+`;

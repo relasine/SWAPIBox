@@ -5,7 +5,7 @@ import './ErrorPage.css';
 const ErrorPage = ({ errorState }) => {
   return(
     <div className={`error-page ${errorState}`}>
-      <h1 class="error">Connection lost...</h1>
+      <h1 className="error">Connection lost...</h1>
     </div>
   )
 }

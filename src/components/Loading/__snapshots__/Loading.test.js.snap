@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should match the snapshot 1`] = `
+<div
+  className="loading"
+>
+  <div
+    className="wrapper"
+  >
+    <div
+      className="loading-wrapper"
+    >
+      <div
+        className="circle"
+      />
+      <div
+        className="dot"
+      />
+      <div
+        className="dot-two"
+      />
+    </div>
+    <i
+      className="fab fa-jedi-order icon"
+    />
+  </div>
+</div>
+`;

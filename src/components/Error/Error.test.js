@@ -1,15 +1,17 @@
 import React from 'react';
-import Loading from './Loading';
+import Error from './ErrorPage';
 import { shallow } from 'enzyme';
 
 let wrapper;
 
+
 beforeEach(() => {
-  wrapper = shallow(<Loading 
+  wrapper = shallow(<Error 
+
   />)
 });
 
-describe('Loading', () => {
+describe('Error', () => {
   it ('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

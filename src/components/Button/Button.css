@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.nav-button:hover .nav-button-text {
+  animation: .4s steps(5) textglitch;
+}
+
 .nav-button img {
   width: 50px;
   height: 50px;
@@ -42,7 +46,7 @@
   box-shadow: 0 10px 5px #ADD8E6;
 }
 
-.nav-button-text:before {
+/*.nav-button-text:before {
   content:attr(data-text);
   font-family: 'Galactic Basic';
   font-size: .3rem;
@@ -52,14 +56,29 @@
   left: 6px;
   opacity: 0;
   transition: .5s;
-}
+}*/
 
-.nav-button-text:hover {
+/*.nav-button-text:hover {
   color: transparent;
-}
+}*/
 
-.nav-button-text:hover:before {
+/*.nav-button-text:hover:before {
   opacity: 1;
+}*/
+
+@keyframes textglitch {
+  0% {
+    font-family: Andale Mono,AndaleMono,monospace;
+    font-size: .8rem;
+  }
+  50% {
+    font-family: 'Galactic Basic';
+    font-size: .3rem;
+  }
+  100% {
+    font-family: Andale Mono,AndaleMono,monospace;
+    font-size: .8rem;
+  }
 }
 
 
