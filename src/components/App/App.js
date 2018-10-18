@@ -376,6 +376,7 @@ class App extends Component {
             <Crawl 
               film={this.state.openingCrawl}
               setReady={this.setReady}
+              error={this.state.error}
             />
           )} />
 
