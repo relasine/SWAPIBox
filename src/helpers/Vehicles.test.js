@@ -23,8 +23,8 @@ describe('Vehicles', async () => {
     ]
   };
 
-  const mockFetchCall = jest.fn(() => {
-    return mockResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockResponse);
   });
 
   beforeEach(()=> {

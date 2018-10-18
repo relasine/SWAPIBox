@@ -38,8 +38,8 @@ describe('Planets', async () => {
       }
     ];
 
-  const mockFetchCall = jest.fn(() => {
-    return mockResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockResponse);
   });
 
   beforeEach(() => {
@@ -55,8 +55,8 @@ describe('Planets', async () => {
   });
 
   it('should call fetchResidents', async () => {
-    fetchPlanets.fetchResidents = jest.fn((mockResponse) => {
-      return mockResponse;
+    fetchPlanets.fetchResidents = jest.fn().mockImplementation((mockResponse) => {
+      return Promise.resolve(mockResponse);
     })
 
     await fetchPlanets.fetchPlanets();
@@ -117,8 +117,8 @@ const mappedResponse = [
     }
   ]
 
-  const mockFetchCall = jest.fn(() => {
-    return mockResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockResponse);
   });
 
   beforeEach(() => {
@@ -136,8 +136,8 @@ const mappedResponse = [
 describe('fetchResidents', async () => {
   let fetchPlanets;
 
-  const mockFetchCall = jest.fn(() => {
-    return {name: 'brian'};
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve({name: 'brian'});
   });
 
   const mockResponse = [
@@ -186,8 +186,8 @@ describe('fetchResidents', async () => {
   })
 
   it('should return an array with none in it if it does not get any names', async () => {
-    fetchPlanets.fetchCall = jest.fn(() => {
-      return
+    fetchPlanets.fetchCall = jest.fn().mockImplementation(() => {
+      return Promise.resolve()
     })
 
     const response = await fetchPlanets.fetchResidents(noResidents);

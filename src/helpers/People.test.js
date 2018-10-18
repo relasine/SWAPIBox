@@ -62,8 +62,8 @@ describe('People', async () => {
     }
   ]
 
-  const mockFetchCall = jest.fn(() => {
-    return mockResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockResponse);
   });
 
   beforeEach(() => {
@@ -80,8 +80,8 @@ describe('People', async () => {
   });
 
   it('calls fetchHomeWorld', async () => {
-    fetchPeople.fetchHomeWorld = jest.fn(() => {
-      return mockHomeResponse;
+    fetchPeople.fetchHomeWorld = jest.fn().mockImplementation(() => {
+      return Promise.resolve(mockHomeResponse);
     });
 
     await fetchPeople.fetchPeople();
@@ -90,8 +90,8 @@ describe('People', async () => {
   });
 
   it('calls fetchSpecies', async () => {
-    fetchPeople.fetchSpecies = jest.fn(() => {
-      return mockHomeResponse;
+    fetchPeople.fetchSpecies = jest.fn().mockImplementation(() => {
+      return Promise.resolve(mockHomeResponse);
     });
 
     await fetchPeople.fetchPeople();
@@ -159,8 +159,8 @@ describe('cleanPeople', () => {
     }
   ]
 
-  const mockFetchCall = jest.fn(() => {
-    return mockResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockResponse);
   });
 
   beforeEach(() => {
@@ -198,8 +198,8 @@ describe('fetchHomeWorld', async () => {
     }
   ]
 
-  const mockFetchCall = jest.fn(() => {
-    return mockHomeResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockHomeResponse);
   });
 
   beforeEach(() => {
@@ -237,8 +237,8 @@ describe('fetchSpecies', async () => {
     }
   ]
 
-  const mockFetchCall = jest.fn(() => {
-    return mockHomeResponse;
+  const mockFetchCall = jest.fn().mockImplementation(() => {
+    return Promise.resolve(mockHomeResponse);
   });
 
   beforeEach(() => {
