@@ -7,7 +7,7 @@
   position: relative;
   margin: 0 .2rem;
   width: 82px;
-  height: 20px;
+  height: 25px;
   color: #ADD8E6;
   border-radius: 5px;
   overflow: hidden;
@@ -25,7 +25,7 @@
   transition: .5s;
   text-transform: uppercase;
   text-align: center;
-  line-height: 20px;
+  line-height: 25px;
 }
 
 .nav-button:hover {
@@ -43,7 +43,7 @@
 
 .button-selected {
   border: 1px solid rgba(173, 216, 230, .5);
-  box-shadow: 0 10px 5px #ADD8E6;
+  box-shadow: 0 5px 5px #ADD8E6;
 }
 
 /*.nav-button-text:before {
@@ -81,4 +81,9 @@
   }
 }
 
+@media (max-width: 475px) {
+  .nav-button-text {
+    padding-left: .5rem;
+  }
+}
 
