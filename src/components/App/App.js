@@ -385,6 +385,7 @@ class App extends Component {
               film={this.state.openingCrawl}
               setReady={this.setReady}
               error={this.state.error}
+              loading={this.state.error}
             />
           )} />
 

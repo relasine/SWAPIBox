@@ -5,16 +5,16 @@ import Crawl from './Crawl';
 describe('Crawl', () => {
   let wrapper;
   let defaultState = {
-    thumbprint: '',
-    securing: '',
-    handshake: '',
-    welcome: '',
-    briefing: '',
-    fadeWelcome: '',
-    hideWelcome: '',
-    showCrawl: '',
-    ready: false,
-    error: ''
+      thumbprint: '',
+      securing: '',
+      handshake: '',
+      welcome: '',
+      briefing: '',
+      fadeWelcome: '',
+      hideWelcome: '',
+      showCrawl: '',
+      ready: false,
+      error: ''
   }
 
   beforeEach(() => {
@@ -23,7 +23,8 @@ describe('Crawl', () => {
 
     wrapper = shallow(<Crawl film={{}}
                         setReady={mockReady}
-                        error={false}/>)
+                        error={false}
+                        loading={false} />)
   })
 
   it('should exist', () => {
@@ -58,7 +59,7 @@ describe('Crawl', () => {
   });
 
   it('should setState if ready and there is an error', async () => {
-    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={true} />)
+    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={true} loading={false}/>)
 
     await wrapper.setState({
       ready: true,
@@ -77,7 +78,7 @@ describe('Crawl', () => {
     const spyFour = spyOn(wrapper.instance(), 'printBriefing')
     const mockSetReady = jest.fn()
 
-    wrapper = shallow(<Crawl film={{}} setReady={mockSetReady} error={true} />)
+    wrapper = shallow(<Crawl film={{}} setReady={mockSetReady} error={true} loading={false}/>)
 
     await wrapper.instance().handleFingerPrint();
 

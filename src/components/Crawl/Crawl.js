@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './Crawl.css';
 import PropTypes from 'prop-types';
-import Error from '../Error/ErrorPage'
+import Error from '../Error/ErrorPage';
+import Briefing from '../Briefing/Briefing';
 
 class Crawl extends Component {
   constructor() {
@@ -107,10 +108,11 @@ class Crawl extends Component {
           </h2>
         </main>
         <main className={`crawl-text-wrapper ${this.state.showCrawl}`}>
-          <h2>Situation Briefing</h2>
-          <p>{this.props.film.opening_crawl}</p>
-          <p className='smol-text'>Briefing Title: <span>{this.props.film.title}</span></p>
-          <p className='smol-text'>Galaxy Date: <span>{this.props.film.episode_id}</span></p>
+          <Briefing 
+            crawl={this.props.film.opening_crawl}
+            title={this.props.film.title}
+            id={this.props.film.episode_id}
+          />
         </main>
         <Error errorState={this.state.error}/>
       </aside>
@@ -121,8 +123,8 @@ class Crawl extends Component {
 Crawl.propTypes = {
   film: PropTypes.object.isRequired,
   setReady: PropTypes.func.isRequired,
-  error: PropTypes.bool.isRequired
-
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default Crawl;
