@@ -28,7 +28,6 @@ class Crawl extends Component {
         hideWelcome: 'hide-welcome'
       })
     } else if (this.state.ready && this.props.error) {
-      console.log('poooo')
       this.setState({
         error: 'display-crawl-error',
         hideWelcome: 'hide-welcome'
@@ -123,6 +122,7 @@ Crawl.propTypes = {
   film: PropTypes.object.isRequired,
   setReady: PropTypes.func.isRequired,
   error: PropTypes.bool.isRequired
+
 };
 
 export default Crawl;

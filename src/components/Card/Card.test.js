@@ -40,7 +40,7 @@ describe('Card', () => {
   })
 
   it('should call toggleFavorite on click', () => {
-    wrapper.find('.icon-wrapper').simulate('click');
+    wrapper.find('.card-wrapper').simulate('click');
 
     expect(mockToggleFavorite).toHaveBeenCalled();
   })
