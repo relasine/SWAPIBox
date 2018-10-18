@@ -41,7 +41,6 @@ class App extends Component {
     this.crawlCall();
     this.checkStorage();
     this.checkURL();
-
   }
 
   checkURL = () => {
