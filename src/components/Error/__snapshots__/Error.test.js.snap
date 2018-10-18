@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error should match the snapshot 1`] = `
+<div
+  className="error-page undefined"
+>
+  <h1
+    className="error"
+  >
+    Connection lost...
+  </h1>
+</div>
+`;
