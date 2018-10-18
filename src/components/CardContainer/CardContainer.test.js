@@ -7,10 +7,10 @@ describe('CardContainer', () => {
   let wrapper;
   let mockPeople;
   let mockSelection;
-  let mockPlanets;
-  let mockVehicles;
-  let mockFavorites;
-
+  let mockToggleFavorite;
+  let mockError;
+  let mockLoading;
+  
   beforeEach(() => {
     mockPeople = [{
       name: 'Luke',
@@ -21,10 +21,19 @@ describe('CardContainer', () => {
         {population: 'billions'}
       ]
     }]
+    
+    mockToggleFavorite = jest.fn();
+    mockError = false;
+    mockLoading = false;
+    mockSelection = 'people'
 
     wrapper = shallow(<CardContainer 
                         data={mockPeople}
-                        selection={mockSelection} />)
+                        selection={mockSelection}
+                        toggleFavorite={mockToggleFavorite}
+                        error={mockError}
+                        loading={mockLoading} 
+                      />)
   })
 
   it('should exist', () => {
@@ -35,53 +44,18 @@ describe('CardContainer', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it('should render all the people cards', () => {
-    mockSelection = 'people'
-    wrapper = shallow(<CardContainer 
-                        data={mockPeople}
-                      />)
+  it('should render all the data cards', () => {
     expect(wrapper.find(Card).length).toEqual(1);
   })
 
-  it('should render all the planet cards', () => { 
-    mockSelection = 'planets'
-    wrapper = shallow(<CardContainer 
-                        data={mockPeople}
-                      />)
-    expect(wrapper.find(Card).length).toEqual(1);
-  })
-
-  it('should render all the vehicle cards', () => {
-    mockSelection = 'vehicles'
-    wrapper = shallow(<CardContainer 
-                        data={mockPeople}
-                      />)
-    expect(wrapper.find(Card).length).toEqual(1);
-  })
-
-  it('should render all the favorite cards', () => {
-    mockSelection = 'favorites'
-    wrapper = shallow(<CardContainer 
-                        data={mockPeople}
-                      />)
-    expect(wrapper.find(Card).length).toEqual(1);
-  });
   it('should render Loading if loading is true', () => {
     let mockLoading = true
 
-    wrapper = shallow(<CardContainer
-                        data={mockPeople}
-                        loading={mockLoading}
-                      />)
     expect(wrapper).toMatchSnapshot()
   })
     it('should render Error if error is true', () => {
     let mockError = true
 
-    wrapper = shallow(<CardContainer
-                        data={mockPeople}
-                        error={mockError}
-                      />)
     expect(wrapper).toMatchSnapshot()
   })
 })

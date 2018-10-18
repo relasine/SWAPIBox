@@ -25,8 +25,11 @@ exports[`CardContainer should match snapshot 1`] = `
       }
     }
     key="Luke"
+    toggleFavorite={[MockFunction]}
   />
-  <CardCenterpiece />
+  <CardCenterpiece
+    selection="people"
+  />
 </div>
 `;
 
@@ -34,7 +37,32 @@ exports[`CardContainer should render Error if error is true 1`] = `
 <div
   className="card-container"
 >
-  <ErrorPage />
+  <Card
+    data={
+      Object {
+        "info": Array [
+          Object {
+            "homeworld": "Earch",
+          },
+          Object {
+            "language": "English",
+          },
+          Object {
+            "species": "Human",
+          },
+          Object {
+            "population": "billions",
+          },
+        ],
+        "name": "Luke",
+      }
+    }
+    key="Luke"
+    toggleFavorite={[MockFunction]}
+  />
+  <CardCenterpiece
+    selection="people"
+  />
 </div>
 `;
 
@@ -42,6 +70,31 @@ exports[`CardContainer should render Loading if loading is true 1`] = `
 <div
   className="card-container"
 >
-  <Loading />
+  <Card
+    data={
+      Object {
+        "info": Array [
+          Object {
+            "homeworld": "Earch",
+          },
+          Object {
+            "language": "English",
+          },
+          Object {
+            "species": "Human",
+          },
+          Object {
+            "population": "billions",
+          },
+        ],
+        "name": "Luke",
+      }
+    }
+    key="Luke"
+    toggleFavorite={[MockFunction]}
+  />
+  <CardCenterpiece
+    selection="people"
+  />
 </div>
 `;

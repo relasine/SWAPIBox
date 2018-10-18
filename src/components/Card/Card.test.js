@@ -5,8 +5,7 @@ import Card from './Card';
 describe('Card', () => {
   let wrapper;
   let mockData;
-
-  const mockToggleFavorite = jest.fn();
+  let mockToggleFavorite
 
   beforeEach(() => {
     mockData = {
@@ -20,7 +19,12 @@ describe('Card', () => {
         favorite: false
       };
 
-    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
+    mockToggleFavorite = jest.fn();
+
+    wrapper = shallow(<Card 
+                        data={mockData} 
+                        toggleFavorite={mockToggleFavorite}
+                      />);
   })
 
   it('should exist', () => {
@@ -43,13 +47,13 @@ describe('Card', () => {
 
   it('should set favoriteClass to favorited if the passed down prop is true', () => {
     mockData.favorite = true;
-    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
+    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite} />);
     expect(wrapper.props().children.props.children[1].props.children[1].props.children[1].props.children.props.className).toEqual('fab fa-jedi-order favorite-icon favorited')
   })
 
   it('should not set favoriteClass to favorited if the passed down prop is false', () => {
     mockData.favorite = false;
-    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite}/>);
+    wrapper = shallow(<Card data={mockData} toggleFavorite={mockToggleFavorite} />);
 
     expect(wrapper.props().children.props.children[1].props.children[1].props.children[1].props.children.props.className).toEqual('fab fa-jedi-order favorite-icon ')
   })

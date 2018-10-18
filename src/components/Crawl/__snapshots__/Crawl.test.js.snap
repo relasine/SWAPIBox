@@ -79,5 +79,8 @@ exports[`Crawl should match snapshot 1`] = `
       <span />
     </p>
   </main>
+  <ErrorPage
+    errorState=""
+  />
 </aside>
 `;
