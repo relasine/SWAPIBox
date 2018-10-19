@@ -18,10 +18,13 @@ const Card = ( {data, toggleFavorite} ) => {
 
   return(
     <article 
-      className='card-wrapper'
+      className={`card-wrapper`}
       onClick={()=>{toggleFavorite(data)}}
     >
       <article className='figure'>
+        <div className='marked-icon-wrapper'>
+          <i className={`far fa-dot-circle ${favoriteClass}`}></i>
+        </div>
         <img
           className='card-image' 
           src={Images[data.name]}
