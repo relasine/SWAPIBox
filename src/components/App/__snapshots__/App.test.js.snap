@@ -9,16 +9,51 @@ exports[`App should match snapshot 1`] = `
   >
     <header>
       <Hamburger
+        hamburger={
+          Object {
+            "bottomBladeToggled": "",
+            "bottomToggled": "",
+            "gripToggled": "",
+            "middleBladeToggled": "",
+            "middleToggled": "",
+            "status": "closed",
+            "topBladeToggled": "",
+            "topToggled": "",
+          }
+        }
         hamburgerChange={[Function]}
         loginWarning={[Function]}
         ready={false}
+        status={
+          Object {
+            "bottomBladeToggled": "",
+            "bottomToggled": "",
+            "gripToggled": "",
+            "middleBladeToggled": "",
+            "middleToggled": "",
+            "status": "closed",
+            "topBladeToggled": "",
+            "topToggled": "",
+          }
+        }
       />
       <section
         className="modal-wrapper"
       >
         <ModalButtons
           currentSelection=""
-          hamburger="closed"
+          hamburger={
+            Object {
+              "bottomBladeToggled": "",
+              "bottomToggled": "",
+              "gripToggled": "",
+              "middleBladeToggled": "",
+              "middleToggled": "",
+              "status": "closed",
+              "topBladeToggled": "",
+              "topToggled": "",
+            }
+          }
           handleSelection={[Function]}
         />
       </section>
@@ -73,7 +108,7 @@ exports[`App should match snapshot 1`] = `
           to="/favorites"
         >
           <Button
-            buttonName="favorites"
+            buttonName="saved"
             currentSelection=""
             handleSelection={[Function]}
           />

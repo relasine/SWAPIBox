@@ -5,7 +5,9 @@ exports[`Briefing should match the snapshot 1`] = `
   <h2>
     Situation Briefing
   </h2>
-  <p />
+  <p
+    className="crawl-text"
+  />
   <p
     className="smol-text"
   >

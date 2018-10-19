@@ -9,13 +9,11 @@ exports[`CardCenterpiece should match snapshot if selection is favorites 1`] = `
   />
   <h3
     className="centerpiece-text"
-  >
-    Saved items
-  </h3>
+  />
   <p
     className="centerpiece-fav-text"
   >
-    tap to remove data
+    tap to save data
   </p>
 </div>
 `;
