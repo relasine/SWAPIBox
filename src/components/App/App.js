@@ -8,6 +8,7 @@ import fetchCall from '../../helpers/fetchCalls';
 import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
+import hamburgerHelper from '../../helpers/hamburger-helper'
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Hamburger from '../Hamburger/Hamburger'
 import ModalButtons from '../ModalButtons/ModalButtons'
@@ -31,7 +32,8 @@ class App extends Component {
       fetchPeople: new People(),
       fetchPlanets: new Planets(),
       favorites: JSON.parse(localStorage.getItem('favorites')) || [],
-      hamburger: 'closed',
+      hamburger: hamburgerHelper.closed,
+      hamburgerHelper: hamburgerHelper,
       buttons: 'hide-buttons',
       login: ''
     };
@@ -156,23 +158,32 @@ class App extends Component {
 
   // PAGE SELECTION LOGIC //
 
-  hamburgerChange = () => {
-    if (this.state.hamburger === 'closed') {
-      this.setState({
-        hamburger: 'deployed',
+  hamburgerChange = async () => {
+    if (this.state.hamburger.status === 'closed' && this.state.ready) {
+      await this.setState({
+        hamburger: this.state.hamburgerHelper.deployed,
         buttons: 'deploy-buttons',
         login: ''
       });
-    } else {
-      this.setState({
-        hamburger: 'closed',
+    } else if (this.state.hamburger.status === 'deployed' && this.state.ready) {
+      await this.setState({
+        hamburger: this.state.hamburgerHelper.closed,
         buttons: 'hide-buttons',
         login: ''
       });
+    } else {
+      console.log(this.state.hamburger.status, this.state.ready)
+      await this.loginWarning()
     }
   }
 
   handleSelection = (currentSelection) => {
+    if (currentSelection !== this.state.currentSelection && window.innerWidth < 476) {
+      this.setState({
+        hamburger: this.state.hamburgerHelper.closed
+      })
+    }
+
     if (currentSelection === 'people') {
       this.callFetchPeople();
     } else if (currentSelection === 'vehicles') {
@@ -199,7 +210,6 @@ class App extends Component {
 
     } else {
       cardData.favorite = true;
-      // console.log(cardData.favorite)
       const newFavorites = [...this.state.favorites, cardData]
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
       this.setState({
@@ -351,10 +361,11 @@ class App extends Component {
               hamburgerChange={this.hamburgerChange}
               loginWarning={this.loginWarning}
               ready={this.state.ready}
+              status={this.state.hamburger}
             />
             <section className='modal-wrapper'>
               <ModalButtons 
-                hamburger={this.state.hamburger}
+                hamburger={this.state.hamburger.status}
                 currentSelection={this.state.currentSelection}
                 handleSelection={this.handleSelection}
               />
