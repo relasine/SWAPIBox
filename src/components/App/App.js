@@ -423,6 +423,7 @@ class App extends Component {
               setReady={this.setReady}
               error={this.state.error}
               loading={this.state.error}
+              hamburgerChange={this.hamburgerChange}
             />
           )} />
 
@@ -435,7 +436,7 @@ class App extends Component {
               loading={this.state.loading}
             />
           )} />
-
+ 
           <Route exact path='/planets' render={() => (
             <CardContainer 
               data={this.state.planets} 
