@@ -62,6 +62,61 @@ describe('App', () => {
     });
   })
 
+  // describe('checkURL', () => {
+  //     let mockPath;
+  //     let mockSetReady;
+  //     let mockCallFetchPeople
+  //     let mockCallFetchPlanets
+  //     let mockCallFetchVehicles
+
+  //   it('should invoke callFetchPeople if the pathname is /people', () => {
+  //     window.history.pushState({}, 'Test People', '/people')
+
+  //     mockCallFetchPeople = jest.fn()
+  //     wrapper.instance().callFetchPeople = mockCallFetchPeople
+
+  //     wrapper.instance().checkURL()
+
+  //     expect(mockCallFetchPeople).toHaveBeenCalled()
+  //   })
+
+  //   it('should invoke setReady if the pathname is /people', () => {
+  //     window.history.pushState({}, 'Test People', '/people')
+
+  //     mockSetReady = jest.fn()
+  //     wrapper.instance().setReady = mockSetReady
+
+  //     wrapper.instance().checkURL()
+
+  //     expect(mockSetReady).toHaveBeenCalled()
+  //   })
+  // })
+
+  describe('loginWarning', () => {
+    it('should set the state to display-login', () => {
+      wrapper.setState({login: ''});
+
+      wrapper.instance().loginWarning();
+
+      expect(wrapper.state().login).toEqual('display-login')
+    })
+  })
+
+  describe('checkStorage', () => {
+    it('should set state after checking storage', () => {
+      localStorage.setItem('favorites', JSON.stringify([{name: 'Luke'}]))
+      localStorage.setItem('planets', JSON.stringify([{name: 'Earth'}]))
+      localStorage.setItem('people', JSON.stringify([{name: 'Luke'}]))
+
+      wrapper.instance().checkStorage()
+
+      expect(wrapper.state().favorites).toEqual([{name: 'Luke'}])
+      expect(wrapper.state().planets).toEqual([{name: 'Earth'}])
+      expect(wrapper.state().vehicles).toEqual([])
+      expect(wrapper.state().people).toEqual([{name: 'Luke'}])
+    })
+  })
+
   describe('crawlCall', () => {
     it('should call getFilms when crawlCall is called if data in LS', () => {
       const mockGetFilms = jest.fn()
@@ -181,7 +236,7 @@ describe('App', () => {
       localStorage.setItem('favorites', JSON.stringify([{name: 'Darth'}, {name: 'Luke'}])),
       wrapper.setState({ favorites: [{name: 'Darth'}, {name: 'Luke'}]}) ;
 
-      wrapper.instance().removeFavorite(mockCardData),
+      wrapper.instance().removeFavorite(mockCardData)
       
       expect(window.localStorage.favorites).toEqual(JSON.stringify([{name: 'Darth'}]))
     })
@@ -192,6 +247,28 @@ describe('App', () => {
       wrapper.instance().removeFavorite(mockCardData)
       expect(wrapper.state().favorites).toEqual([{name: 'Darth'}])
     })  
+  })
+
+  describe('hamburgerChange', () => {
+    it('should set state if hamburger is deployed', () => {
+      wrapper.setState({ hamburger: 'closed'}) ;
+
+      wrapper.instance().hamburgerChange();
+
+      expect(wrapper.state().hamburger).toEqual('deployed');
+      expect(wrapper.state().buttons).toEqual('deploy-buttons');
+      expect(wrapper.state().login).toEqual('');
+    })
+    it('should set state if hamburger is closed', () => {
+      wrapper.setState({ hamburger: 'deployed'}) ;
+
+
+      wrapper.instance().hamburgerChange();
+
+      expect(wrapper.state().hamburger).toEqual('closed');
+      expect(wrapper.state().buttons).toEqual('hide-buttons');
+      expect(wrapper.state().login).toEqual('');
+    })
   })
 
   describe('handleSelection', () => {
