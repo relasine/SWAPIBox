@@ -8,7 +8,7 @@ import './ModalButtons.css'
 const ModalButtons = ({ currentSelection, handleSelection, hamburger }) => {
 
   return(
-    <aside className={`modal-buttons-wrapper ${hamburger}`}>
+    <aside className={`modal-buttons-wrapper ${hamburger.status}`}>
       <NavLink 
         to='/people' 
         className='nav-button people' 

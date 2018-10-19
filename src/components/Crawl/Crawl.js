@@ -29,6 +29,11 @@ class Crawl extends Component {
         showCrawl: 'show-crawl',
         hideWelcome: 'hide-welcome'
       })
+
+      if (window.innerWidth > 475 && this.props.hamburger.status === 'closed') {
+        this.props.hamburgerChange();
+      }
+
     } else if (this.state.ready && this.props.error) {
       this.setState({
         error: 'display-crawl-error',

@@ -65,7 +65,7 @@ class App extends Component {
       this.setReady();
     } else if (window.location.pathname === '/favorites') {
       this.setState({
-        currentSelection: 'favorites',
+        currentSelection: 'saved',
         loading: false,
         error: false
       })
@@ -192,7 +192,7 @@ class App extends Component {
       this.callFetchPlanets()
     } else {
       this.setState({
-        currentSelection: 'favorites',
+        currentSelection: 'saved',
         loading: false,
         error: false
       })
@@ -357,7 +357,8 @@ class App extends Component {
       <div className='App'>
         <div className="button-section">
           <header>
-            <Hamburger 
+            <Hamburger
+              hamburger={this.state.hamburger} 
               hamburgerChange={this.hamburgerChange}
               loginWarning={this.loginWarning}
               ready={this.state.ready}
@@ -365,7 +366,7 @@ class App extends Component {
             />
             <section className='modal-wrapper'>
               <ModalButtons 
-                hamburger={this.state.hamburger.status}
+                hamburger={this.state.hamburger}
                 currentSelection={this.state.currentSelection}
                 handleSelection={this.handleSelection}
               />
@@ -408,7 +409,7 @@ class App extends Component {
               >
                 <Button 
                   currentSelection={this.state.currentSelection}
-                  buttonName='favorites'
+                  buttonName='saved'
                   handleSelection={this.handleSelection}
                 />
               </NavLink>
@@ -423,6 +424,8 @@ class App extends Component {
               setReady={this.setReady}
               error={this.state.error}
               loading={this.state.error}
+              hamburgerChange={this.hamburgerChange}
+              hamburger={this.state.hamburger}
             />
           )} />
 
@@ -435,7 +438,7 @@ class App extends Component {
               loading={this.state.loading}
             />
           )} />
-
+ 
           <Route exact path='/planets' render={() => (
             <CardContainer 
               data={this.state.planets} 

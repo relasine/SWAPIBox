@@ -151,6 +151,14 @@ aside {
   animation: type 1s steps(17); 
 }
 
+.crawl-text {
+  font-size: 16px;
+}
+
+.smol-text {
+  font-size: 10px;
+}
+
 @keyframes type {
   0% {
     width: 0;
@@ -188,8 +196,4 @@ aside .display-crawl-error {
 .crawl-text-wrapper h2 {
   text-align: center;
   text-transform: uppercase;
-}
-
-.smol-text {
-  font-size: .5rem;
 }
