@@ -1,51 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CardCenterpiece should match snapshot 1`] = `
-<div
-  className="card-centerpiece"
->
-  <i
-    className="fab fa-jedi-order centerpiece-icon"
-  />
-  <h3
-    className="centerpiece-text"
-  >
-    Persons of Interest
-  </h3>
-</div>
-`;
-
-exports[`CardCenterpiece should match snapshot 2`] = `
-<div
-  className="card-centerpiece"
->
-  <i
-    className="fab fa-jedi-order centerpiece-icon"
-  />
-  <h3
-    className="centerpiece-text"
-  >
-    Locations of Interest
-  </h3>
-</div>
-`;
-
-exports[`CardCenterpiece should match snapshot 3`] = `
-<div
-  className="card-centerpiece"
->
-  <i
-    className="fab fa-jedi-order centerpiece-icon"
-  />
-  <h3
-    className="centerpiece-text"
-  >
-    Available Conveyance
-  </h3>
-</div>
-`;
-
-exports[`CardCenterpiece should match snapshot 4`] = `
+exports[`CardCenterpiece should match snapshot if selection is favorites 1`] = `
 <div
   className="card-centerpiece"
 >
@@ -57,5 +12,88 @@ exports[`CardCenterpiece should match snapshot 4`] = `
   >
     Saved items
   </h3>
+  <p
+    className="centerpiece-fav-text"
+  >
+    tap to remove data
+  </p>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot if selection is not people/planets/vehicles/favorites 1`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  />
+  <p
+    className="centerpiece-fav-text"
+  >
+    tap to save data
+  </p>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot if selection is people 1`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Persons of Interest
+  </h3>
+  <p
+    className="centerpiece-fav-text"
+  >
+    tap to save data
+  </p>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot if selection is planets 1`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Locations of Interest
+  </h3>
+  <p
+    className="centerpiece-fav-text"
+  >
+    tap to save data
+  </p>
+</div>
+`;
+
+exports[`CardCenterpiece should match snapshot if selection is vehicles 1`] = `
+<div
+  className="card-centerpiece"
+>
+  <i
+    className="fab fa-jedi-order centerpiece-icon"
+  />
+  <h3
+    className="centerpiece-text"
+  >
+    Available Conveyance
+  </h3>
+  <p
+    className="centerpiece-fav-text"
+  >
+    tap to save data
+  </p>
 </div>
 `;
