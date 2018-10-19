@@ -30,7 +30,7 @@ class Crawl extends Component {
         hideWelcome: 'hide-welcome'
       })
 
-      if (window.innerWidth > 475) {
+      if (window.innerWidth > 475 && this.props.hamburger.status === 'closed') {
         this.props.hamburgerChange();
       }
 

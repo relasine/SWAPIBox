@@ -11,13 +11,13 @@ const CardCenterpiece = ({selection}) => {
     centerText = 'Locations of Interest'
   } else if (selection === 'vehicles') {
     centerText = 'Available Conveyance'
-  } else if (selection === 'favorites') {
+  } else if (selection === 'saved') {
     centerText = 'Saved items'
   } else (centerText = '')
 
   let favText;
 
-  if (selection === 'favorites'){
+  if (selection === 'saved'){
     favText = 'tap to remove data'
   } else {
     favText = 'tap to save data'
