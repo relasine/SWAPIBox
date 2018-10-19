@@ -45,7 +45,7 @@ const ModalButtons = ({ currentSelection, handleSelection, hamburger }) => {
       >
         <Button 
           currentSelection={currentSelection}
-          buttonName='favorites'
+          buttonName='saved'
           handleSelection={handleSelection}
         />
       </NavLink>
