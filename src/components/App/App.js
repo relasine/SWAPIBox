@@ -43,6 +43,14 @@ class App extends Component {
     this.checkURL();
   }
 
+  componentDidUpdate() {
+    window.onpopstate = (e) => {
+      this.checkURL();
+    }
+  }
+
+  // ONLOAD FUNCTIONS //
+
   checkURL = () => {
     if (window.location.pathname === '/people') {
       this.callFetchPeople();
@@ -53,6 +61,12 @@ class App extends Component {
     } else if (window.location.pathname === '/vehicles') {
       this.callFetchVehicles();
       this.setReady();
+    } else if (window.location.pathname === '/favorites') {
+      this.setState({
+        currentSelection: 'favorites',
+        loading: false,
+        error: false
+      })
     } else if (window.location.pathname !== '/') {
       this.setReady();
     }
@@ -100,21 +114,7 @@ class App extends Component {
     })
   }
 
-  hamburgerChange = () => {
-    if (this.state.hamburger === 'closed') {
-      this.setState({
-        hamburger: 'deployed',
-        buttons: 'deploy-buttons',
-        login: ''
-      });
-    } else {
-      this.setState({
-        hamburger: 'closed',
-        buttons: 'hide-buttons',
-        login: ''
-      });
-    }
-  }
+  // LANDING PAGE LOGIC //
 
   crawlCall = () => {
     if (localStorage.films) {
@@ -153,6 +153,42 @@ class App extends Component {
       })
     }
   }
+
+  // PAGE SELECTION LOGIC //
+
+  hamburgerChange = () => {
+    if (this.state.hamburger === 'closed') {
+      this.setState({
+        hamburger: 'deployed',
+        buttons: 'deploy-buttons',
+        login: ''
+      });
+    } else {
+      this.setState({
+        hamburger: 'closed',
+        buttons: 'hide-buttons',
+        login: ''
+      });
+    }
+  }
+
+  handleSelection = (currentSelection) => {
+    if (currentSelection === 'people') {
+      this.callFetchPeople();
+    } else if (currentSelection === 'vehicles') {
+      this.callFetchVehicles();
+    } else if (currentSelection === 'planets') {
+      this.callFetchPlanets()
+    } else {
+      this.setState({
+        currentSelection: 'favorites',
+        loading: false,
+        error: false
+      })
+    }
+  }
+
+  // FAVORITES LOGIC //
 
   toggleFavorite = (cardData) => {
     this.toggleFavoriteInDatabase(cardData);
@@ -193,21 +229,7 @@ class App extends Component {
     })
   }
  
-  handleSelection = (currentSelection) => {
-    if (currentSelection === 'people') {
-      this.callFetchPeople();
-    } else if (currentSelection === 'vehicles') {
-      this.callFetchVehicles();
-    } else if (currentSelection === 'planets') {
-      this.callFetchPlanets()
-    } else {
-      this.setState({
-        currentSelection: 'favorites',
-        loading: false,
-        error: false
-      })
-    }
-  }
+  // VEHICLE DATA HANDLING //
 
   callFetchVehicles = () => {
     if(localStorage.vehicles){
@@ -245,6 +267,8 @@ class App extends Component {
     }
   }
 
+  // PEOPLE DATA HANDLING //
+
   callFetchPeople = () => {
     if (localStorage.people) {
       this.pullPeopleData();
@@ -280,6 +304,8 @@ class App extends Component {
       this.setState({ error: true, currentSelection: '' })
     }
   }
+
+  // PLANET DATA HANDLING //
 
   callFetchPlanets = () => {
     if (localStorage.planets){
