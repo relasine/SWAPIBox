@@ -22,10 +22,19 @@
   color: #ADD8E6;
   font-size: 1.7em;
   text-align: center;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
   text-transform: uppercase;
   margin-top: 0;
+  margin-bottom: 0;
   /*opacity: 0.7;*/
+}
+
+.centerpiece-fav-text {
+  font-family: Andale Mono,AndaleMono,monospace;
+  color: #ADD8E6;
+  text-align: center;
+  margin-top: 0;
+  text-transform: uppercase;
 }
 
 @media (max-width: 1000px) {

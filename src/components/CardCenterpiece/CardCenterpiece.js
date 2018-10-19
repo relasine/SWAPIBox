@@ -3,22 +3,32 @@ import './CardCenterpiece.css';
 import PropTypes from'prop-types';
 
 const CardCenterpiece = ({selection}) => {
-  let centertext;
+  let centerText;
 
   if (selection === 'people'){
-    centertext = 'Persons of Interest'
+    centerText = 'Persons of Interest'
   } else if (selection === 'planets') {
-    centertext = 'Locations of Interest'
+    centerText = 'Locations of Interest'
   } else if (selection === 'vehicles') {
-    centertext = 'Available Conveyance'
+    centerText = 'Available Conveyance'
   } else if (selection === 'favorites') {
-    centertext = 'Saved items'
-  } 
+    centerText = 'Saved items'
+  } else (centerText = '')
+
+  let favText;
+
+  if (selection === 'favorites'){
+    favText = 'tap to remove data'
+  } else {
+    favText = 'tap to save data'
+  }
+
 
   return(
     <div className="card-centerpiece">
       <i className='fab fa-jedi-order centerpiece-icon'></i>
-      <h3 className='centerpiece-text'>{centertext}</h3>
+      <h3 className='centerpiece-text'>{centerText}</h3>
+      <p className='centerpiece-fav-text'>{favText}</p>
     </div>
   )
 }
