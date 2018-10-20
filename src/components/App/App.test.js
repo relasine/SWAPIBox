@@ -7,6 +7,9 @@ import Vehicles from '../../helpers/Vehicles'
 import Planets from '../../helpers/Planets'
 import People from '../../helpers/People'
 import LocalStorage from '../../setupTests'
+import Hamburger from '../Hamburger/Hamburger'
+import ModalButtons from '../ModalButtons/ModalButtons'
+import hamburgerHelper from '../../helpers/hamburger-helper'
 
 describe('App', () => {
 
@@ -37,7 +40,8 @@ describe('App', () => {
     fetchPeople: new People(),
     fetchPlanets: new Planets(),
     favorites: JSON.parse(localStorage.getItem('favorites')) || [],
-    hamburger: 'closed',
+    hamburger: hamburgerHelper.closed,
+    hamburgerHelper: hamburgerHelper,
     buttons: 'hide-buttons',
     login: ''
   };
@@ -60,37 +64,17 @@ describe('App', () => {
       wrapper.instance().componentDidMount()
       expect(wrapper.instance().crawlCall).toHaveBeenCalled()
     });
+    it('should call checkStorage() on componentDidMount', () => {
+      wrapper.instance().checkStorage = jest.fn()
+      wrapper.instance().componentDidMount()
+      expect(wrapper.instance().checkStorage).toHaveBeenCalled()
+    });    
+    it('should call checkURL() on componentDidMount', () => {
+      wrapper.instance().checkURL = jest.fn()
+      wrapper.instance().componentDidMount()
+      expect(wrapper.instance().checkURL).toHaveBeenCalled()
+    });
   })
-
-  // describe('checkURL', () => {
-  //     let mockPath;
-  //     let mockSetReady;
-  //     let mockCallFetchPeople
-  //     let mockCallFetchPlanets
-  //     let mockCallFetchVehicles
-
-  //   it('should invoke callFetchPeople if the pathname is /people', () => {
-  //     window.history.pushState({}, 'Test People', '/people')
-
-  //     mockCallFetchPeople = jest.fn()
-  //     wrapper.instance().callFetchPeople = mockCallFetchPeople
-
-  //     wrapper.instance().checkURL()
-
-  //     expect(mockCallFetchPeople).toHaveBeenCalled()
-  //   })
-
-  //   it('should invoke setReady if the pathname is /people', () => {
-  //     window.history.pushState({}, 'Test People', '/people')
-
-  //     mockSetReady = jest.fn()
-  //     wrapper.instance().setReady = mockSetReady
-
-  //     wrapper.instance().checkURL()
-
-  //     expect(mockSetReady).toHaveBeenCalled()
-  //   })
-  // })
 
   describe('loginWarning', () => {
     it('should set the state to display-login', () => {
@@ -122,6 +106,16 @@ describe('App', () => {
       const mockGetFilms = jest.fn()
       wrapper.instance().getFilms = mockGetFilms;
       localStorage.films = JSON.stringify({results: [{num: '1'}, {num: '1'}], count: 2});
+
+      wrapper.instance().crawlCall()
+
+      expect(mockGetFilms).toHaveBeenCalled()
+    });
+    it('should call fetchFilms when crawlCall is called if no data in LS', () => {
+      const mockGetFilms = jest.fn()
+      localStorage.clear
+      wrapper.instance().getFilms = mockGetFilms;
+
 
       wrapper.instance().crawlCall()
 
@@ -169,6 +163,68 @@ describe('App', () => {
 
       expect(wrapper.state().error).toEqual(true);
     });
+  })
+
+  describe('hamburgerChange', () => {
+    it('should set state if hamburger is closed and state is ready', () => {
+
+
+
+      wrapper.instance().hamburgerChange();
+
+      expect(wrapper.state().hamburger).toEqual('deployed');
+      expect(wrapper.state().buttons).toEqual('deploy-buttons');
+      expect(wrapper.state().login).toEqual('');
+    })
+    it('should set state if hamburger is deployed and state is ready', () => {
+
+
+
+
+      wrapper.instance().hamburgerChange();
+
+      expect(wrapper.state().hamburger).toEqual('closed');
+      expect(wrapper.state().buttons).toEqual('hide-buttons');
+      expect(wrapper.state().login).toEqual('');
+    })
+    it('should call loginWarning if this.state is not ready', () => {
+
+    })
+  })
+
+  describe('handleSelection', () => {
+    it('should call callFetchPeople if people is currentSelection', () => {
+      const mockCurrentSelection = 'people';
+      wrapper.instance().callFetchPeople = jest.fn();
+
+      wrapper.instance().handleSelection(mockCurrentSelection)
+      expect(wrapper.instance().callFetchPeople).toHaveBeenCalled();
+    });
+
+    it('should call callFetchVehicles if vehicles is currentSelection', () => {
+      const mockCurrentSelection = 'vehicles';
+      wrapper.instance().callFetchVehicles = jest.fn();
+
+      wrapper.instance().handleSelection(mockCurrentSelection)
+      expect(wrapper.instance().callFetchVehicles).toHaveBeenCalled();
+    });
+
+    it('should call callFetchPlanets if planets is currentSelection', () => {
+      const mockCurrentSelection = 'planets';
+      wrapper.instance().callFetchPlanets = jest.fn();
+
+      wrapper.instance().handleSelection(mockCurrentSelection)
+      expect(wrapper.instance().callFetchPlanets).toHaveBeenCalled();
+    });
+
+    it('should setState if the selection is saved', () => {
+      const mockCurrentSelection = 'saved';
+
+      wrapper.instance().handleSelection(mockCurrentSelection)
+      expect(wrapper.state().currentSelection).toEqual('saved')
+      expect(wrapper.state().loading).toEqual(false)
+      expect(wrapper.state().error).toEqual(false)
+    })
   })
 
   describe('toggleFavorite', () => {
@@ -249,62 +305,7 @@ describe('App', () => {
     })  
   })
 
-  describe('hamburgerChange', () => {
-    it('should set state if hamburger is deployed', () => {
-      wrapper.setState({ hamburger: 'closed'}) ;
 
-      wrapper.instance().hamburgerChange();
-
-      expect(wrapper.state().hamburger).toEqual('deployed');
-      expect(wrapper.state().buttons).toEqual('deploy-buttons');
-      expect(wrapper.state().login).toEqual('');
-    })
-    it('should set state if hamburger is closed', () => {
-      wrapper.setState({ hamburger: 'deployed'}) ;
-
-
-      wrapper.instance().hamburgerChange();
-
-      expect(wrapper.state().hamburger).toEqual('closed');
-      expect(wrapper.state().buttons).toEqual('hide-buttons');
-      expect(wrapper.state().login).toEqual('');
-    })
-  })
-
-  describe('handleSelection', () => {
-    it('should call callFetchPeople if people is currentSelection', () => {
-      const mockCurrentSelection = 'people';
-      wrapper.instance().callFetchPeople = jest.fn();
-
-      wrapper.instance().handleSelection(mockCurrentSelection)
-      expect(wrapper.instance().callFetchPeople).toHaveBeenCalled();
-    });
-
-    it('should call callFetchVehicles if vehicles is currentSelection', () => {
-      const mockCurrentSelection = 'vehicles';
-      wrapper.instance().callFetchVehicles = jest.fn();
-
-      wrapper.instance().handleSelection(mockCurrentSelection)
-      expect(wrapper.instance().callFetchVehicles).toHaveBeenCalled();
-    });
-
-    it('should call callFetchPlanets if planets is currentSelection', () => {
-      const mockCurrentSelection = 'planets';
-      wrapper.instance().callFetchPlanets = jest.fn();
-
-      wrapper.instance().handleSelection(mockCurrentSelection)
-      expect(wrapper.instance().callFetchPlanets).toHaveBeenCalled();
-    });
-
-    it('should setState if the selection is a favorites', () => {
-      const mockCurrentSelection = 'favorites';
-
-      wrapper.instance().handleSelection(mockCurrentSelection)
-      expect(wrapper.state().currentSelection).toEqual('favorites')
-      expect(wrapper.state().loading).toEqual(false)
-      expect(wrapper.state().error).toEqual(false)
-    })
-  })
 
   describe('callFetchVehicles', () => {
     it('should call fetchVehicles if callFetchVehicles is called', async () => {
