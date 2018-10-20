@@ -1,4 +1,4 @@
-#SWAPIBox
+# SWAPIBox
 
 This project is a React App the is designed to challenge the developer to make a series of fetch calls to [SWAPI](https://swapi.co/), an unsecured api with a programmatically accessible data source for all the data from the Star Wars canon universe. The developers/designers on this project are Kevin Simpson and Tobin Nelson.
 
