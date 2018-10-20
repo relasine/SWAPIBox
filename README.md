@@ -37,4 +37,6 @@ The app is fully-responsive, and works equally well on wide-screen monitors all 
 ![swapi-responsive](https://user-images.githubusercontent.com/29719272/47258702-1b9aa700-d45c-11e8-8f29-40a8ead09ed7.png)
 ![swapi-modal](https://user-images.githubusercontent.com/29719272/47258699-1b9aa700-d45c-11e8-9dc8-39fb5f755f91.png)
 
+![swapi-login-anim](https://media.giphy.com/media/5aY9I09OezXJ3Zr3Mi/giphy.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
