@@ -37,7 +37,7 @@ The app is fully-responsive, and works equally well on wide-screen monitors all 
 ![swapi-responsive](https://user-images.githubusercontent.com/29719272/47258702-1b9aa700-d45c-11e8-8f29-40a8ead09ed7.png)
 ![swapi-modal](https://user-images.githubusercontent.com/29719272/47258699-1b9aa700-d45c-11e8-9dc8-39fb5f755f91.png)
 
-We also did quite a bit of work with CSS transitions and animations, which is a bit of a challenge in React compared to working with the the normal, three-file html/css/js structure.
+We also did quite a bit of work with CSS transitions and animations, which is a bit of a challenge in React compared to working with the the normal, three-file html/css/js structure. All animations were created first in [CodePen](https://codepen.io/relasine/, then transferred over to the project.
 
 ![swapi-login-anim](https://media.giphy.com/media/5aY9I09OezXJ3Zr3Mi/giphy.gif)
 ![swapi-hamburger-anim](https://media.giphy.com/media/69lXqzxorVjBgWRixa/giphy.gif)
