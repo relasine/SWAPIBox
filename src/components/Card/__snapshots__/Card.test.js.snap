@@ -8,6 +8,13 @@ exports[`Card should match snapshot 1`] = `
   <article
     className="figure"
   >
+    <div
+      className="marked-icon-wrapper"
+    >
+      <i
+        className="far fa-dot-circle "
+      />
+    </div>
     <img
       alt="Luke"
       className="card-image"
