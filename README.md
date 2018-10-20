@@ -13,6 +13,9 @@ Originally, we decided to approach the layout and design quite literally based o
 
 We imagined the movie crawl text from a random Star Wars film scrolling up the left side while users could access data relating to characters, vehicles, and planets from the series on the right. After a few days, this design felt not only dated, but was becoming an overwhelming theme throughout the class. Consequently, we stripped the layout down to the foundation and rebuilt it with a very specific theme: the user is role-playing a Jedi Master at some point during the established Star Wars film universe, and they are logging into a secure data interface that imparts a narrative connection sequence, a situation report (the random film crawl text), and a series of access points relaying information about people, places, and transports that are pertinent to their mission. Users can hover over cards to information and click on them to save them.
 
+![swapi-narrative-wireframe](https://user-images.githubusercontent.com/29719272/47261186-1ef75800-d487-11e8-99f9-2d67bcb727c4.jpg)
+
+
 All fetch calls and saved items are saved in local storage to reduce the need to repeated fetch calls.
 
 This project additionally adds the challenge of applying React Router mid-stride for page navigation. This requires a great deal of refactoring and some headache, but is meant to mimic the real-world requirements of refactoring a product to include new tools and features.
