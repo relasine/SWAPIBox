@@ -33,6 +33,25 @@
   bottom: 15px;
 }
 
+.fa-dot-circle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 25px;
+  opacity: 0;
+  color: #ADD8E6;
+  z-index: 10;
+  transition: .5s;
+}
+
+.marked-icon-wrapper .favorited {
+  opacity: 1;
+}
+
+.figure:hover .marked-icon-wrapper .fa-dot-circle {
+  opacity: 0;
+}
+
 .caption:before {
   content: '';
   position: absolute;
@@ -63,8 +82,8 @@
   z-index: 1;
 }
 
-.favorited:after,
-.favorited:before {
+.caption.favorited:after,
+.caption.favorited:before {
   box-shadow: 2px 5px 5px #fff;
 }
 

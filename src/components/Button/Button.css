@@ -41,7 +41,7 @@
   height: 50px;
 }
 
-.button-selected {
+.active .nav-button {
   border: 1px solid rgba(173, 216, 230, .5);
   box-shadow: 0 5px 5px #ADD8E6;
 }
