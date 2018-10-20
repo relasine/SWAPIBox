@@ -172,7 +172,6 @@ class App extends Component {
         login: ''
       });
     } else {
-      console.log(this.state.hamburger.status, this.state.ready)
       await this.loginWarning()
     }
   }
@@ -245,6 +244,7 @@ class App extends Component {
     if(localStorage.vehicles){
       this.pullVehicleData();
     } else {
+      this.setState({ loading: true })
       this.fetchVehicleData();
     }
   }
@@ -261,8 +261,6 @@ class App extends Component {
   }
 
   fetchVehicleData = async() => {
-    await this.setState({ loading: true })
-
     try {
       const cleanData = await this.state.fetchVehicles.fetchVehicles()
       this.setState({
@@ -283,6 +281,7 @@ class App extends Component {
     if (localStorage.people) {
       this.pullPeopleData();
     } else {
+      this.setState({ loading: true })
       this.fetchPeopleData();
     }
   }
@@ -299,8 +298,6 @@ class App extends Component {
   }
 
   fetchPeopleData = async () => {
-    await this.setState({ loading: true })
-
     try {
       const cleanedPeople = await this.state.fetchPeople.fetchPeople();
       this.setState({
@@ -321,23 +318,8 @@ class App extends Component {
     if (localStorage.planets){
       this.pullPlanetData()
     } else {
+      this.setState({ loading: true })
       this.fetchPlanetData()
-    }
-  }
-
-  fetchPlanetData = async () => {
-    await this.setState({ loading: true })
-    try{
-      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
-      this.setState({
-        planets: cleanedPlanets,
-        currentSelection: 'planets',
-        loading: false,
-        error: false
-      })
-      localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
-    } catch(error) {
-      this.setState({ error: true })
     }
   }
 
@@ -350,6 +332,21 @@ class App extends Component {
       loading: false,
       error: false
     })
+  }
+
+  fetchPlanetData = async () => {
+    try{
+      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
+      this.setState({
+        planets: cleanedPlanets,
+        currentSelection: 'planets',
+        loading: false,
+        error: false
+      })
+      localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
+    } catch(error) {
+      this.setState({ error: true })
+    }
   }
 
   render() {

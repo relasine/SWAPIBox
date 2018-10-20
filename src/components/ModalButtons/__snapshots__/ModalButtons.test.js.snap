@@ -47,7 +47,7 @@ exports[`ModalButtons should match the snapshot 1`] = `
     to="/favorites"
   >
     <Button
-      buttonName="favorites"
+      buttonName="saved"
       currentSelection="people"
       handleSelection={[MockFunction]}
     />
