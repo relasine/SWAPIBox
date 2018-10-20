@@ -167,28 +167,47 @@ describe('App', () => {
 
   describe('hamburgerChange', () => {
     it('should set state if hamburger is closed and state is ready', () => {
-
-
+      wrapper.setState({
+        hamburger: hamburgerHelper.closed,
+        ready: true
+      })
 
       wrapper.instance().hamburgerChange();
 
-      expect(wrapper.state().hamburger).toEqual('deployed');
+      expect(wrapper.state().hamburger).toEqual({"bottomBladeToggled": "bottom-blade-toggled", "bottomToggled": "bottom-toggled", "gripToggled": "grip-toggled", "middleBladeToggled": "middle-blade-toggled", "middleToggled": "middle-toggled", "status": "deployed", "topBladeToggled": "top-blade-toggled", "topToggled": "top-toggled"});
       expect(wrapper.state().buttons).toEqual('deploy-buttons');
       expect(wrapper.state().login).toEqual('');
     })
     it('should set state if hamburger is deployed and state is ready', () => {
+        wrapper.setState({
+          hamburger: hamburgerHelper.deployed,
+          ready: true
+        })
 
+        wrapper.instance().hamburgerChange();
 
-
+        expect(wrapper.state().hamburger).toEqual({
+          status: 'closed',
+          topToggled: '',
+          middleToggled: '',
+          bottomToggled: '',
+          topBladeToggled: '',
+          middleBladeToggled: '',
+          bottomBladeToggled: '',
+          gripToggled: ''
+        });
+        expect(wrapper.state().buttons).toEqual('hide-buttons');
+        expect(wrapper.state().login).toEqual('');
+      })
+    it('should call loginWarning if this.state is not ready', () => {
+      wrapper.setState({
+        ready: false
+      });
+      wrapper.instance().loginWarning =jest.fn();
 
       wrapper.instance().hamburgerChange();
 
-      expect(wrapper.state().hamburger).toEqual('closed');
-      expect(wrapper.state().buttons).toEqual('hide-buttons');
-      expect(wrapper.state().login).toEqual('');
-    })
-    it('should call loginWarning if this.state is not ready', () => {
-
+      expect(wrapper.instance().loginWarning).toHaveBeenCalled; 
     })
   })
 
