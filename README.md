@@ -41,7 +41,7 @@ We also did quite a bit of work with CSS transitions and animations, which is a 
 
 ![swapi-login-anim](https://media.giphy.com/media/5aY9I09OezXJ3Zr3Mi/giphy.gif)
 ![swapi-hamburger-anim](https://media.giphy.com/media/69lXqzxorVjBgWRixa/giphy.gif)
-![swapi-card-anim](https://media.giphy.com/media/woBHYKZuFaXy7yMRxV/giphy.gif) 
+![swapi-card-anim](https://media.giphy.com/media/woBHYKZuFaXy7yMRxV/giphy.gif)
 ![swapi-loading-anim](https://media.giphy.com/media/WvircmmZwI7zpzULEg/giphy.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
