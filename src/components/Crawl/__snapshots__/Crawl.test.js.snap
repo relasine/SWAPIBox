@@ -63,9 +63,7 @@ exports[`Crawl should match snapshot 1`] = `
   <main
     aria-label="post-login-screen"
     className="crawl-text-wrapper "
-  >
-    <Briefing />
-  </main>
+  />
   <ErrorPage
     errorState=""
   />
