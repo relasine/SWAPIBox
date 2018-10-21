@@ -120,7 +120,7 @@ class Crawl extends Component {
           className={`crawl-text-wrapper ${this.state.showCrawl}`}
           aria-label='post-login-screen'
         >
-          {!this.props.loading && <Briefing 
+          {(!this.props.loading && this.props.film.opening_crawl) && <Briefing 
             crawl={this.props.film.opening_crawl}
             title={this.props.film.title}
             id={this.props.film.episode_id}
