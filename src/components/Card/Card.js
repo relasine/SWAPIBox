@@ -18,10 +18,14 @@ const Card = ( {data, toggleFavorite} ) => {
 
   return(
     <article 
+      aria-label='item-profile-card'
       className={`card-wrapper`}
       onClick={()=>{toggleFavorite(data)}}
     >
-      <article className='figure'>
+      <article 
+        className='figure' 
+        aria-lable-'card-front'
+      >
         <div className='marked-icon-wrapper'>
           <div className='favorite-count-wrapper'>
             <i className={`fas fa-journal-whills ${favoriteClass}`}></i>
@@ -32,7 +36,10 @@ const Card = ( {data, toggleFavorite} ) => {
           src={Images[data.name]}
           alt={data.name}
         />
-        <section className={`caption ${favoriteClass}`}>
+        <section 
+          className={`caption ${favoriteClass}`} 
+          aria-label='card-back'
+        >
           <div className='card-header'>
             <h2 className='card-title'>{data.name}</h2>
             <div className='favorite-icon'></div>
