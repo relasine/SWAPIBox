@@ -18,6 +18,7 @@ const Button = ({handleSelection, buttonName, currentSelection}) => {
       onClick={() => {
         handleSelection(buttonName)
       }}
+      aria-label='navigation-button'
     >
       <h3 
         data-text={buttonName}
