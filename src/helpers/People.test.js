@@ -24,7 +24,7 @@ describe('People', async () => {
         favoriteFood: 'Hamburgers'
       }
     ]
-  }
+  };
 
   const mockHomeResponse = [
     {
@@ -43,7 +43,7 @@ describe('People', async () => {
       population: '7.3bill',
       favoriteFood: 'Hamburgers'
     }
-  ]
+  ];
 
   const mockMappedResponse = [
     {
@@ -60,7 +60,7 @@ describe('People', async () => {
       species: 'Human',
       population: '7.3bill',
     }
-  ]
+  ];
 
   const mockFetchCall = jest.fn().mockImplementation(() => {
     return Promise.resolve(mockResponse);
@@ -69,11 +69,9 @@ describe('People', async () => {
   beforeEach(() => {
     fetchPeople = new People
     fetchPeople.fetchCall = mockFetchCall
-  })
+  });
 
   it('calls fetchCall', () => {
-
-
     fetchPeople.fetchPeople();
 
     expect(mockFetchCall).toHaveBeenCalled();
@@ -97,19 +95,16 @@ describe('People', async () => {
     await fetchPeople.fetchPeople();
 
     expect(fetchPeople.fetchSpecies).toHaveBeenCalled();
-  })
+  });
 
   it('calls cleanPeople', async () => {
-    fetchPeople.cleanPeople = jest.fn()
+    fetchPeople.cleanPeople = jest.fn();
 
     await fetchPeople.fetchPeople();
 
     expect(fetchPeople.cleanPeople).toHaveBeenCalled();
-  })
-
+  });
 });
-
-
 
 describe('cleanPeople', () => {
 
@@ -132,7 +127,7 @@ describe('cleanPeople', () => {
       population: '7.3bill',
       favoriteFood: 'Hamburgers'
     }
-  ]
+  ];
 
   const mockMappedResponse = [
     {
@@ -157,14 +152,14 @@ describe('cleanPeople', () => {
       favorite: false,
       category: 'people'
     }
-  ]
+  ];
 
   const mockFetchCall = jest.fn().mockImplementation(() => {
     return Promise.resolve(mockResponse);
   });
 
   beforeEach(() => {
-    fetchPeople = new People
+    fetchPeople = new People;
     fetchPeople.fetchCall = mockFetchCall
   });
 
@@ -172,9 +167,8 @@ describe('cleanPeople', () => {
     const response = fetchPeople.cleanPeople(mockHomeResponse);
 
     expect(response).toEqual(mockMappedResponse);
-  })
-
-});
+  });
+})
 
 describe('fetchHomeWorld', async () => {
   let fetchPeople; 
@@ -196,7 +190,7 @@ describe('fetchHomeWorld', async () => {
       population: '7.3bill',
       favoriteFood: 'Hamburgers'
     }
-  ]
+  ];
 
   const mockFetchCall = jest.fn().mockImplementation(() => {
     return Promise.resolve(mockHomeResponse);
@@ -235,21 +229,20 @@ describe('fetchSpecies', async () => {
       population: '7.3bill',
       favoriteFood: 'Hamburgers'
     }
-  ]
+  ];
 
   const mockFetchCall = jest.fn().mockImplementation(() => {
     return Promise.resolve(mockHomeResponse);
   });
 
   beforeEach(() => {
-    fetchPeople = new People
+    fetchPeople = new People;
     fetchPeople.fetchCall = mockFetchCall
   });
 
   it('should call fetchCall once for each array element', async () => {
     await fetchPeople.fetchSpecies(mockHomeResponse);
 
-    expect(fetchPeople.fetchCall.mock.calls.length).toEqual(2)
+    expect(fetchPeople.fetchCall.mock.calls.length).toEqual(2);
   });
-
-});
+})

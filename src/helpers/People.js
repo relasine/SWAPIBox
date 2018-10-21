@@ -1,4 +1,4 @@
-import fetchCall from './fetchCalls'
+import fetchCall from './fetchCalls';
 
 class People {
   constructor() {
@@ -6,11 +6,11 @@ class People {
   }
 
   fetchPeople = async () => {
-    const url = 'https://swapi.co/api/people/'
-    const data = await this.fetchCall(url)
+    const url = 'https://swapi.co/api/people/';
+    const data = await this.fetchCall(url);
     const withHomeWorld = await this.fetchHomeWorld(data.results);
     const withSpecies = await this.fetchSpecies(withHomeWorld);
-    return this.cleanPeople(withSpecies) 
+    return this.cleanPeople(withSpecies);
   }
 
   cleanPeople = (people) => {
@@ -49,10 +49,8 @@ class People {
       return person;
     });
 
-    return Promise.all(withSpecies)
+    return Promise.all(withSpecies);
   }
 }
-
-
 
 export default People;

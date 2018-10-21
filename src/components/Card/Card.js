@@ -1,9 +1,9 @@
 import React from 'react';
+import Images from '../../images.js';
 import PropTypes from 'prop-types';
 import './Card.css';
-import Images from '../../images.js';
 
-const Card = ( {data, toggleFavorite} ) => {
+const Card = ({data, toggleFavorite}) => {
   let favoriteClass;
 
   if (data.favorite) {
@@ -53,13 +53,13 @@ const Card = ( {data, toggleFavorite} ) => {
         </section>
       </article>
     </article>
-  )
+  );
 }
 
 Card.propTypes = {
   data: PropTypes.object.isRequired,
   toggleFavorite: PropTypes.func.isRequired
-}
+};
 
 export default Card;
 

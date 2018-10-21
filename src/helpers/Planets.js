@@ -1,4 +1,4 @@
-import fetchCall from './fetchCalls'
+import fetchCall from './fetchCalls';
 
 class Planets {
   constructor() {
@@ -6,11 +6,11 @@ class Planets {
   }
 
   fetchPlanets = async () => {
-    const url = 'https://swapi.co/api/planets/'
+    const url = 'https://swapi.co/api/planets/';
     const data = await this.fetchCall(url);
     const withResidents = await this.fetchResidents(data.results);
-    const cleanedPlanets = this.cleanPlanets(withResidents)
-    return cleanedPlanets
+    const cleanedPlanets = this.cleanPlanets(withResidents);
+    return cleanedPlanets;
   }
 
   cleanPlanets = (planets) => {
@@ -25,8 +25,8 @@ class Planets {
         ],
         favorite: false,
         category: 'planets'
-      }
-      return planetObject
+      };
+      return planetObject;
     });
   }
 
@@ -35,7 +35,7 @@ class Planets {
       const planetResidents = planet.residents.map( async (resident) => {
         const residentData = await this.fetchCall(resident);
         return residentData.name
-      })
+      });
       const names = await Promise.all(planetResidents);
 
       if (names.length >= 1) {
@@ -45,10 +45,9 @@ class Planets {
       }
 
       return planet
-    })
-    return Promise.all(withResidents)
+    });
+    return Promise.all(withResidents);
   }
 }
-
 
 export default Planets;

@@ -1,6 +1,6 @@
 import React from 'react';
-import './Button.css';
 import PropTypes from 'prop-types';
+import './Button.css';
 
 const Button = ({handleSelection, buttonName, currentSelection}) => {
 

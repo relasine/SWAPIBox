@@ -16,7 +16,7 @@ describe('Hamburger', () => {
     middleBladeToggled: 'middle-blade-toggled',
     bottomBladeToggled: 'bottom-blade-toggled',
     gripToggled: 'grip-toggled' 
-  }
+  };
 
   const undeployedState = {
     status: 'closed',
@@ -27,13 +27,13 @@ describe('Hamburger', () => {
     middleBladeToggled: '',
     bottomBladeToggled: '',
     gripToggled: ''
-  }
+  };
 
   beforeEach(() => {
     wrapper = shallow(<Hamburger 
       hamburgerChange={mockHamburgerChange}
       status={undeployedState}
-    />)
+    />);
   })
 
   it('should match the snapshot', () => {
@@ -43,7 +43,7 @@ describe('Hamburger', () => {
 
 
   it('should call hamburgerChange on click', async () => {
-    wrapper.find('.lightsaburger').simulate('click')
+    wrapper.find('.lightsaburger').simulate('click');
 
     expect(mockHamburgerChange).toHaveBeenCalled();
   });

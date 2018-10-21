@@ -21,7 +21,7 @@ describe('Planets', async () => {
         food: 'none'
       }
     ]
-  }
+  };
 
   const cleanedResponse = [
       {
@@ -51,18 +51,17 @@ describe('Planets', async () => {
     fetchPlanets.fetchPlanets();
 
     expect(mockFetchCall).toHaveBeenCalled();
-
   });
 
   it('should call fetchResidents', async () => {
     fetchPlanets.fetchResidents = jest.fn().mockImplementation((mockResponse) => {
       return Promise.resolve(mockResponse);
-    })
+    });
 
     await fetchPlanets.fetchPlanets();
 
     expect(fetchPlanets.fetchResidents).toHaveBeenCalled();
-  })
+  });
 
   it('should call cleanPlanets', async () => {
     fetchPlanets.cleanPlanets = jest.fn();
@@ -70,7 +69,7 @@ describe('Planets', async () => {
     await fetchPlanets.fetchPlanets();
 
     expect(fetchPlanets.cleanPlanets).toHaveBeenCalled();
-  })
+  });
 })
 
 describe('cleanPlanets', async () => {
@@ -91,7 +90,7 @@ describe('cleanPlanets', async () => {
       residents: ['moe', 'steph', 'jane'],
       food: 'none'
     }
-  ]
+  ];
 
 const mappedResponse = [
     {
@@ -115,7 +114,7 @@ const mappedResponse = [
       favorite: false,
       category: 'planets'
     }
-  ]
+  ];
 
   const mockFetchCall = jest.fn().mockImplementation(() => {
     return Promise.resolve(mockResponse);
@@ -129,7 +128,7 @@ const mappedResponse = [
   it('should return a curated object', () => {
     const reponse = fetchPlanets.cleanPlanets(mockResponse);
 
-    expect(reponse).toEqual(mappedResponse)
+    expect(reponse).toEqual(mappedResponse);
   });
 });
 
@@ -155,7 +154,7 @@ describe('fetchResidents', async () => {
       residents: ['tom', 'joe', 'lisa'],
       food: 'none'
     }
-  ]
+  ];
   
   const noResidents = [
     {
@@ -165,7 +164,7 @@ describe('fetchResidents', async () => {
       residents: [],
       food: 'Have you tried pizza?'
     },
-  ]
+  ];
 
   beforeEach(() => {
     fetchPlanets = new Planets;
@@ -176,24 +175,22 @@ describe('fetchResidents', async () => {
     await fetchPlanets.fetchResidents(mockResponse);
 
     expect(fetchPlanets.fetchCall.mock.calls.length).toEqual(6);
-  })
+  });
 
   it('should return an array of names if it has a length of at least one', async () => {
     const response = await fetchPlanets.fetchResidents(mockResponse);
 
-    expect(response[0].residents).toEqual(['brian', 'brian', 'brian'])
-    expect(response[1].residents).toEqual(['brian', 'brian', 'brian'])
-  })
+    expect(response[0].residents).toEqual(['brian', 'brian', 'brian']);
+    expect(response[1].residents).toEqual(['brian', 'brian', 'brian']);
+  });
 
   it('should return an array with none in it if it does not get any names', async () => {
     fetchPlanets.fetchCall = jest.fn().mockImplementation(() => {
       return Promise.resolve()
-    })
+    });
 
     const response = await fetchPlanets.fetchResidents(noResidents);
 
-    expect(response[0].residents).toEqual(['none'])
-
-  })
-
+    expect(response[0].residents).toEqual(['none']);
+  });
 })

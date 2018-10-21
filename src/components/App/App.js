@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
 import Crawl from '../Crawl/Crawl';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
+import Hamburger from '../Hamburger/Hamburger';
+import ModalButtons from '../ModalButtons/ModalButtons';
 import fetchCall from '../../helpers/fetchCalls';
 import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import hamburgerHelper from '../../helpers/hamburger-helper';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import Hamburger from '../Hamburger/Hamburger';
-import ModalButtons from '../ModalButtons/ModalButtons';
+import './App.css';
 
 
 class App extends Component {
@@ -140,8 +140,8 @@ class App extends Component {
     const url = 'https://swapi.co/api/films/';
     try {
       const films = await this.state.fetchCall(url);
-
       const randomNum = Math.floor(Math.random() * (films.count));
+
       this.setState({
         openingCrawl: films.results[randomNum], 
         loading: false,
@@ -206,7 +206,6 @@ class App extends Component {
     if (this.state.favorites.find( fav => cardData.name === fav.name)) {
       this.removeFavorite(cardData);
 
-
     } else {
       cardData.favorite = true;
       const newFavorites = [...this.state.favorites, cardData];
@@ -262,7 +261,7 @@ class App extends Component {
 
   fetchVehicleData = async() => {
     try {
-      const cleanData = await this.state.fetchVehicles.fetchVehicles()
+      const cleanData = await this.state.fetchVehicles.fetchVehicles();
       this.setState({
         vehicles: cleanData,
         currentSelection: 'vehicles',
@@ -271,7 +270,7 @@ class App extends Component {
       });
       localStorage.setItem('vehicles', JSON.stringify(cleanData));
     } catch(error) {
-      this.setState({ error: true, currentSelection: '' })
+      this.setState({ error: true, currentSelection: '' });
     }
   }
 
@@ -306,7 +305,7 @@ class App extends Component {
         loading: false,
         error: false
       });
-      localStorage.setItem('people', JSON.stringify(cleanedPeople))
+      localStorage.setItem('people', JSON.stringify(cleanedPeople));
     } catch(error) {
       this.setState({ error: true, currentSelection: '' });
     }
@@ -478,11 +477,9 @@ class App extends Component {
         
         </Switch>
       </div>
-    )
+    );
           // <Route component={404} />
   }
 }
 
 export default App;
-
-

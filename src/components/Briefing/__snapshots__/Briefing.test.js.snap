@@ -9,18 +9,24 @@ exports[`Briefing should match the snapshot 1`] = `
   </h2>
   <p
     className="crawl-text"
-  />
+  >
+    test
+  </p>
   <p
     className="smol-text"
   >
     Briefing Title: 
-    <span />
+    <span>
+      test
+    </span>
   </p>
   <p
     className="smol-text"
   >
     Galaxy Date: 
-    <span />
+    <span>
+      1
+    </span>
   </p>
 </section>
 `;

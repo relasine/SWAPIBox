@@ -30,7 +30,7 @@ describe('Vehicles', async () => {
   beforeEach(()=> {
     fetchVehicles = new Vehicles;
     fetchVehicles.fetchCall = mockFetchCall;
-  })
+  });
 
   it('should call the fetchCall', () => {
     fetchVehicles.fetchVehicles();
@@ -41,7 +41,7 @@ describe('Vehicles', async () => {
     fetchVehicles.cleanVehicles = jest.fn();
     await fetchVehicles.fetchVehicles();
     expect(fetchVehicles.cleanVehicles).toHaveBeenCalled();
-  })
+  });
 })
 
 describe('cleanVehicles', () => {
@@ -88,19 +88,5 @@ describe('cleanVehicles', () => {
     const returnValue = fetchVehicles.cleanVehicles(mockVehicles);
     
     expect(returnValue).toEqual(expected);
-  })
+  });
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-

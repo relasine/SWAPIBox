@@ -15,14 +15,14 @@ describe('Crawl', () => {
       showCrawl: '',
       ready: false,
       error: ''
-  }
+  };
 
-  const mockHamburger = {status: 'closed'}
+  const mockHamburger = {status: 'closed'};
 
   beforeEach(() => {
 
     let mockReady = jest.fn();
-    let mockHamburgerChange = jest.fn()
+    let mockHamburgerChange = jest.fn();
 
     wrapper = shallow(<Crawl film={{}}
                         setReady={mockReady}
@@ -36,22 +36,22 @@ describe('Crawl', () => {
 
   it('should exist', () => {
     expect(wrapper).toBeDefined();
-  })
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
   it('should have default state', () => {
-    expect(wrapper.state()).toEqual(defaultState)
-  })
+    expect(wrapper.state()).toEqual(defaultState);
+  });
 
   it('should call checkReady onclick', () => {
-    const spy = spyOn(wrapper.instance(), 'checkReady')
+    const spy = spyOn(wrapper.instance(), 'checkReady');
 
     wrapper.find('aside').simulate('click');
 
-    expect(spy).toHaveBeenCalled()
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should setState if ready and there is no error', async () => {
@@ -61,12 +61,12 @@ describe('Crawl', () => {
 
     wrapper.instance().checkReady();
 
-    expect(wrapper.state().showCrawl).toEqual('show-crawl')
-    expect(wrapper.state().hideWelcome).toEqual('hide-welcome')
+    expect(wrapper.state().showCrawl).toEqual('show-crawl');
+    expect(wrapper.state().hideWelcome).toEqual('hide-welcome');
   });
 
   it('should setState if ready and there is an error', async () => {
-    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={true} loading={false}/>)
+    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={true} loading={false}/>);
 
     await wrapper.setState({
       ready: true,
@@ -74,18 +74,18 @@ describe('Crawl', () => {
 
     wrapper.instance().checkReady();
 
-    expect(wrapper.state().error).toEqual('display-crawl-error')
-    expect(wrapper.state().hideWelcome).toEqual('hide-welcome')
+    expect(wrapper.state().error).toEqual('display-crawl-error');
+    expect(wrapper.state().hideWelcome).toEqual('hide-welcome');
   });
 
   it('should call several functions when handleFingerPrint is called', async () => {
-    const spyOne = spyOn(wrapper.instance(), 'printConnect')
-    const spyTwo = spyOn(wrapper.instance(), 'printHandshake')
-    const spyThree = spyOn(wrapper.instance(), 'printWelcome')
-    const spyFour = spyOn(wrapper.instance(), 'printBriefing')
+    const spyOne = spyOn(wrapper.instance(), 'printConnect');
+    const spyTwo = spyOn(wrapper.instance(), 'printHandshake');
+    const spyThree = spyOn(wrapper.instance(), 'printWelcome');
+    const spyFour = spyOn(wrapper.instance(), 'printBriefing');
     const mockSetReady = jest.fn()
 
-    wrapper = shallow(<Crawl film={{}} setReady={mockSetReady} error={true} loading={false}/>)
+    wrapper = shallow(<Crawl film={{}} setReady={mockSetReady} error={true} loading={false}/>);
 
     await wrapper.instance().handleFingerPrint();
 
@@ -97,7 +97,7 @@ describe('Crawl', () => {
   });
 
   it('should call setState when handleFingerPrint is called', async () => {
-    await wrapper.instance().handleFingerPrint()
+    await wrapper.instance().handleFingerPrint();
 
     expect(wrapper.state().thumbprint).toEqual('active-thumbprint');
   });
@@ -125,14 +125,13 @@ describe('Crawl', () => {
 
     expect(wrapper.state().briefing).toEqual('print-briefing');  
     expect(wrapper.state().ready).toEqual(true);    
-
   });
 
   it('should call handleFingerPrint when clicked', () => {
-    const spy = spyOn(wrapper.instance(), 'handleFingerPrint')
+    const spy = spyOn(wrapper.instance(), 'handleFingerPrint');
 
     wrapper.find('.thumbprint').simulate('click');
 
     expect(spy).toHaveBeenCalled();
-  })
+  });
 })

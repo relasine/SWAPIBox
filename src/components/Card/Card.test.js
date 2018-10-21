@@ -32,12 +32,10 @@ describe('Card', () => {
   });
 
   it('sets favoritedClass to an empty string if passed down as a prop as false', () => {
-
-    expect(wrapper.props().children.props.children[0].props.children.props.children.props.className).toEqual('fas fa-journal-whills ')
+    expect(wrapper.props().children.props.children[0].props.children.props.children.props.className).toEqual('fas fa-journal-whills ');
   });
 
   it('sets favoritedClass to a favorited if passed down as a prop as false', () => {
-
     const newTrueClass = {
         name: 'Luke',
         info: [
@@ -70,5 +68,4 @@ describe('Card', () => {
 
     expect(mockToggleFavorite).toHaveBeenCalled();
   });
-
 })

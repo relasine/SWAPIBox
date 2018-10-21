@@ -1,4 +1,4 @@
-import fetchCall from './fetchCalls'
+import fetchCall from './fetchCalls';
 
 class Vehicles {
   constructor() {
@@ -6,10 +6,10 @@ class Vehicles {
   }
 
   fetchVehicles = async () => {
-    const url = 'https://swapi.co/api/vehicles/'
-    const data = await this.fetchCall(url)
-    const cleanData = this.cleanVehicles(data)
-    return cleanData
+    const url = 'https://swapi.co/api/vehicles/';
+    const data = await this.fetchCall(url);
+    const cleanData = this.cleanVehicles(data);
+    return cleanData;
   }
 
   cleanVehicles = (vehicles) => {
@@ -23,11 +23,10 @@ class Vehicles {
         ],
         favorite: false,
         category: 'vehicles'
-      }
+      };
       return vehicleObject;
     })
   }
 }
-
 
 export default Vehicles;
