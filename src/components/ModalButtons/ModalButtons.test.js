@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 let wrapper;
 let mockCurrentSelection = 'people';
 let mockHandleSelection = jest.fn();
-let mockHamburger = '';
+let mockHamburger = {};
 
 beforeEach(() => {
   wrapper = shallow(<ModalButtons 
