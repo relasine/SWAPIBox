@@ -3,7 +3,7 @@ import Images from '../../images.js';
 import PropTypes from 'prop-types';
 import './Card.css';
 
-const Card = ( {data, toggleFavorite} ) => {
+const Card = ({data, toggleFavorite}) => {
   let favoriteClass;
 
   if (data.favorite) {

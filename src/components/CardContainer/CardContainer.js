@@ -45,5 +45,4 @@ CardContainer.propTypes = {
   totalFavorites: PropTypes.number.isRequired
 };
 
-
 export default CardContainer;
