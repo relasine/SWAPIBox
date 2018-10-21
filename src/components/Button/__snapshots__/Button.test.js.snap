@@ -2,6 +2,7 @@
 
 exports[`Button should match snapshot 1`] = `
 <div
+  aria-label="navigation-button"
   className="nav-button button-selected"
   onClick={[Function]}
 >

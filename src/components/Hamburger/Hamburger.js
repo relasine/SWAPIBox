@@ -9,6 +9,7 @@ const Hamburger = ({ hamburgerChange, status }) => {
       onClick={() => {
         hamburgerChange()
       }}
+      aria-label='menu-button'
     >
       <div className={`top ${status.topToggled}`}>
        <div className={`top-blade blade ${status.topBladeToggled}`}></div>

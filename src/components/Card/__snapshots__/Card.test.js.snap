@@ -2,10 +2,12 @@
 
 exports[`Card should match snapshot 1`] = `
 <article
+  aria-label="item-profile-card"
   className="card-wrapper"
   onClick={[Function]}
 >
   <article
+    aria-lable="card-front"
     className="figure"
   >
     <div
@@ -24,6 +26,7 @@ exports[`Card should match snapshot 1`] = `
       className="card-image"
     />
     <section
+      aria-label="card-back"
       className="caption "
     >
       <div

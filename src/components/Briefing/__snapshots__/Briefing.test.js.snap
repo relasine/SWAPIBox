@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Briefing should match the snapshot 1`] = `
-<section>
+<section
+  aria-label="mission-briefing"
+>
   <h2>
     Situation Briefing
   </h2>

@@ -8,8 +8,6 @@ import './CardContainer.css';
 
 const CardContainer = ({data, selection, toggleFavorite, error, loading, totalFavorites}) => {
 
-  console.log(totalFavorites)
-
   const cards = data.map( point => {
     return  <Card 
       data={point} 
@@ -31,7 +29,7 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading, totalFa
   }
 
   return (
-    <div className="card-container">
+    <div className="card-container" aria-label='card-container'>
       {display}
       {centerpiece}
     </div>

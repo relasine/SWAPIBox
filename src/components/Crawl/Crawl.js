@@ -72,7 +72,10 @@ class Crawl extends Component {
 
   render() {
     return (
-      <aside onClick={() => {this.checkReady()}}>
+      <aside 
+        onClick={() => {this.checkReady()}}
+        aria-label='landing-screen'
+      >
         <section className='header-section'>
           <div className='header-logo-wrapper'>
             <i className='fab fa-jedi-order header-logo'></i>
@@ -113,7 +116,10 @@ class Crawl extends Component {
             Tap to receive briefing
           </h2>
         </main>
-        <main className={`crawl-text-wrapper ${this.state.showCrawl}`}>
+        <main 
+          className={`crawl-text-wrapper ${this.state.showCrawl}`}
+          aria-label='post-login-screen'
+        >
           {!this.props.loading && <Briefing 
             crawl={this.props.film.opening_crawl}
             title={this.props.film.title}

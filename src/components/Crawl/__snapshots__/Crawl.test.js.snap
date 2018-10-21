@@ -2,6 +2,7 @@
 
 exports[`Crawl should match snapshot 1`] = `
 <aside
+  aria-label="landing-screen"
   onClick={[Function]}
 >
   <section
@@ -60,6 +61,7 @@ exports[`Crawl should match snapshot 1`] = `
     </h2>
   </main>
   <main
+    aria-label="post-login-screen"
     className="crawl-text-wrapper "
   >
     <Briefing />

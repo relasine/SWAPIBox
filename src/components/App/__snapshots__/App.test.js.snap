@@ -5,6 +5,7 @@ exports[`App should match snapshot 1`] = `
   className="App"
 >
   <div
+    aria-label="navigation-section-wrapper"
     className="button-section"
   >
     <header>
@@ -24,6 +25,7 @@ exports[`App should match snapshot 1`] = `
         }
       />
       <section
+        aria-label="mobile-navigation-section"
         className="modal-wrapper"
       >
         <ModalButtons
@@ -49,6 +51,7 @@ exports[`App should match snapshot 1`] = `
         Please login to access the archives
       </h4>
       <section
+        aria-label="navigation"
         className="button-wrapper hide-buttons"
       >
         <NavLink

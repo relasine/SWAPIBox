@@ -24,7 +24,7 @@ const Card = ( {data, toggleFavorite} ) => {
     >
       <article 
         className='figure' 
-        aria-lable-'card-front'
+        aria-label='card-front'
       >
         <div className='marked-icon-wrapper'>
           <div className='favorite-count-wrapper'>

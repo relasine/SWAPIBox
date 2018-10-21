@@ -2,6 +2,7 @@
 
 exports[`ModalButtons should match the snapshot 1`] = `
 <aside
+  aria-label="mobile-navigation-section"
   className="modal-buttons-wrapper undefined"
 >
   <NavLink

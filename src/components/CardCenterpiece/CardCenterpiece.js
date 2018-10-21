@@ -25,12 +25,24 @@ const CardCenterpiece = ({selection, totalFavorites}) => {
 
 
   return(
-    <div className="card-centerpiece">
+    <div 
+      className="card-centerpiece"
+      aria-label='section-label'
+    >
       <div className='fav-total-wrapper'>
-        <i className="fas fa-journal-whills total-fav-icon"></i>
-        <h4 className='fav-count-display'>{totalFavorites}</h4>
+        <i 
+          className="fas fa-journal-whills total-fav-icon"
+          aria-label='saved-items-icon'
+        ></i>
+        <h4 
+          className='fav-count-display'
+          aria-label='saved-items-count'
+        >{totalFavorites}</h4>
       </div>
-      <i className='fab fa-jedi-order centerpiece-icon'></i>
+      <i 
+        className='fab fa-jedi-order centerpiece-icon'
+        aria-label='jedi-order-icon'
+      ></i>
       <h3 className='centerpiece-text'>{centerText}</h3>
       <p className='centerpiece-fav-text'>{favText}</p>
     </div>
