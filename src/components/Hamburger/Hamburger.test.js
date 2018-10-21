@@ -1,6 +1,5 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import hamburgerHelper from '../../helper/hamburgerHelper'
 
 import Hamburger from './Hamburger'
 
@@ -41,16 +40,10 @@ describe('Hamburger', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call handleHamburger on click',() => {
-    let mockHandleHamburger = jest.fn()
-    wrapper.instance().handleHamburger = mockHandleHamburger
-    wrapper.find('.lightsaburger').simulate('click');
 
-    expect(mockHandleHamburger).toHaveBeenCalled();
-  });
 
   it('should call hamburgerChange on click', async () => {
-    wrapper.find('lightsaburger').simulate('click')
+    wrapper.find('.lightsaburger').simulate('click')
 
     expect(mockHamburgerChange).toHaveBeenCalled();
   });
