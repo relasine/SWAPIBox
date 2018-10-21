@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css'
+import './Loading.css';
 
 const Loading = () => {
   return(
@@ -16,7 +16,7 @@ const Loading = () => {
     <i className="fab fa-jedi-order icon"></i>
     </div>
     </div>
-  )
+  );
 }
 
-export default Loading
+export default Loading;

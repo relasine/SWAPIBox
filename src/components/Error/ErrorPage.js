@@ -13,4 +13,4 @@ const ErrorPage = ({ errorState }) => {
   )
 }
 
-export default ErrorPage
+export default ErrorPage;

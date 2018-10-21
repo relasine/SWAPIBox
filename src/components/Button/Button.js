@@ -7,9 +7,9 @@ const Button = ({handleSelection, buttonName, currentSelection}) => {
   let buttonState;
 
   if (currentSelection === buttonName) {
-    buttonState = 'button-selected'
+    buttonState = 'button-selected';
   } else {
-    buttonState = ''
+    buttonState = '';
   }
   
   return(

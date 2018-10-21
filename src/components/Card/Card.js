@@ -1,20 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import './Card.css';
-import Images from '../../images.js'
+import Images from '../../images.js';
 
 const Card = ( {data, toggleFavorite} ) => {
   let favoriteClass;
 
   if (data.favorite) {
-    favoriteClass = 'favorited'
+    favoriteClass = 'favorited';
   } else {
-    favoriteClass = ''
+    favoriteClass = '';
   }
 
   const stats = data.info.map((point) => {
     return <p key={Object.keys(point)[0]}>{Object.keys(point)[0]}: <span>{point[Object.keys( point)[0]]}</span></p>
-  })
+  });
 
   return(
     <article 

@@ -14,7 +14,7 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading, totalFa
       key={point.name} 
       toggleFavorite={toggleFavorite} 
     />;
-  }) 
+  });
 
   let display;
   let centerpiece;
@@ -24,7 +24,7 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading, totalFa
   } else if (loading) {
     display = <Loading />
   } else {
-    display = cards
+    display = cards;
     centerpiece = <CardCenterpiece selection={selection} totalFavorites={totalFavorites}/>
   }
 
@@ -43,7 +43,7 @@ CardContainer.propTypes = {
   error:PropTypes.bool.isRequired,
   loading:PropTypes.bool.isRequired,
   totalFavorites: PropTypes.number.isRequired
-}
+};
 
 
 export default CardContainer;

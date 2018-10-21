@@ -7,7 +7,7 @@ const Hamburger = ({ hamburgerChange, status }) => {
     <section 
       className='lightsaburger'
       onClick={() => {
-        hamburgerChange()
+        hamburgerChange();
       }}
       aria-label='menu-button'
     >
@@ -25,12 +25,12 @@ const Hamburger = ({ hamburgerChange, status }) => {
       </div>
 
     </section>
-  )
+  );
 }
 
 Hamburger.propTypes = {
   status: PropTypes.object.isRequired,
   hamburgerChange: PropTypes.func.isRequired,
-}
+};
 
-export default Hamburger
+export default Hamburger;

@@ -6,21 +6,23 @@ const CardCenterpiece = ({selection, totalFavorites}) => {
   let centerText;
 
   if (selection === 'people'){
-    centerText = 'Persons of Interest'
+    centerText = 'Persons of Interest';
   } else if (selection === 'planets') {
-    centerText = 'Locations of Interest'
+    centerText = 'Locations of Interest';
   } else if (selection === 'vehicles') {
-    centerText = 'Available Conveyance'
+    centerText = 'Available Conveyance';
   } else if (selection === 'saved') {
-    centerText = 'Saved items'
-  } else (centerText = '')
+    centerText = 'Saved items';
+  } else {
+    centerText = '';
+  }
 
   let favText;
 
   if (selection === 'saved'){
-    favText = 'tap to remove data'
+    favText = 'tap to remove data';
   } else {
-    favText = 'tap to save data'
+    favText = 'tap to save data';
   }
 
 
@@ -49,7 +51,7 @@ const CardCenterpiece = ({selection, totalFavorites}) => {
   )
 }
 
-export default CardCenterpiece
+export default CardCenterpiece;
 
 CardCenterpiece.propTypes = {
   selection: PropTypes.string.isRequired,
