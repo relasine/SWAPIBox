@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoMatch should match the snapshot 1`] = `
+<section
+  aria-label="404-error"
+  className="no-match"
+>
+  <h3
+    className="bad-path-message"
+  >
+    There is no entry within the archives for 
+    /badpath
+  </h3>
+</section>
+`;
