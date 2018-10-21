@@ -1,3 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hamburger should match the snapshot 1`] = `undefined`;
+exports[`Hamburger should match the snapshot 1`] = `
+<section
+  aria-label="menu-button"
+  className="lightsaburger"
+  onClick={[Function]}
+>
+  <div
+    className="top "
+  >
+    <div
+      className="top-blade blade "
+    />
+    <div
+      className="top-grip grip "
+    />
+  </div>
+  <div
+    className="middle "
+  >
+    <div
+      className="middle-grip grip "
+    />
+    <div
+      className="middle-blade blade "
+    />
+  </div>
+  <div
+    className="bottom "
+  >
+    <div
+      className="bottom-blade blade "
+    />
+    <div
+      className="bottom-grip grip "
+    />
+  </div>
+</section>
+`;

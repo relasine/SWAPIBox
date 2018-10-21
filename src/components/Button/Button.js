@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 const Button = ({handleSelection, buttonName, currentSelection}) => {
 
   let buttonState;
-  let buttonPath = `./${buttonName}.png`;
 
   if (currentSelection === buttonName) {
     buttonState = 'button-selected'
@@ -19,6 +18,7 @@ const Button = ({handleSelection, buttonName, currentSelection}) => {
       onClick={() => {
         handleSelection(buttonName)
       }}
+      aria-label='navigation-button'
     >
       <h3 
         data-text={buttonName}

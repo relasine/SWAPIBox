@@ -3,7 +3,10 @@ import './Loading.css'
 
 const Loading = () => {
   return(
-    <div className="loading">
+    <div 
+      className="loading"
+      aria-label='loading-image'
+    >
       <div className='wrapper'>
       <div className='loading-wrapper'>
       <div className="circle"></div>

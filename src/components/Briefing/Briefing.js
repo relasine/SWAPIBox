@@ -4,7 +4,7 @@ import './Briefing.css'
 
 const Briefing = ( {crawl, title, id}) => {
   return (
-    <section>
+    <section aria-label='mission-briefing'>
       <h2>Situation Briefing</h2>
       <p className='crawl-text'>{crawl}</p>
       <p className='smol-text'>Briefing Title: <span>{title}</span></p>

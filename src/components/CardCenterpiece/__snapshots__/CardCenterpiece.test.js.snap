@@ -2,9 +2,25 @@
 
 exports[`CardCenterpiece should match snapshot if selection is favorites 1`] = `
 <div
+  aria-label="section-label"
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      aria-label="saved-items-icon"
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      aria-label="saved-items-count"
+      className="fav-count-display"
+    >
+      3
+    </h4>
+  </div>
   <i
+    aria-label="jedi-order-icon"
     className="fab fa-jedi-order centerpiece-icon"
   />
   <h3
@@ -20,9 +36,25 @@ exports[`CardCenterpiece should match snapshot if selection is favorites 1`] = `
 
 exports[`CardCenterpiece should match snapshot if selection is not people/planets/vehicles/favorites 1`] = `
 <div
+  aria-label="section-label"
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      aria-label="saved-items-icon"
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      aria-label="saved-items-count"
+      className="fav-count-display"
+    >
+      3
+    </h4>
+  </div>
   <i
+    aria-label="jedi-order-icon"
     className="fab fa-jedi-order centerpiece-icon"
   />
   <h3
@@ -38,9 +70,25 @@ exports[`CardCenterpiece should match snapshot if selection is not people/planet
 
 exports[`CardCenterpiece should match snapshot if selection is people 1`] = `
 <div
+  aria-label="section-label"
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      aria-label="saved-items-icon"
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      aria-label="saved-items-count"
+      className="fav-count-display"
+    >
+      3
+    </h4>
+  </div>
   <i
+    aria-label="jedi-order-icon"
     className="fab fa-jedi-order centerpiece-icon"
   />
   <h3
@@ -58,9 +106,25 @@ exports[`CardCenterpiece should match snapshot if selection is people 1`] = `
 
 exports[`CardCenterpiece should match snapshot if selection is planets 1`] = `
 <div
+  aria-label="section-label"
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      aria-label="saved-items-icon"
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      aria-label="saved-items-count"
+      className="fav-count-display"
+    >
+      3
+    </h4>
+  </div>
   <i
+    aria-label="jedi-order-icon"
     className="fab fa-jedi-order centerpiece-icon"
   />
   <h3
@@ -78,9 +142,25 @@ exports[`CardCenterpiece should match snapshot if selection is planets 1`] = `
 
 exports[`CardCenterpiece should match snapshot if selection is vehicles 1`] = `
 <div
+  aria-label="section-label"
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      aria-label="saved-items-icon"
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      aria-label="saved-items-count"
+      className="fav-count-display"
+    >
+      3
+    </h4>
+  </div>
   <i
+    aria-label="jedi-order-icon"
     className="fab fa-jedi-order centerpiece-icon"
   />
   <h3

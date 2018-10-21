@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Crawl from '../Crawl/Crawl';
-import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls';
@@ -69,6 +68,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      this.setReady();
     } else if (window.location.pathname !== '/') {
       this.setReady();
     }
@@ -352,16 +352,19 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <div className="button-section">
+        <div 
+          className="button-section"
+          aria-label='navigation-section-wrapper'
+        >
           <header>
             <Hamburger
-              hamburger={this.state.hamburger} 
               hamburgerChange={this.hamburgerChange}
-              loginWarning={this.loginWarning}
-              ready={this.state.ready}
               status={this.state.hamburger}
             />
-            <section className='modal-wrapper'>
+            <section 
+              className='modal-wrapper'
+              aria-label='mobile-navigation-section'
+            >
               <ModalButtons 
                 hamburger={this.state.hamburger}
                 currentSelection={this.state.currentSelection}
@@ -369,7 +372,10 @@ class App extends Component {
               />
             </section>
             <h4 className={`please-login ${this.state.login}`}>Please login to access the archives</h4>
-            <section className={`button-wrapper ${this.state.buttons}`}>
+            <section 
+              className={`button-wrapper ${this.state.buttons}`}
+              aria-label='navigation'
+            >
               <NavLink 
                 to='/people' 
                 className='nav-button people' 
@@ -433,6 +439,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading}
+              totalFavorites={this.state.favorites.length}
             />
           )} />
  
@@ -443,6 +450,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading}
+              totalFavorites={this.state.favorites.length}
             />
           )} />
 
@@ -453,6 +461,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading}
+              totalFavorites={this.state.favorites.length}
             />
           )} />
 
@@ -463,6 +472,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading} 
+              totalFavorites={this.state.favorites.length}
             />
           )} />
         

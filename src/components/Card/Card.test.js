@@ -33,8 +33,7 @@ describe('Card', () => {
 
   it('sets favoritedClass to an empty string if passed down as a prop as false', () => {
 
-
-    expect(wrapper.props().children.props.children[1].props.className).toEqual('caption ')
+    expect(wrapper.props().children.props.children[0].props.children.props.children.props.className).toEqual('fas fa-journal-whills ')
   });
 
   it('sets favoritedClass to a favorited if passed down as a prop as false', () => {
@@ -55,7 +54,7 @@ describe('Card', () => {
         toggleFavorite={mockToggleFavorite}
       />);
 
-    expect(wrapper.props().children.props.children[1].props.className).toEqual('caption favorited')
+    expect(wrapper.props().children.props.children[0].props.children.props.children.props.className).toEqual('fas fa-journal-whills favorited');
   })
 
   it('should match snapshot', () => {

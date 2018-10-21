@@ -2,6 +2,7 @@
 
 exports[`Loading should match the snapshot 1`] = `
 <div
+  aria-label="loading-image"
   className="loading"
 >
   <div

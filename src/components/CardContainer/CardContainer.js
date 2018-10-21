@@ -6,7 +6,7 @@ import Loading from '../Loading/Loading';
 import PropTypes from 'prop-types';
 import './CardContainer.css';
 
-const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
+const CardContainer = ({data, selection, toggleFavorite, error, loading, totalFavorites}) => {
 
   const cards = data.map( point => {
     return  <Card 
@@ -25,11 +25,11 @@ const CardContainer = ({data, selection, toggleFavorite, error, loading}) => {
     display = <Loading />
   } else {
     display = cards
-    centerpiece = <CardCenterpiece selection={selection} />
+    centerpiece = <CardCenterpiece selection={selection} totalFavorites={totalFavorites}/>
   }
 
   return (
-    <div className="card-container">
+    <div className="card-container" aria-label='card-container'>
       {display}
       {centerpiece}
     </div>
@@ -41,7 +41,8 @@ CardContainer.propTypes = {
   selection:PropTypes.string.isRequired,
   toggleFavorite:PropTypes.func.isRequired,
   error:PropTypes.bool.isRequired,
-  loading:PropTypes.bool.isRequired
+  loading:PropTypes.bool.isRequired,
+  totalFavorites: PropTypes.number.isRequired
 }
 
 

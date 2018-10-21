@@ -2,24 +2,31 @@
 
 exports[`Card should match snapshot 1`] = `
 <article
+  aria-label="item-profile-card"
   className="card-wrapper"
   onClick={[Function]}
 >
   <article
+    aria-label="card-front"
     className="figure"
   >
     <div
       className="marked-icon-wrapper"
     >
-      <i
-        className="far fa-dot-circle "
-      />
+      <div
+        className="favorite-count-wrapper"
+      >
+        <i
+          className="fas fa-journal-whills "
+        />
+      </div>
     </div>
     <img
       alt="Luke"
       className="card-image"
     />
     <section
+      aria-label="card-back"
       className="caption "
     >
       <div
