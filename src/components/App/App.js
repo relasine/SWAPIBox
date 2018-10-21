@@ -44,11 +44,11 @@ class App extends Component {
     this.checkURL();
   }
 
-  // componentDidUpdate() {
-  //   window.onpopstate = (e) => {
-  //     this.checkURL();
-  //   }
-  // }
+  componentDidUpdate() {
+    window.onpopstate = (e) => {
+      this.checkURL();
+    }
+  }
 
   // ONLOAD FUNCTIONS //
 
