@@ -477,7 +477,7 @@ class App extends Component {
         
         </Switch>
       </div>
-    )
+    );
           // <Route component={404} />
   }
 }
