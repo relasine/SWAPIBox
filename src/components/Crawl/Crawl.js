@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import './Crawl.css';
-import PropTypes from 'prop-types';
-import Error from '../Error/ErrorPage';
+import ErrorPage from '../Error/ErrorPage';
 import Briefing from '../Briefing/Briefing';
 import Loading from '../Loading/Loading';
+import PropTypes from 'prop-types';
+import './Crawl.css';
 
 class Crawl extends Component {
   constructor() {

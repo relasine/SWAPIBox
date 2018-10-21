@@ -1,7 +1,7 @@
 import React from 'react';
+import Images from '../../images.js';
 import PropTypes from 'prop-types';
 import './Card.css';
-import Images from '../../images.js';
 
 const Card = ( {data, toggleFavorite} ) => {
   let favoriteClass;
@@ -53,7 +53,7 @@ const Card = ( {data, toggleFavorite} ) => {
         </section>
       </article>
     </article>
-  )
+  );
 }
 
 Card.propTypes = {
