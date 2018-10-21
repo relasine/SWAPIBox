@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './ModalButtons.css';
 
 const ModalButtons = ({ currentSelection, handleSelection, hamburger }) => {
@@ -53,5 +54,11 @@ const ModalButtons = ({ currentSelection, handleSelection, hamburger }) => {
     </aside>
   );
 }
+
+ModalButtons.propTypes = {
+  currentSelection: PropTypes.string.isRequired,
+  handleSelection: PropTypes.func.isRequired,
+  hamburger: PropTypes.object.isRequired,
+};
 
 export default ModalButtons;
