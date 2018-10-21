@@ -352,13 +352,19 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <div className="button-section">
+        <div 
+          className="button-section"
+          aria-label='navigation-section-wrapper'
+        >
           <header>
             <Hamburger
               hamburgerChange={this.hamburgerChange}
               status={this.state.hamburger}
             />
-            <section className='modal-wrapper'>
+            <section 
+              className='modal-wrapper'
+              aria-label='mobile-navigation-section'
+            >
               <ModalButtons 
                 hamburger={this.state.hamburger}
                 currentSelection={this.state.currentSelection}
@@ -366,7 +372,10 @@ class App extends Component {
               />
             </section>
             <h4 className={`please-login ${this.state.login}`}>Please login to access the archives</h4>
-            <section className={`button-wrapper ${this.state.buttons}`}>
+            <section 
+              className={`button-wrapper ${this.state.buttons}`}
+              aria-label='navigation'
+            >
               <NavLink 
                 to='/people' 
                 className='nav-button people' 
