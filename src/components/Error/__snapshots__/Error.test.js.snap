@@ -3,7 +3,7 @@
 exports[`Error should match the snapshot 1`] = `
 <div
   aria-label="error-page"
-  className="error-page undefined"
+  className="error-page true"
 >
   <h1
     className="error"

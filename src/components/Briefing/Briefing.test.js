@@ -7,8 +7,7 @@ let wrapper;
 
 
 beforeEach(() => {
-  wrapper = shallow(<Briefing crawl='' title='' id=''
-
+  wrapper = shallow(<Briefing crawl='test' title='test' id='test'
   />)
 });
 
