@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import './Briefing.css';
 
 const Briefing = ( {crawl, title, id}) => {
@@ -12,5 +12,11 @@ const Briefing = ( {crawl, title, id}) => {
     </section>
   );
 }
+
+Briefing.propTypes = {
+  crawl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default Briefing;
