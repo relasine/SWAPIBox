@@ -2,7 +2,7 @@ import React from 'react';
 import './CardCenterpiece.css';
 import PropTypes from'prop-types';
 
-const CardCenterpiece = ({selection}) => {
+const CardCenterpiece = ({selection, totalFavorites}) => {
   let centerText;
 
   if (selection === 'people'){
@@ -26,6 +26,10 @@ const CardCenterpiece = ({selection}) => {
 
   return(
     <div className="card-centerpiece">
+      <div className='fav-total-wrapper'>
+        <i className="fas fa-journal-whills total-fav-icon"></i>
+        <h4 className='fav-count-display'>{totalFavorites}</h4>
+      </div>
       <i className='fab fa-jedi-order centerpiece-icon'></i>
       <h3 className='centerpiece-text'>{centerText}</h3>
       <p className='centerpiece-fav-text'>{favText}</p>
@@ -36,5 +40,6 @@ const CardCenterpiece = ({selection}) => {
 export default CardCenterpiece
 
 CardCenterpiece.propTypes = {
-  selection: PropTypes.string.isRequired
+  selection: PropTypes.string.isRequired,
+  totalFavorites: PropTypes.number.isRequired
 };

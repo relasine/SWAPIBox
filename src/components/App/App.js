@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Crawl from '../Crawl/Crawl';
-import Header from '../Header/Header';
 import Button from '../Button/Button';
 import CardContainer from '../CardContainer/CardContainer';
 import fetchCall from '../../helpers/fetchCalls';
@@ -45,11 +44,11 @@ class App extends Component {
     this.checkURL();
   }
 
-  componentDidUpdate() {
-    window.onpopstate = (e) => {
-      this.checkURL();
-    }
-  }
+  // componentDidUpdate() {
+  //   window.onpopstate = (e) => {
+  //     this.checkURL();
+  //   }
+  // }
 
   // ONLOAD FUNCTIONS //
 
@@ -69,6 +68,7 @@ class App extends Component {
         loading: false,
         error: false
       })
+      this.setReady();
     } else if (window.location.pathname !== '/') {
       this.setReady();
     }
@@ -355,10 +355,7 @@ class App extends Component {
         <div className="button-section">
           <header>
             <Hamburger
-              hamburger={this.state.hamburger} 
               hamburgerChange={this.hamburgerChange}
-              loginWarning={this.loginWarning}
-              ready={this.state.ready}
               status={this.state.hamburger}
             />
             <section className='modal-wrapper'>
@@ -433,6 +430,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading}
+              totalFavorites={this.state.favorites.length}
             />
           )} />
  
@@ -443,6 +441,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading}
+              totalFavorites={this.state.favorites.length}
             />
           )} />
 
@@ -453,6 +452,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading}
+              totalFavorites={this.state.favorites.length}
             />
           )} />
 
@@ -463,6 +463,7 @@ class App extends Component {
               toggleFavorite={this.toggleFavorite}
               error={this.state.error}
               loading={this.state.loading} 
+              totalFavorites={this.state.favorites.length}
             />
           )} />
         

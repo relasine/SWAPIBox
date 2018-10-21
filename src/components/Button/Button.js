@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 const Button = ({handleSelection, buttonName, currentSelection}) => {
 
   let buttonState;
-  let buttonPath = `./${buttonName}.png`;
 
   if (currentSelection === buttonName) {
     buttonState = 'button-selected'

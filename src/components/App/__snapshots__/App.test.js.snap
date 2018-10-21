@@ -9,21 +9,7 @@ exports[`App should match snapshot 1`] = `
   >
     <header>
       <Hamburger
-        hamburger={
-          Object {
-            "bottomBladeToggled": "",
-            "bottomToggled": "",
-            "gripToggled": "",
-            "middleBladeToggled": "",
-            "middleToggled": "",
-            "status": "closed",
-            "topBladeToggled": "",
-            "topToggled": "",
-          }
-        }
         hamburgerChange={[Function]}
-        loginWarning={[Function]}
-        ready={false}
         status={
           Object {
             "bottomBladeToggled": "",

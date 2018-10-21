@@ -23,7 +23,9 @@ const Card = ( {data, toggleFavorite} ) => {
     >
       <article className='figure'>
         <div className='marked-icon-wrapper'>
-          <i className={`far fa-dot-circle ${favoriteClass}`}></i>
+          <div className='favorite-count-wrapper'>
+            <i className={`fas fa-journal-whills ${favoriteClass}`}></i>
+          </div>
         </div>
         <img
           className='card-image' 

@@ -4,6 +4,16 @@ exports[`CardCenterpiece should match snapshot if selection is favorites 1`] = `
 <div
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      className="fav-count-display"
+    />
+  </div>
   <i
     className="fab fa-jedi-order centerpiece-icon"
   />
@@ -22,6 +32,16 @@ exports[`CardCenterpiece should match snapshot if selection is not people/planet
 <div
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      className="fav-count-display"
+    />
+  </div>
   <i
     className="fab fa-jedi-order centerpiece-icon"
   />
@@ -40,6 +60,16 @@ exports[`CardCenterpiece should match snapshot if selection is people 1`] = `
 <div
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      className="fav-count-display"
+    />
+  </div>
   <i
     className="fab fa-jedi-order centerpiece-icon"
   />
@@ -60,6 +90,16 @@ exports[`CardCenterpiece should match snapshot if selection is planets 1`] = `
 <div
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      className="fav-count-display"
+    />
+  </div>
   <i
     className="fab fa-jedi-order centerpiece-icon"
   />
@@ -80,6 +120,16 @@ exports[`CardCenterpiece should match snapshot if selection is vehicles 1`] = `
 <div
   className="card-centerpiece"
 >
+  <div
+    className="fav-total-wrapper"
+  >
+    <i
+      className="fas fa-journal-whills total-fav-icon"
+    />
+    <h4
+      className="fav-count-display"
+    />
+  </div>
   <i
     className="fab fa-jedi-order centerpiece-icon"
   />

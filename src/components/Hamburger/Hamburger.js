@@ -30,8 +30,6 @@ const Hamburger = ({ hamburgerChange, status }) => {
 Hamburger.propTypes = {
   status: PropTypes.object.isRequired,
   hamburgerChange: PropTypes.func.isRequired,
-  loginWarning: PropTypes.func.isRequired,
-  ready: PropTypes.bool.isRequired
 }
 
 export default Hamburger

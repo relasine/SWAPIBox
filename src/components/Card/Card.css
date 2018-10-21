@@ -33,7 +33,7 @@
   bottom: 15px;
 }
 
-.fa-dot-circle {
+.marked-icon-wrapper .fa-journal-whills {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -48,7 +48,7 @@
   opacity: 1;
 }
 
-.figure:hover .marked-icon-wrapper .fa-dot-circle {
+.figure:hover .marked-icon-wrapper .fa-journal-whills {
   opacity: 0;
 }
 

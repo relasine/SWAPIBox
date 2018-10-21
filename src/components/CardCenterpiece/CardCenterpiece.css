@@ -1,4 +1,5 @@
 .card-centerpiece {
+  position: relative;
   grid-column: 2 / 4;
   grid-row: 2;
   /*border: solid rgba(173,216,230,0.2);*/
@@ -35,6 +36,25 @@
   text-align: center;
   margin-top: 0;
   text-transform: uppercase;
+}
+
+.fav-total-wrapper {
+  float: right;
+  display: flex;
+  width: 50px;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.fav-count-display {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.fav-count-display,
+.total-fav-icon {
+  color: #ADD8E6;
 }
 
 @media (max-width: 1000px) {
