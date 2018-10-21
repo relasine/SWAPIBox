@@ -32,7 +32,8 @@ describe('CardContainer', () => {
                         selection={mockSelection}
                         toggleFavorite={mockToggleFavorite}
                         error={mockError}
-                        loading={mockLoading} 
+                        loading={mockLoading}
+                        totalFavorites={3} 
                       />)
   })
 

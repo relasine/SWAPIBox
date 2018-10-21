@@ -15,7 +15,9 @@ exports[`CardCenterpiece should match snapshot if selection is favorites 1`] = `
     <h4
       aria-label="saved-items-count"
       className="fav-count-display"
-    />
+    >
+      3
+    </h4>
   </div>
   <i
     aria-label="jedi-order-icon"
@@ -47,7 +49,9 @@ exports[`CardCenterpiece should match snapshot if selection is not people/planet
     <h4
       aria-label="saved-items-count"
       className="fav-count-display"
-    />
+    >
+      3
+    </h4>
   </div>
   <i
     aria-label="jedi-order-icon"
@@ -79,7 +83,9 @@ exports[`CardCenterpiece should match snapshot if selection is people 1`] = `
     <h4
       aria-label="saved-items-count"
       className="fav-count-display"
-    />
+    >
+      3
+    </h4>
   </div>
   <i
     aria-label="jedi-order-icon"
@@ -113,7 +119,9 @@ exports[`CardCenterpiece should match snapshot if selection is planets 1`] = `
     <h4
       aria-label="saved-items-count"
       className="fav-count-display"
-    />
+    >
+      3
+    </h4>
   </div>
   <i
     aria-label="jedi-order-icon"
@@ -147,7 +155,9 @@ exports[`CardCenterpiece should match snapshot if selection is vehicles 1`] = `
     <h4
       aria-label="saved-items-count"
       className="fav-count-display"
-    />
+    >
+      3
+    </h4>
   </div>
   <i
     aria-label="jedi-order-icon"

@@ -7,7 +7,7 @@ exports[`Card should match snapshot 1`] = `
   onClick={[Function]}
 >
   <article
-    aria-lable="card-front"
+    aria-label="card-front"
     className="figure"
   >
     <div

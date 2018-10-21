@@ -54,7 +54,7 @@ describe('Card', () => {
         toggleFavorite={mockToggleFavorite}
       />);
 
-    expect(wrapper.props().children.props.children[1].props.className).toEqual('caption favorited')
+    expect(wrapper.props().children.props.children[0].props.children.props.children.props.className).toEqual('fas fa-journal-whills favorited');
   })
 
   it('should match snapshot', () => {

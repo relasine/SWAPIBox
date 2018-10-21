@@ -13,42 +13,42 @@ describe('CardCenterpiece', () => {
 
   it('should exist', () => {
     mockSelection = 'people'
-    wrapper = shallow(<CardCenterpiece selection={mockSelection} />)
+    wrapper = shallow(<CardCenterpiece totalFavorites={3} selection={mockSelection} />)
 
     expect(wrapper).toBeDefined();
   })
 
   it('should match snapshot if selection is people', () => {
     mockSelection = 'people'
-    wrapper = shallow(<CardCenterpiece selection={mockSelection} />)
+    wrapper = shallow(<CardCenterpiece totalFavorites={3} selection={mockSelection} />)
     
     expect(wrapper).toMatchSnapshot();
   })
 
   it('should match snapshot if selection is planets', () => {
     mockSelection = 'planets'
-    wrapper = shallow(<CardCenterpiece selection={mockSelection} />)
+    wrapper = shallow(<CardCenterpiece totalFavorites={3} selection={mockSelection} />)
     
     expect(wrapper).toMatchSnapshot();
   })
 
     it('should match snapshot if selection is vehicles', () => {
     mockSelection = 'vehicles'
-    wrapper = shallow(<CardCenterpiece selection={mockSelection} />)
+    wrapper = shallow(<CardCenterpiece totalFavorites={3} selection={mockSelection} />)
     
     expect(wrapper).toMatchSnapshot();
   })
 
   it('should match snapshot if selection is favorites', () => {
     mockSelection = 'favorites'
-    wrapper = shallow(<CardCenterpiece selection={mockSelection} />)
+    wrapper = shallow(<CardCenterpiece totalFavorites={3} selection={mockSelection} />)
     
     expect(wrapper).toMatchSnapshot();
   })
 
   it('should match snapshot if selection is not people/planets/vehicles/favorites', () => {
     mockSelection = 'films'
-    wrapper = shallow(<CardCenterpiece selection={mockSelection} />)
+    wrapper = shallow(<CardCenterpiece totalFavorites={3} selection={mockSelection} />)
     
     expect(wrapper).toMatchSnapshot();
   })

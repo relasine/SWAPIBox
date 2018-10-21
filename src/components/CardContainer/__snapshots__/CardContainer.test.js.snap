@@ -30,6 +30,7 @@ exports[`CardContainer should match snapshot 1`] = `
   />
   <CardCenterpiece
     selection="people"
+    totalFavorites={3}
   />
 </div>
 `;
@@ -64,6 +65,7 @@ exports[`CardContainer should render Error if error is true 1`] = `
   />
   <CardCenterpiece
     selection="people"
+    totalFavorites={3}
   />
 </div>
 `;
@@ -98,6 +100,7 @@ exports[`CardContainer should render Loading if loading is true 1`] = `
   />
   <CardCenterpiece
     selection="people"
+    totalFavorites={3}
   />
 </div>
 `;

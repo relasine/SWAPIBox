@@ -17,14 +17,21 @@ describe('Crawl', () => {
       error: ''
   }
 
+  const mockHamburger = {status: 'closed'}
+
   beforeEach(() => {
 
     let mockReady = jest.fn();
+    let mockHamburgerChange = jest.fn()
 
     wrapper = shallow(<Crawl film={{}}
                         setReady={mockReady}
                         error={false}
-                        loading={false} />)
+                        loading={false} 
+                        hamburger={mockHamburger}
+                        hamburgerChange={mockHamburgerChange}
+                      />);
+                        
   })
 
   it('should exist', () => {
