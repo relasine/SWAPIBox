@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ErrorPage.css';
 
 const ErrorPage = ({ errorState }) => {
@@ -11,5 +12,9 @@ const ErrorPage = ({ errorState }) => {
     </div>
   );
 }
+
+ErrorPage.propTypes = {
+  errorState: PropTypes.bool.isRequired,
+};
 
 export default ErrorPage;
