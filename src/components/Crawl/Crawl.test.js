@@ -15,7 +15,7 @@ describe('Crawl', () => {
       showCrawl: '',
       ready: false,
       error: ''
-  }
+  };
 
   const mockHamburger = {status: 'closed'};
 
@@ -66,7 +66,7 @@ describe('Crawl', () => {
   });
 
   it('should setState if ready and there is an error', async () => {
-    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={true} loading={false}/>)
+    wrapper = shallow(<Crawl film={{}} setReady={jest.fn()} error={true} loading={false}/>);
 
     await wrapper.setState({
       ready: true,
@@ -85,7 +85,7 @@ describe('Crawl', () => {
     const spyFour = spyOn(wrapper.instance(), 'printBriefing');
     const mockSetReady = jest.fn()
 
-    wrapper = shallow(<Crawl film={{}} setReady={mockSetReady} error={true} loading={false}/>)
+    wrapper = shallow(<Crawl film={{}} setReady={mockSetReady} error={true} loading={false}/>);
 
     await wrapper.instance().handleFingerPrint();
 
@@ -125,7 +125,6 @@ describe('Crawl', () => {
 
     expect(wrapper.state().briefing).toEqual('print-briefing');  
     expect(wrapper.state().ready).toEqual(true);    
-
   });
 
   it('should call handleFingerPrint when clicked', () => {
@@ -134,5 +133,5 @@ describe('Crawl', () => {
     wrapper.find('.thumbprint').simulate('click');
 
     expect(spy).toHaveBeenCalled();
-  })
+  });
 })

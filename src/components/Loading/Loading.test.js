@@ -6,7 +6,7 @@ let wrapper;
 
 beforeEach(() => {
   wrapper = shallow(<Loading 
-  />)
+  />);
 });
 
 describe('Loading', () => {

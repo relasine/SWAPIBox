@@ -1,6 +1,5 @@
 import React from 'react';
 import Briefing from './Briefing';
-
 import { shallow } from 'enzyme';
 
 let wrapper;
@@ -10,10 +9,10 @@ let mockId = 1;
 
 beforeEach(() => {
   wrapper = shallow(<Briefing 
-                      crawl={mockCrawl} 
-                      title={mockTitle} 
-                      id={mockId}
-                    />);
+    crawl={mockCrawl} 
+    title={mockTitle} 
+    id={mockId}
+  />);
 });
 
 describe('Briefing', () => {
