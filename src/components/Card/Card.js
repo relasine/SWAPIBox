@@ -59,7 +59,7 @@ const Card = ( {data, toggleFavorite} ) => {
 Card.propTypes = {
   data: PropTypes.object.isRequired,
   toggleFavorite: PropTypes.func.isRequired
-}
+};
 
 export default Card;
 

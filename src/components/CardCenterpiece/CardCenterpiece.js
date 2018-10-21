@@ -1,6 +1,6 @@
 import React from 'react';
-import './CardCenterpiece.css';
 import PropTypes from'prop-types';
+import './CardCenterpiece.css';
 
 const CardCenterpiece = ({selection, totalFavorites}) => {
   let centerText;
@@ -24,7 +24,6 @@ const CardCenterpiece = ({selection, totalFavorites}) => {
   } else {
     favText = 'tap to save data';
   }
-
 
   return(
     <div 
