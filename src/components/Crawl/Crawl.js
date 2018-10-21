@@ -128,7 +128,7 @@ class Crawl extends Component {
           {this.props.loading && <Loading />}
 
         </main>
-        <Error errorState={this.state.error}/>
+        <ErrorPage errorState={this.state.error}/>
       </aside>
     );
   }
