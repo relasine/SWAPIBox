@@ -16,7 +16,7 @@ const Briefing = ( {crawl, title, id}) => {
 Briefing.propTypes = {
   crawl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Briefing;

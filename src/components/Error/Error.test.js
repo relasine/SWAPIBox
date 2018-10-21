@@ -6,9 +6,9 @@ let wrapper;
 
 
 beforeEach(() => {
-  wrapper = shallow(<Error errorState={true}
+  wrapper = shallow(<Error errorState={''}
 
-  />)
+  />);
 });
 
 describe('Error', () => {

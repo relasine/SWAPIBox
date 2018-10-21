@@ -14,7 +14,7 @@ const ErrorPage = ({ errorState }) => {
 }
 
 ErrorPage.propTypes = {
-  errorState: PropTypes.bool.isRequired,
+  errorState: PropTypes.string.isRequired,
 };
 
 export default ErrorPage;
