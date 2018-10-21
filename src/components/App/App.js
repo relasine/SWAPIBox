@@ -10,6 +10,7 @@ import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
 import hamburgerHelper from '../../helpers/hamburger-helper';
 import { Route, Switch, NavLink } from 'react-router-dom';
+import NoMatch from '../NoMatch/NoMatch';
 import './App.css';
 
 
@@ -474,11 +475,15 @@ class App extends Component {
               totalFavorites={this.state.favorites.length}
             />
           )} />
+          <Route render={() => (
+            <NoMatch
+              location={window.location}
+            />
+          )} />
         
         </Switch>
       </div>
     );
-          // <Route component={404} />
   }
 }
 
