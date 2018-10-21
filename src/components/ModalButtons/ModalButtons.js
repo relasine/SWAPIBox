@@ -1,9 +1,8 @@
-import React from 'react'
-import Button from '../Button/Button'
+import React from 'react';
+import Button from '../Button/Button';
 import { NavLink } from 'react-router-dom';
 
-
-import './ModalButtons.css'
+import './ModalButtons.css';
 
 const ModalButtons = ({ currentSelection, handleSelection, hamburger }) => {
 
@@ -53,7 +52,7 @@ const ModalButtons = ({ currentSelection, handleSelection, hamburger }) => {
         />
       </NavLink>
     </aside>
-  )
+  );
 }
 
 export default ModalButtons;

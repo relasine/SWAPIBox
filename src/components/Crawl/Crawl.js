@@ -3,7 +3,7 @@ import './Crawl.css';
 import PropTypes from 'prop-types';
 import Error from '../Error/ErrorPage';
 import Briefing from '../Briefing/Briefing';
-import Loading from '../Loading/Loading'
+import Loading from '../Loading/Loading';
 
 class Crawl extends Component {
   constructor() {
@@ -19,7 +19,7 @@ class Crawl extends Component {
       showCrawl: '',
       ready: false,
       error: ''
-    }
+    };
   }
 
   checkReady = () => {
@@ -28,7 +28,7 @@ class Crawl extends Component {
       this.setState({
         showCrawl: 'show-crawl',
         hideWelcome: 'hide-welcome'
-      })
+      });
 
       if (window.innerWidth > 475 && this.props.hamburger.status === 'closed') {
         this.props.hamburgerChange();
@@ -38,12 +38,12 @@ class Crawl extends Component {
       this.setState({
         error: 'display-crawl-error',
         hideWelcome: 'hide-welcome'
-      })
+      });
     }
   }
 
   handleFingerPrint = async () => {
-    await this.setState({thumbprint: 'active-thumbprint'})
+    await this.setState({thumbprint: 'active-thumbprint'});
     await setTimeout(this.printConnect, 500);
     await setTimeout(this.printHandshake, 2500);
     await setTimeout(this.printWelcome, 5000);
@@ -52,22 +52,22 @@ class Crawl extends Component {
   }
 
   printConnect = async () => {
-    await this.setState({securing: 'print-securing'})
+    await this.setState({securing: 'print-securing'});
   }
 
   printHandshake = async () => {
-    await this.setState({handshake: 'print-handshake'})
+    await this.setState({handshake: 'print-handshake'});
   }
 
   printWelcome = async () => {
-    await this.setState({welcome: 'print-welcome'})
+    await this.setState({welcome: 'print-welcome'});
   }
 
   printBriefing = async () => {
     await this.setState({
       briefing: 'print-briefing',
       ready: true
-    })
+    });
   }
 
   render() {

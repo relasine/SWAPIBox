@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import './Briefing.css'
+import './Briefing.css';
 
 const Briefing = ( {crawl, title, id}) => {
   return (
@@ -10,7 +10,7 @@ const Briefing = ( {crawl, title, id}) => {
       <p className='smol-text'>Briefing Title: <span>{title}</span></p>
       <p className='smol-text'>Galaxy Date: <span>{id}</span></p>
     </section>
-  )
+  );
 }
 
 export default Briefing;

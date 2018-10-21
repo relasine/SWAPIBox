@@ -7,10 +7,10 @@ import fetchCall from '../../helpers/fetchCalls';
 import Vehicles from '../../helpers/Vehicles';
 import Planets from '../../helpers/Planets';
 import People from '../../helpers/People';
-import hamburgerHelper from '../../helpers/hamburger-helper'
+import hamburgerHelper from '../../helpers/hamburger-helper';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import Hamburger from '../Hamburger/Hamburger'
-import ModalButtons from '../ModalButtons/ModalButtons'
+import Hamburger from '../Hamburger/Hamburger';
+import ModalButtons from '../ModalButtons/ModalButtons';
 
 
 class App extends Component {
@@ -67,7 +67,7 @@ class App extends Component {
         currentSelection: 'saved',
         loading: false,
         error: false
-      })
+      });
       this.setReady();
     } else if (window.location.pathname !== '/') {
       this.setReady();
@@ -80,31 +80,31 @@ class App extends Component {
         ready: true,
         login: '',
         currentSelection: 'people'
-      })
+      });
     } else if (window.location.pathname === '/planets') {
       this.setState({
         ready: true,
         login: '',
         currentSelection: 'planets'
-      })
+      });
     } else if (window.location.pathname === '/vehicles') {
       this.setState({
         ready: true,
         login: '',
         currentSelection: 'vehicles'
-      })
+      });
     } else {
       this.setState({
         ready: true,
         login: ''
-      })
+      });
     }
   }
 
   loginWarning = () => {
     this.setState({
       login: 'display-login'
-    })
+    });
   }
 
   checkStorage = () => {
@@ -113,7 +113,7 @@ class App extends Component {
         planets: JSON.parse(localStorage.getItem('planets')) || [],
         vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
         people: JSON.parse(localStorage.getItem('people')) || []
-    })
+    });
   }
 
   // LANDING PAGE LOGIC //
@@ -133,7 +133,7 @@ class App extends Component {
       openingCrawl: films.results[randomNum], 
       loading: false,
       error: false
-    })
+    });
   }
 
   fetchFilms = async () => {
@@ -141,18 +141,18 @@ class App extends Component {
     try {
       const films = await this.state.fetchCall(url);
 
-      const randomNum = Math.floor(Math.random() * (films.count))
+      const randomNum = Math.floor(Math.random() * (films.count));
       this.setState({
         openingCrawl: films.results[randomNum], 
         loading: false,
         error: false
-      })
-      localStorage.setItem('films', JSON.stringify(films))
+      });
+      localStorage.setItem('films', JSON.stringify(films));
     } catch(error) {
       this.setState({ 
         error: true, 
         currentSelection: '' 
-      })
+      });
     }
   }
 
@@ -172,7 +172,7 @@ class App extends Component {
         login: ''
       });
     } else {
-      await this.loginWarning()
+      await this.loginWarning();
     }
   }
 
@@ -180,7 +180,7 @@ class App extends Component {
     if (currentSelection !== this.state.currentSelection && window.innerWidth < 476) {
       this.setState({
         hamburger: this.state.hamburgerHelper.closed
-      })
+      });
     }
 
     if (currentSelection === 'people') {
@@ -188,13 +188,13 @@ class App extends Component {
     } else if (currentSelection === 'vehicles') {
       this.callFetchVehicles();
     } else if (currentSelection === 'planets') {
-      this.callFetchPlanets()
+      this.callFetchPlanets();
     } else {
       this.setState({
         currentSelection: 'saved',
         loading: false,
         error: false
-      })
+      });
     }
   }
 
@@ -203,39 +203,39 @@ class App extends Component {
   toggleFavorite = (cardData) => {
     this.toggleFavoriteInDatabase(cardData);
       
-    if(this.state.favorites.find( fav => cardData.name === fav.name)){
-      this.removeFavorite(cardData)
+    if (this.state.favorites.find( fav => cardData.name === fav.name)) {
+      this.removeFavorite(cardData);
 
 
     } else {
       cardData.favorite = true;
-      const newFavorites = [...this.state.favorites, cardData]
+      const newFavorites = [...this.state.favorites, cardData];
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
       this.setState({
         favorites: newFavorites,
         planets: JSON.parse(localStorage.getItem('planets')) || [],
         vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
         people: JSON.parse(localStorage.getItem('people')) || []
-      })
+      });
     }
   }
 
   toggleFavoriteInDatabase = (cardData) => {
-    const library = JSON.parse(localStorage.getItem(cardData.category))
+    const library = JSON.parse(localStorage.getItem(cardData.category));
     const target = library.find( card => cardData.name === card.name);
     target.favorite = !target.favorite;
     localStorage.setItem(cardData.category, JSON.stringify(library));
   }
 
   removeFavorite = (cardData) => {
-    const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name)
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
+    const updatedFavorites = this.state.favorites.filter( fav => fav.name !== cardData.name);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     this.setState({
       favorites: updatedFavorites,
       planets: JSON.parse(localStorage.getItem('planets')) || [],
       vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
       people: JSON.parse(localStorage.getItem('people')) || []
-    })
+    });
   }
  
   // VEHICLE DATA HANDLING //
@@ -244,20 +244,20 @@ class App extends Component {
     if(localStorage.vehicles){
       this.pullVehicleData();
     } else {
-      this.setState({ loading: true })
+      this.setState({ loading: true });
       this.fetchVehicleData();
     }
   }
 
   pullVehicleData = () => {
-    const response = localStorage.getItem('vehicles')
-    const vehicles = JSON.parse(response)
+    const response = localStorage.getItem('vehicles');
+    const vehicles = JSON.parse(response);
     this.setState({
       vehicles: vehicles,
       currentSelection: 'vehicles',
       loading: false,
       error: false
-    })    
+    });    
   }
 
   fetchVehicleData = async() => {
@@ -268,8 +268,8 @@ class App extends Component {
         currentSelection: 'vehicles',
         loading: false,
         error: false
-      })
-      localStorage.setItem('vehicles', JSON.stringify(cleanData))
+      });
+      localStorage.setItem('vehicles', JSON.stringify(cleanData));
     } catch(error) {
       this.setState({ error: true, currentSelection: '' })
     }
@@ -281,20 +281,20 @@ class App extends Component {
     if (localStorage.people) {
       this.pullPeopleData();
     } else {
-      this.setState({ loading: true })
+      this.setState({ loading: true });
       this.fetchPeopleData();
     }
   }
 
   pullPeopleData = () => {
-    const response = localStorage.getItem('people')
-      const people = JSON.parse(response)
+    const response = localStorage.getItem('people');
+      const people = JSON.parse(response);
       this.setState({
         people: people,
         currentSelection: 'people',
         loading: false,
         error: false
-    })
+    });
   }
 
   fetchPeopleData = async () => {
@@ -305,10 +305,10 @@ class App extends Component {
         currentSelection: 'people',
         loading: false,
         error: false
-      })
+      });
       localStorage.setItem('people', JSON.stringify(cleanedPeople))
     } catch(error) {
-      this.setState({ error: true, currentSelection: '' })
+      this.setState({ error: true, currentSelection: '' });
     }
   }
 
@@ -316,36 +316,36 @@ class App extends Component {
 
   callFetchPlanets = () => {
     if (localStorage.planets){
-      this.pullPlanetData()
+      this.pullPlanetData();
     } else {
-      this.setState({ loading: true })
-      this.fetchPlanetData()
+      this.setState({ loading: true });
+      this.fetchPlanetData();
     }
   }
 
   pullPlanetData = () => {
-    const response = localStorage.getItem('planets')
-    const planets = JSON.parse(response)
+    const response = localStorage.getItem('planets');
+    const planets = JSON.parse(response);
     this.setState({
       planets: planets,
       currentSelection: 'planets',
       loading: false,
       error: false
-    })
+    });
   }
 
   fetchPlanetData = async () => {
     try{
-      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets()
+      const cleanedPlanets = await this.state.fetchPlanets.fetchPlanets();
       this.setState({
         planets: cleanedPlanets,
         currentSelection: 'planets',
         loading: false,
         error: false
-      })
-      localStorage.setItem('planets', JSON.stringify(cleanedPlanets))
+      });
+      localStorage.setItem('planets', JSON.stringify(cleanedPlanets));
     } catch(error) {
-      this.setState({ error: true })
+      this.setState({ error: true });
     }
   }
 
