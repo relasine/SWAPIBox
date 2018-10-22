@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Error from './ErrorPage';
 import { shallow } from 'enzyme';

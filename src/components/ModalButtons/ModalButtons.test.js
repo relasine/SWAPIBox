@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import ModalButtons from './ModalButtons';
 import { shallow } from 'enzyme';

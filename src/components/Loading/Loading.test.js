@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Loading from './Loading';
 import { shallow } from 'enzyme';

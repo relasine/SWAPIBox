@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import NoMatch from './NoMatch';
 import { shallow } from 'enzyme';
