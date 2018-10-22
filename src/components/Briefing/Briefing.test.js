@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Briefing from './Briefing';
 import { shallow } from 'enzyme';
