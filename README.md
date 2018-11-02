@@ -2,6 +2,15 @@
 
 This project is a React App that is designed to challenge the developer to make a series of fetch calls to [SWAPI](https://swapi.co/), an unsecured api that is a programmatically accessible data source for all the data from the Star Wars canon universe. The developers/designers on this project are Kevin Simpson and Tobin Nelson.
 
+* To download this application, clone down the repo:
+/// git clone https://github.com/relasine/SWAPIBox.git ///
+* cd into the repo
+* Install dependencies
+/// npm install
+* Start up the local server
+/// npm start
+* Open your browser to localhost:3000
+
 SWAPIBox is an assigment from the front end engineering program at The Turing School of Software and Design in Denver, CO as a part of the third module. You can find the [project specs here](http://frontend.turing.io/projects/swapi-box.html). Most students working on this project have only been coding for sixteen-to-twenty three weeks using HTML5, CSS3, and JavaScript. React has only become a part of our skill set as of seven weeks ago.
 
 Grabbing data from the api is uniquely challenging as a single fetch call will not give the user the data required from the spec. Calling a fetch on people will return most of the data required, but will also return promises that resolve to a url for certain properties, like planet names, residents, species, etc. This requires a series of fetch calls to be made via the .map() array prototype method. We elected to use ES7 syntax for this project with async and await instead of ES6 .then().
