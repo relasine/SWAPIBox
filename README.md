@@ -29,20 +29,13 @@ All fetch calls and saved items are saved in local storage to reduce the need to
 
 This project additionally adds the challenge of applying React Router mid-stride for page navigation. This requires a great deal of refactoring and some headache, but is meant to mimic the real-world requirements of refactoring a product to include new tools and features.
 
-![swapi-landing-page](https://user-images.githubusercontent.com/29719272/47258697-1b9aa700-d45c-11e8-9fbd-86580efa70e0.png)
 ![swapi-landing-login](https://user-images.githubusercontent.com/29719272/47258696-1b9aa700-d45c-11e8-8292-92c01e16f88d.png)
 ![swapi-briefing](https://user-images.githubusercontent.com/29719272/47258695-1b021080-d45c-11e8-8959-4a85bafdecda.png)
-
-This is our loading screen, utilized whenever a fetch call to SWAPI is being made and resolved.
-
-![swapi-loading](https://user-images.githubusercontent.com/29719272/47258698-1b9aa700-d45c-11e8-962d-ea500ab49cf1.png)
 
 The following pages are where the fetched data can be viewed. Images are not provided by the api, so they were curated by the developers and are assigned via a helper object linking the names attached to data objects and a path to the image cooresponding to the person, place, or thing.
 
 ![swapi-people](https://user-images.githubusercontent.com/29719272/47258700-1b9aa700-d45c-11e8-8a92-44fbdfdc6c33.png)
-![swapi-planets](https://user-images.githubusercontent.com/29719272/47258701-1b9aa700-d45c-11e8-8162-ba15fefe5cf4.png)
 ![swapi-saved](https://user-images.githubusercontent.com/29719272/47258703-1b9aa700-d45c-11e8-9661-2fa6f0565a84.png)
-![swapi-vehicles](https://user-images.githubusercontent.com/29719272/47258704-1c333d80-d45c-11e8-85df-c34f5fa9e049.png)
 
 The app is fully-responsive, and works equally well on wide-screen monitors all the way down to the iPhone 5s.
 
