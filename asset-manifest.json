@@ -1,7 +1,7 @@
 {
   "main.css": "/SWAPIBox/static/css/main.de08eab0.chunk.css",
-  "main.js": "/SWAPIBox/static/js/main.7fe1f5bd.chunk.js",
-  "main.js.map": "/SWAPIBox/static/js/main.7fe1f5bd.chunk.js.map",
+  "main.js": "/SWAPIBox/static/js/main.1080b0a9.chunk.js",
+  "main.js.map": "/SWAPIBox/static/js/main.1080b0a9.chunk.js.map",
   "static/js/1.3b28a7fa.chunk.js": "/SWAPIBox/static/js/1.3b28a7fa.chunk.js",
   "static/js/1.3b28a7fa.chunk.js.map": "/SWAPIBox/static/js/1.3b28a7fa.chunk.js.map",
   "runtime~main.js": "/SWAPIBox/static/js/runtime~main.3ceead34.js",
@@ -9,6 +9,6 @@
   "static/media/Button.css": "/SWAPIBox/static/media/galbasic.69c543f0.ttf",
   "static/css/main.de08eab0.chunk.css.map": "/SWAPIBox/static/css/main.de08eab0.chunk.css.map",
   "index.html": "/SWAPIBox/index.html",
-  "precache-manifest.93353d463a166bdd574e72542f32ffe1.js": "/SWAPIBox/precache-manifest.93353d463a166bdd574e72542f32ffe1.js",
+  "precache-manifest.18a74b58b0318f5ed556ea424a845ab6.js": "/SWAPIBox/precache-manifest.18a74b58b0318f5ed556ea424a845ab6.js",
   "service-worker.js": "/SWAPIBox/service-worker.js"
 }
