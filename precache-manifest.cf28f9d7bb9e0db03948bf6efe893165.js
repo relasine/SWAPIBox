@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/SWAPIBox/static/css/main.de08eab0.chunk.css"
   },
   {
-    "revision": "5b2473351d26582b0abb929babd0c7bc",
+    "revision": "27d3ca69f8444e8de5d57fe75f1bb2eb",
     "url": "/SWAPIBox/index.html"
   }
 ];
